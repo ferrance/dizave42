@@ -65,6 +65,11 @@ enum my_keycodes {
 #define DZ_NAV  LT(_NAV,KC_TAB)
 #define DZ_0    LT(3,KC_0)
 #define DZ_BSPC LT(_NUMBERS,KC_BSPC)
+#define DZ_OSS  OSM(MOD_LSFT)
+
+#define DZT1 RSFT_T(KC_BSPC)
+#define DZT2 LT(_NUMBERS,KC_ENT)
+
 
 // Legal macros that are not keycodes
 #define DZ_LAW  OSL(_LEGAL)
