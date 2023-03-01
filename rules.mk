@@ -10,8 +10,10 @@ UNICODE_ENABLE = yes
 MOUSEKEY_ENABLE = no
 
 
-# uncomment below when using the kb2040 board
-#MCU = kb2040
-#BOOTLOADER = RP2040
+# to build for kb2040: qmk compile -e CONVERT_TO=kb2040
+ifeq ($(strip $(CONVERT_TO)), rp2040)
+  MCU = kb2040
+  BOOTLOADER = RP2040
+endif
 
 SRC += ./dizave.c
