@@ -123,10 +123,6 @@ the keyboard to send unicode correctly based on the selected OS.
 
 ## Misc Features
 
-The large thumb keys are space and backspace, respectively. I had originally used
-space and enter, like many other keymaps, but backspace is used much more frequently
-so I moved it to the more accessible location.
-
 The large thumb keys operate as shift when held. This has made a huge difference for
 me. I can'd believe space isn't shift everywhere, it just works so well.
 
