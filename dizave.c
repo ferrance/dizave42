@@ -194,6 +194,37 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       }
       return false;
 
+    case DZ_NM:
+      if (record->event.pressed) {
+        SEND_STRING("N.M.");
+      }
+      return false;
+
+    case DZ_NMSC:
+      if (record->event.pressed) {
+        SEND_STRING("-NMSC-");
+      }
+      return false;
+
+    case DZ_NMCA:
+      if (record->event.pressed) {
+        SEND_STRING("-NMCA-");
+      }
+      return false;
+
+    case DZ_F3D:
+      if (record->event.pressed) {
+        SEND_STRING("F.3d");
+      }
+      return false;
+
+    case DZ_F2D:
+      if (record->event.pressed) {
+        SEND_STRING("F.2d");
+      }
+      return false;
+
+
   }  // switch
 
   return true;
