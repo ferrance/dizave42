@@ -9,7 +9,7 @@ six-column corne. After a good deal of thought and
 experimentation I decided to work on a pair of layouts for these two keyboards that were
 inspired by miryoku but that made use of the extra keys.
 
-In some ways this is inferior to simply usuing miryoku everywhere, an approach which 
+In some ways this is inferior to simply using miryoku everywhere, an approach which 
 provides the highest level of consistency between keyboards. Nevertheless, I suspect there
 are other people like me out there that like miryoku but wouldn't mind being able to use 
 the extra keys when they are available. Hopefully this layout can fill that need.
@@ -34,27 +34,20 @@ The layouts are basically self-documenting, but here they are:
 ### Colemak
 
 
-![Nav Layer](layer-colemak.png)
+![Default Layer](layer-colemak.png)
 
 This is my primary layer, and one of the two default layer choices.
 Although I've included shift on the home row, I mainly use it on the 
 two main thumb keys. There is no dedicated shift for the pinky fingers.
 The QWERTY is the same but, you know, with a QWERTY layout. 
 
-The dizave58 uses home row mods in the GACS configuration (for windows) or CAGS (for mac).
+The dizave layout uses home row mods in the GACS configuration (for windows) or CAGS (for mac).
 The display shows either a windows or mac symbol to indicate which mode the keyboard is in.
 For an amazing overview of home row mods, check out
 [precondition's page](https://precondition.github.io/home-row-mods).
 
-Many of the existing lily58 keymaps use the pinky keys and/or the thumb cluster 
-for the mod keys. This isn't really an option on the corne, and didn't strike me
-as a good use of the thumb cluster on the lily either. So I've mostly avoided doing
-that. The outermost thumb keys duplicate, mainly because I couldn't put anything 
-important there because then I'd be missing it on the corne. 
-
 ### Nav Layer
 ![Nav Layer](layer-nav.png)
-
 
 ### Number Layer
 ![Number Layer](layer-numbers.png)
@@ -72,6 +65,9 @@ left, the top two keys are used to change the default layer go either QWERTY
 The lower right switches between windows and mac mode. The current mode is 
 displayed in the OLED. Currently all this means is that the GUI and CTRL keys
 are switched.
+
+### Adjust Layer
+![Adjust Layer](layer-adjust.png)
 
 ### Legal Layer
 ![Number Layer](layer-law.png)
@@ -134,27 +130,19 @@ so I moved it to the more accessible location.
 The large thumb keys operate as shift when held. This has made a huge difference for
 me. I can'd believe space isn't shift everywhere, it just works so well.
 
-None of my Lilys have LEDs. (Don't get me started on how the PCBs in the lily58 glow
-repository are broken). And, in any event, the MT3 keycaps I am using on them don't 
-let the light through anyway. So as much as I enjoy a good light show, I've disabled 
-it in this keymap.
-
-# builds
+# Builds
 
 I use this on promicros and adafruit 2040s, so it has to compile for both platforms.
+By default, it will compile for the promicro.
+To compile a .UF2 for the kb2040, use
 
-Rules.mk
 ```
-MCU = kb2040
-BOOTLOADER = RP2040
+qmk compile -e CONVERT_TO=kb2040
 ```
-
-qmk compile -kb crkbd -km dizave -e CONVERT_TO=kb2040
 
 
 # todo
 
 - close key that is cmd Q on mac and alt F4 on windows
-- layer with some legal keys: paragragh, section. this requires unicode detect
-- get underglow working 
-- save default layer to eeprom
+- key to switch virtual desktops on windows
+- add a qwerty layer
