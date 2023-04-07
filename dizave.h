@@ -63,7 +63,8 @@ enum my_keycodes {
   DZ_NMCA,
   DZ_NM,
   DZ_F3D,
-  DZ_F2D
+  DZ_F2D,
+  DZ_ABQ
 };
 
 #define DZ_SPC  LSFT_T(KC_SPC)
