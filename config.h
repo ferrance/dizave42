@@ -2,7 +2,7 @@
 
 Copyright 2012 Jun Wako <wakojun@gmail.com>
 Copyright 2015 Jack Humbert
-Copyright 2022 D. Ferrance (@ferrance)
+Copyright 2023 D. Ferrance (@ferrance)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,9 +27,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_LEFT
 
 #undef PRODUCT
-#define PRODUCT "Dizave42"
+#define PRODUCT "dizave42"
 
-// sexy dizave logo
+// sexy dizave42 logo
 #undef OLED_FONT_H
 #define OLED_FONT_H "dizave42.c"
 
@@ -40,10 +40,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // dizave supports mac and windows
 #define UNICODE_SELECTED_MODES UNICODE_MODE_MACOS, UNICODE_MODE_WINCOMPOSE
-
-// get that corne logo
-//#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
-
 
 #ifdef RGBLIGHT_ENABLE
     #define RGBLIGHT_EFFECT_BREATHING
@@ -102,8 +98,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    undef ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
 #    undef ENABLE_MATRIX_PIXEL_FLOW
 #    undef ENABLE_MATRIX_PIXEL_RAIN
-#    undef ENABLE_RGB_MATRIX_TYPING_HEATMAP			// boring
-#    undef ENABLE_RGB_MATRIX_DIGITAL_RAIN			// not sure what the point is
 #    undef ENABLE_RGB_MATRIX_SOLID_REACTIVE			// better than jest plain solid
 #    undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
 #    undef ENABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE
