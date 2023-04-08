@@ -29,6 +29,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef PRODUCT
 #define PRODUCT "Dizave42"
 
+// sexy dizave logo
+#undef OLED_FONT_H
+#define OLED_FONT_H "dizave42.c"
+
 // home row mods
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 200
@@ -38,7 +42,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define UNICODE_SELECTED_MODES UNICODE_MODE_MACOS, UNICODE_MODE_WINCOMPOSE
 
 // get that corne logo
-#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+//#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 
 
 #ifdef RGBLIGHT_ENABLE

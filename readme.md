@@ -1,4 +1,4 @@
-# dizave
+# dizave42
 
 The lily58 was my first alternative keyboard and is still a favorite. I knew right away
 however that I was going to want to go a bit smaller. I looked for a layout that worked on
@@ -76,7 +76,9 @@ OK, so, admittedly this layer is only useful to people who are
 appellate lawyers in New Mexico and rock a corne or a lily. So,
 just me. 
 
-I put federal on the left and New Mexico on the right.
+I put federal on the left and New Mexico on the right. Section is on
+the "S" key for obvious reasons, "Albuquerque" is on the "A" key.
+I'm still working my way through what should be on this layer.
 
 The quote gives you a close quote single quote, the kind you use at
 the beginning of a shortened patent number that can be such a pain to
@@ -142,3 +144,4 @@ qmk compile -e CONVERT_TO=kb2040
 - close key that is cmd Q on mac and alt F4 on windows
 - key to switch virtual desktops on windows
 - add a qwerty layer
+- signals in the law layer?
