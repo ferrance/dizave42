@@ -84,6 +84,9 @@ The quote gives you a close quote single quote, the kind you use at
 the beginning of a shortened patent number that can be such a pain to
 enter.
 
+Some of this uses unicode. I'm running wincompose on windows and using unicode
+hex input on mac.
+
 ## The Displays
 
 I didn't find the display on the default keymap very useful. Although the
