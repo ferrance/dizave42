@@ -137,6 +137,16 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       }
       return false;
 
+    case DZ_CLSE:
+      if (record->event.pressed) {
+        if (is_mac()) {
+          SEND_STRING(SS_LGUI("q"));
+        } else {
+          SEND_STRING(SS_LALT(SS_TAP(X_F4)));
+        }
+      }
+      return false;
+
     case DZ_NMSA:
       if (record->event.pressed) {
         SEND_STRING("NMSA 1978, ");
