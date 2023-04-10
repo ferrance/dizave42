@@ -47,6 +47,7 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record);
 #define DZQ_SC RGUI_T(KC_SCLN)
 
 #define DZ_VDRT G(C(KC_RIGHT))
+#define DZ_VDLT G(C(KC_LEFT))
 
 // Dizave Keycodes
 enum my_keycodes {
