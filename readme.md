@@ -49,6 +49,9 @@ For an amazing overview of home row mods, check out
 ### Nav Layer
 ![Nav Layer](layer-nav.png)
 
+- close key that is cmd Q on mac and alt F4 on windows
+- key to switch virtual desktops on windows
+
 ### Number Layer
 ![Number Layer](layer-numbers.png)
 
@@ -144,7 +147,5 @@ qmk compile -e CONVERT_TO=kb2040
 
 # todo
 
-- close key that is cmd Q on mac and alt F4 on windows
-- key to switch virtual desktops on windows
 - add a qwerty layer
 - signals in the law layer?
