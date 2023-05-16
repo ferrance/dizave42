@@ -20,11 +20,8 @@ the extra keys when they are available. Hopefully this layout can fill that need
 advantage of the extra keys on the lily58 and six-row corne
 
 - Support both QWERTY and COLEMAK
-
 - Switch between windows and mac
-
 - Support unicode characters on windows and mac
-
 - Make better use of the display
 
 ## The Layouts
@@ -51,7 +48,7 @@ ring fingers. Currently I have removed them from the pinky on the main
 layer. I've also put mod keys on the outermost thumb keys. I don't like them
 there and will probably end up changing that eventually. As described below,
 the mod keys move depending on whether the keyboard is in windows or mac
-mode.
+mode. The mod keys are one shots on the nav and number layers.
 
 ### Nav Layer
 ![Nav Layer](layer-nav.png)
