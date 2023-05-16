@@ -46,6 +46,13 @@ The display shows either a windows or mac symbol to indicate which mode the keyb
 For an amazing overview of home row mods, check out
 [precondition's page](https://precondition.github.io/home-row-mods).
 
+I do have some problems with the home row keys, at least on the pinky and 
+ring fingers. Currently I have removed them from the pinky on the main
+layer. I've also put mod keys on the outermost thumb keys. I don't like them
+there and will probably end up changing that eventually. As described below,
+the mod keys move depending on whether the keyboard is in windows or mac
+mode.
+
 ### Nav Layer
 ![Nav Layer](layer-nav.png)
 
