@@ -41,6 +41,23 @@ enum layer_number {
 #define DZ_RGUI OSM(MOD_RGUI)
 
 
+// tap dance declarations
+enum {
+  TD_LBKT_LBRC = 0,
+  TD_RBKT_RBRC,
+};
+
+// tap dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+  // tap once for left bracket, twice for left brace
+  [TD_LBKT_LBRC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
+  [TD_RBKT_RBRC] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
+};
+
+#define DZTDLBC TD(TD_LBKT_LBRC)
+#define DZTDRBC TD(TD_RBKT_RBRC)
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -69,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NUMBERS] = LAYOUT_split_3x6_3(  // number layer
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_GRV , KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,                      KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, _______, _______,
+      KC_GRV , DZTDLBC,    KC_7,    KC_8,    KC_9, DZTDRBC,                      KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
     OSL(_LAW), KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL,                      _______, DZ_RSFT, DZ_RCTL, DZ_LALT, DZ_RGUI, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|

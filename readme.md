@@ -55,6 +55,7 @@ mode. The mod keys are one shots on the nav and number layers.
 
 - close key that is cmd Q on mac and alt F4 on windows
 - key to switch virtual desktops on windows
+- the home row keys on this layer are one-shot mods
 
 ### Number Layer
 ![Number Layer](layer-numbers.png)

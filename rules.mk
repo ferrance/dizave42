@@ -8,6 +8,7 @@ OLED_DRIVER     = SSD1306
 LTO_ENABLE      = yes
 UNICODE_ENABLE = yes
 MOUSEKEY_ENABLE = no
+TAP_DANCE_ENABLE = yes
 
 
 # to build for kb2040: qmk compile -e CONVERT_TO=kb2040
