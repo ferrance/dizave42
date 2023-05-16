@@ -79,6 +79,11 @@ are switched.
 ### Adjust Layer
 ![Adjust Layer](layer-adjust.png)
 
+This is mostly related to RGB. However, there is a reset in the upper 
+left. And the lower right toggles between windows and mac mode. Since 
+I wrote this I've discovered that QMK has OS detection, but so far I
+haven't played with it. Right now it is manual on this layout.
+
 ### Legal Layer
 ![Number Layer](layer-law.png)
 
