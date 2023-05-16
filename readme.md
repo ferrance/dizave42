@@ -81,6 +81,11 @@ left. And the lower right toggles between windows and mac mode. Since
 I wrote this I've discovered that QMK has OS detection, but so far I
 haven't played with it. Right now it is manual on this layout.
 
+
+### Function Layer
+![Number Layer](layer-fun.png)
+Function keys. Accessed via one shot from the number layer.
+
 ### Legal Layer
 ![Number Layer](layer-law.png)
 
