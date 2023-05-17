@@ -40,6 +40,7 @@ enum layer_number {
 #define DZ_RSFT OSM(MOD_RSFT)
 #define DZ_RGUI OSM(MOD_RGUI)
 
+#define DZ_SFTENT LSFT_T(KC_SPC)
 
 // tap dance declarations
 enum {
@@ -48,7 +49,7 @@ enum {
 };
 
 // tap dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
   // tap once for left bracket, twice for left brace
   [TD_LBKT_LBRC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
   [TD_RBKT_RBRC] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
@@ -67,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_ESC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_MINS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   MO(1),  DZ_SPC,  KC_SFTENT, DZ_BSPC,  KC_DEL
+                                          KC_LGUI,   MO(1),  DZ_SPC,  DZ_SFTENT, DZ_BSPC,  KC_DEL
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -190,24 +191,25 @@ void oled_render_layer_state(void) {
 
 
 bool oled_task_user(void) {
-    if (is_keyboard_master()) {
-        oled_render_layer_state();
 
+    if (is_keyboard_master()) {
+
+        oled_render_layer_state();
         dizave_render_master();
 
-      // display apple / windows logo
-      dizave_render_bootmagic_status(!is_mac());
-      oled_write_ln("    ", false);
-
-      dizave_render_numbers(layer_state==4);
-      oled_write_ln("     ", false);
-
-      // CAPS LOCK
-      if (IS_HOST_LED_ON(USB_LED_CAPS_LOCK)) { 
-          oled_write_ln("CAPS",true);
-      } else {
+        // display apple / windows logo
+        dizave_render_bootmagic_status(!is_mac());
         oled_write_ln("    ", false);
-      } 
+
+        dizave_render_numbers(layer_state==4);
+        oled_write_ln("     ", false);
+
+        // CAPS LOCK
+        if (host_keyboard_led_state().caps_lock) { 
+            oled_write_ln("CAPS",true);
+        } else {
+            oled_write_ln("    ", false);
+        } 
 
     } else {
         dizave_render_logo();
