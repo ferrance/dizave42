@@ -40,7 +40,7 @@ enum layer_number {
 #define DZ_RSFT OSM(MOD_RSFT)
 #define DZ_RGUI OSM(MOD_RGUI)
 
-#define DZ_SFTENT LSFT_T(KC_SPC)
+#define DZ_SFTENT LSFT_T(KC_ENT)
 
 // tap dance declarations
 enum {
