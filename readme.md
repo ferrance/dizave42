@@ -36,22 +36,27 @@ The layouts are basically self-documenting, but here they are:
 
 ![Default Layer](layer-colemak.png)
 
-This is my primary layer, and one of the two default layer choices.
-Although I've included shift on the home row, I mainly use it on the 
-two main thumb keys. There is no dedicated shift for the pinky fingers.
-The QWERTY is the same but, you know, with a QWERTY layout. 
+This is my primary layer--standard colemak. I've departed from Miryoku in the
+thumb cluster and of course in the pinky columns. I'm still experimenting with 
+those two areas but otherwise this is unlikely to change. 
 
-The dizave layout uses home row mods in the GACS configuration (for windows) or CAGS (for mac).
-The display shows either a windows or mac symbol to indicate which mode the keyboard is in.
-For an amazing overview of home row mods, check out
-[precondition's page](https://precondition.github.io/home-row-mods).
+The layout uses home row mods in the GACS configuration (for windows) or CAGS (for mac).
+The current mode is displayed in the OLED with a windows or apple symbol. See the discussion below for more on that.
 
 I do have some problems with the home row keys, at least on the pinky and 
 ring fingers. Currently I have removed them from the pinky on the main
 layer. I've also put mod keys on the outermost thumb keys. I don't like them
 there and will probably end up changing that eventually. As described below,
-the mod keys move depending on whether the keyboard is in windows or mac
-mode. The mod keys are one shots on the nav and number layers.
+the mod keys change depending on whether the keyboard is in windows or mac
+mode. This lets me keep the most important key under my middle finger regardless
+of which OS I'm on (I switch constantly).
+
+For an amazing overview of home row mods, check out
+[precondition's page](https://precondition.github.io/home-row-mods).
+
+When/if it gets merged into QMK I need to implement Miryoku's bilateral 
+combinations, which I hope addresses the occasional problems I have with
+rolls on my right hand in Windows opening a bunch of windows.
 
 ### Nav Layer
 ![Nav Layer](layer-nav.png)
