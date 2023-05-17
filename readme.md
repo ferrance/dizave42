@@ -5,7 +5,8 @@ however that I was going to want to go a bit smaller. I looked for a layout that
 both the lily and the corne and quickly found [miryoku](https://github.com/manna-harbour/miryoku). 
 
 While miryoku is amazing and very well thought out, it leaves some keys unused on the 
-six-column corne. After a good deal of thought and 
+six-column corne. And I just couldn't adjust to its nav layer.
+After a good deal of thought and 
 experimentation I decided to work on a pair of layouts for these two keyboards that were
 inspired by miryoku but that made use of the extra keys.
 
@@ -23,6 +24,8 @@ advantage of the extra keys on the lily58 and six-row corne
 - Switch between windows and mac
 - Support unicode characters on windows and mac
 - Make better use of the display
+
+The layout needs to accommodate both legal writing and programming.
 
 ## The Layouts
 
@@ -57,6 +60,10 @@ mode. The mod keys are one shots on the nav and number layers.
 - key to switch virtual desktops on windows
 - the home row keys on this layer are one-shot mods
 
+I tried using the VIM style arrows, I really did. But I just can't.
+This is one area where I had to depart from Miryoku, the nav layer
+just didn't work for me.
+
 ### Number Layer
 ![Number Layer](layer-numbers.png)
 
@@ -70,9 +77,7 @@ The number layer also has the ability to configure the keyboard. In the upper
 left, the top two keys are used to change the default layer go either QWERTY
 (df(0)) or COLEMAK (df(1)).
 
-The lower right switches between windows and mac mode. The current mode is 
-displayed in the OLED. Currently all this means is that the GUI and CTRL keys
-are switched.
+Double tap the bracket keys to get curly braces.
 
 ### Adjust Layer
 ![Adjust Layer](layer-adjust.png)
@@ -82,10 +87,16 @@ left. And the lower right toggles between windows and mac mode. Since
 I wrote this I've discovered that QMK has OS detection, but so far I
 haven't played with it. Right now it is manual on this layout.
 
+The lower right switches between windows and mac mode. The current mode is 
+displayed in the OLED. Currently all this means is that the GUI and CTRL keys
+are switched.
+
 
 ### Function Layer
 ![Number Layer](layer-fun.png)
-Function keys. Accessed via one shot from the number layer.
+Function keys. Accessed via one shot from the number layer. I
+kept this the same as Miryoku. I personally never use any of the keys on 
+this layer.
 
 ### Legal Layer
 ![Number Layer](layer-law.png)
