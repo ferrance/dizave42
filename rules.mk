@@ -18,3 +18,4 @@ ifeq ($(strip $(CONVERT_TO)), rp2040)
 endif
 
 SRC += ./dizave.c
+SRC += features/achordion.c
