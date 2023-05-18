@@ -201,6 +201,9 @@ void oled_render_layer_state(void) {
         case L_ADJUST|L_NAV|L_NUMBERS:
             oled_write_ln_P(PSTR("Adjst"), false);
             break;
+        case 32:
+            oled_write_ln("-fnc-", false);
+            break;
         default:
             oled_write_ln("-law-",false);
             break;
