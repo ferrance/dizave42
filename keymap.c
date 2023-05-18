@@ -55,9 +55,11 @@ tap_dance_action_t tap_dance_actions[] = {
   [TD_RBKT_RBRC] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
 };
 
+// hit bracket twice for curly brace
 #define DZTDLBC TD(TD_LBKT_LBRC)
 #define DZTDRBC TD(TD_RBKT_RBRC)
 
+#define DZ_SPC1 MT(MO(1), KC_SPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_split_3x6_3(
@@ -68,7 +70,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_ESC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_MINS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   MO(1),  DZ_SPC,  DZ_SFTENT, DZ_BSPC,  KC_DEL
+//                                          KC_LGUI,   MO(1),  DZ_SPC,  DZ_SFTENT, DZ_BSPC,  KC_DEL
+                                          KC_LGUI,   KC_LSFT,  DZ_SPC1,  DZ_SFTENT, DZ_BSPC,  KC_DEL
                                       //`--------------------------'  `--------------------------'
 
   ),
