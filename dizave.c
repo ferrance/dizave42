@@ -137,6 +137,11 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       }
       return false;
 
+    case DZ_RGB:
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+        rgb_matrix_sethsv_noeeprom(HSV_OFF);
+        break;
+
     case DZ_VDRT:
       if (record->event.pressed) {
         if (is_mac()) {
