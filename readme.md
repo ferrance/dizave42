@@ -59,7 +59,7 @@ combinations, which I hope addresses the occasional problems I have with
 rolls on my right hand in Windows opening a bunch of windows.
 
 ### Nav Layer
-![Nav Layer](layer-nav.png)
+![Nav Layer](images/layer-nav.png)
 
 - close key that is cmd Q on mac and alt F4 on windows
 - key to switch virtual desktops on windows
@@ -70,7 +70,7 @@ This is one area where I had to depart from Miryoku, the nav layer
 just didn't work for me.
 
 ### Number Layer
-![Number Layer](layer-numbers.png)
+![Number Layer](images/layer-numbers.png)
 
 Although in general I have tried to keep keys on the opposite side of the 
 board from the corresponding layer key, I have made a small departure here.
@@ -85,7 +85,7 @@ left, the top two keys are used to change the default layer go either QWERTY
 Double tap the bracket keys to get curly braces.
 
 ### Adjust Layer
-![Adjust Layer](layer-adjust.png)
+![Adjust Layer](images/layer-adjust.png)
 
 This is mostly related to RGB. However, there is a reset in the upper 
 left. And the lower right toggles between windows and mac mode. Since 
@@ -98,13 +98,13 @@ are switched.
 
 
 ### Function Layer
-![Number Layer](layer-fun.png)
+![Number Layer](images/layer-fun.png)
 Function keys. Accessed via one shot from the number layer. I
 kept this the same as Miryoku. I personally never use any of the keys on 
 this layer.
 
 ### Legal Layer
-![Number Layer](layer-law.png)
+![Number Layer](images/layer-law.png)
 
 OK, so, admittedly this layer is only useful to people who are 
 appellate lawyers in New Mexico and rock a corne or a lily. So,
