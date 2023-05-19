@@ -61,9 +61,10 @@ tap_dance_action_t tap_dance_actions[] = {
 #define DZTDLBC TD(TD_LBKT_LBRC)
 #define DZTDRBC TD(TD_RBKT_RBRC)
 
+// temp while I try this out
 #define DZ_SPC1 LT(_NAV, KC_SPC)
 #define DZ_ENT1 LT(_NUMBERS,KC_ENT)
-#define DZ_SFT  OSM(MOD_LSFT)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_split_3x6_3(
@@ -75,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_ESC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_MINS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
 //                                          KC_LGUI,   MO(1),  DZ_SPC,  DZ_SFTENT, DZ_BSPC,  KC_DEL
-                                          KC_LGUI,   DZ_SFT,  DZ_SPC1,  DZ_ENT1, KC_BSPC,  KC_DEL
+                                          KC_LGUI,   DZ_OSS,  DZ_SPC1,  DZ_ENT1, KC_BSPC,  KC_DEL
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -110,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  DZ_WIN,
+      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -138,18 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, DZ_NBSP,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
-  ),
-
-  [_OLDNAV] = LAYOUT_split_3x6_3(  // nav layer
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                      KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, S(KC_QUOT),
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,                       KC_INS, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_DEL,
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, _______, _______,    _______,   MO(3), _______
-                                      //`--------------------------'  `--------------------------'
+ 
   )
 };
 

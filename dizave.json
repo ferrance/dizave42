@@ -18,7 +18,7 @@
       "KC_U",
       "KC_Y",
       "KC_SCLN",
-      "KC_BSLS",
+      "KC_BSPC",
       "KC_LCTL",
       "KC_A",
       "KC_R",
@@ -44,10 +44,10 @@
       "KC_SLSH",
       "KC_MINS",
       "KC_LGUI",
-      "MO(1)",
-      "LSFT_T(KC_SPC)",
-      "RSFT_T(KC_ENT)",
-      "LT(2,KC_BSPC)",
+      "OSM(MOD_LSFT)",
+      "LT(1,KC_SPC)",
+      "LT(2,KC_ENT)",
+      "KC_BSPC",
       "KC_DEL"
     ],
     [
