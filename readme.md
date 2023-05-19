@@ -29,7 +29,9 @@ The layout needs to accommodate both legal writing and programming.
 
 ## The Layouts
 
-The layouts are basically self-documenting, but here they are:
+Currently dizave42 uses five layers. I'm at the point where I don't expect 
+much to change. I am still playing with different ways to switch between them,
+however.
 
 ### Colemak
 
@@ -37,38 +39,36 @@ The layouts are basically self-documenting, but here they are:
 ![Default Layer](images/layer-colemak.png)
 
 This is my primary layer--standard colemak. I've departed from Miryoku in the
-thumb cluster and of course in the pinky columns. I'm still experimenting with 
-those two areas but otherwise this is unlikely to change. 
+thumb cluster and of course in the sixth columns. I'm still experimenting with 
+those two areas. For example I'm still trying to figure out backspace, hence having 
+it in two places. I really liked it in the middle of the right thumb cluster but
+other things were more important there. 
 
-The layout uses home row mods in the GACS configuration (for windows) or CAGS (for mac).
-The current mode is displayed in the OLED with a windows or apple symbol. See the discussion below for more on that.
-
-I do have some problems with the home row keys, at least on the pinky and 
-ring fingers. Currently I have removed them from the pinky on the main
-layer. I've also put mod keys on the outermost thumb keys. I don't like them
-there and will probably end up changing that eventually. As described below,
-the mod keys change depending on whether the keyboard is in windows or mac
-mode. This lets me keep the most important key under my middle finger regardless
-of which OS I'm on (I switch constantly).
-
-For an amazing overview of home row mods, check out
+The layout uses home row mods in the GACS configuration (for windows) or CAGS (for mac). 
+For a thorough overview of home row mods, check out
 [precondition's page](https://precondition.github.io/home-row-mods).
 
+I do have some problems with the home row keys, at least on the pinky and ring fingers. 
 I've used [achordion](https://github.com/getreuer/qmk-keymap) to eliminate
 the issues I was having with home row mod rolls. For my purposes, it is basically
 a way to get bilateral combos but with userspace code. This made home row mods 
 useable for me.
 
+As described below,the mod keys change depending on whether the keyboard is in windows or mac
+mode. This lets me keep the most important key under my middle finger regardless
+of which OS I'm on (I switch constantly).
+
 ### Nav Layer
 ![Nav Layer](images/layer-nav.png)
 
 - close key that is cmd Q on mac and alt F4 on windows
-- key to switch virtual desktops on windows
+- key to switch virtual desktops on windows or mac
 - the home row keys on this layer are one-shot mods
 
 I tried using the VIM style arrows, I really did. But I just can't.
 This is one area where I had to depart from Miryoku, the nav layer
-just didn't work for me.
+just didn't work for me. My brain needs up to be above down, not to
+the right of it.
 
 ### Number Layer
 ![Number Layer](images/layer-numbers.png)
