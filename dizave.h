@@ -46,13 +46,14 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record);
 #define DZQ_L LALT_T(KC_L)
 #define DZQ_SC RGUI_T(KC_SCLN)
 
-#define DZ_VDRT G(C(KC_RIGHT))
+//#define DZ_VDRT G(C(KC_RIGHT))
 #define DZ_VDLT G(C(KC_LEFT))
 
 // Dizave Keycodes
 enum my_keycodes {
   DZ_WIN = SAFE_RANGE,
-  DZ_MAC,    // switch to mac mode  (not used?)
+//  DZ_MAC,    // switch to mac mode  (not used?)
+  DZ_VDRT,
   DZ_QWTY,   // switch base layer to qwerty
   DZ_CLMK,   // switch base layer to colemak
   DZ_CLSE,   // close window

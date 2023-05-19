@@ -137,6 +137,16 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       }
       return false;
 
+    case DZ_VDRT:
+      if (record->event.pressed) {
+        if (is_mac()) {
+          SEND_STRING(SS_LGUI("q"));
+        } else {
+          SEND_STRING(SS_LGUI(SS_LCTL(SS_TAP(X_RIGHT))));
+        }
+      }
+      return false;
+
     case DZ_CLSE:
       if (record->event.pressed) {
         if (is_mac()) {
