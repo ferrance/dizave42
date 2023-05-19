@@ -227,7 +227,7 @@
       "KC_NO"
     ],
     [
-      "KC_NO",
+      "QK_BOOT",
       "KC_F12",
       "KC_F7",
       "KC_F8",
@@ -251,7 +251,7 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "KC_NO",
+      "ANY(WIN)",
       "KC_F10",
       "KC_F1",
       "KC_F2",
