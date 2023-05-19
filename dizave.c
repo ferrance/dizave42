@@ -140,7 +140,7 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
     case DZ_VDRT:
       if (record->event.pressed) {
         if (is_mac()) {
-          SEND_STRING(SS_LGUI("q"));
+          SEND_STRING(SS_LCTL(SS_TAP(X_RIGHT)));
         } else {
           SEND_STRING(SS_LGUI(SS_LCTL(SS_TAP(X_RIGHT))));
         }

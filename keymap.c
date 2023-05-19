@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include "dizave.h"
-#include "features/achordion.h"
+#include "features/achordion.h"    // https://getreuer.info/posts/keyboards/achordion/index.html
 #include <stdio.h>
 
 // Layers
@@ -169,10 +169,30 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-// necessary for achordian
+//
+// achordian functions
+//
+
 void matrix_scan_user(void) {
   achordion_task();
 }
+
+bool achordion_chord(uint16_t tap_hold_keycode,
+                     keyrecord_t* tap_hold_record,
+                     uint16_t other_keycode,
+                     keyrecord_t* other_record) 
+{
+  switch (tap_hold_keycode) {
+    // don't apply bilateral combos to the thumb keys
+    case DZ_ENT1:
+    case DZ_SPC1:
+      return true;
+      break;
+  }
+ 
+  return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
 
 
 #ifdef OLED_ENABLE
@@ -193,13 +213,13 @@ void oled_render_layer_state(void) {
     oled_write_ln("Layer", false);
     switch (layer_state) {
         case L_BASE:
-            oled_write_ln("Dflt ", false);
+            oled_write_ln("-Dflt ", false);
             break;
         case L_NAV:
-            oled_write_ln(" nav ", false);
+            oled_write_ln("-nav-", false);
             break;
         case L_NUMBERS:
-            oled_write_ln(" num ", false);
+            oled_write_ln("-num-", false);
             break;
         case L_ADJUST:
         case L_ADJUST|L_NAV:
