@@ -34,7 +34,7 @@ The layouts are basically self-documenting, but here they are:
 ### Colemak
 
 
-![Default Layer](layer-colemak.png)
+![Default Layer](images/layer-colemak.png)
 
 This is my primary layer--standard colemak. I've departed from Miryoku in the
 thumb cluster and of course in the pinky columns. I'm still experimenting with 
