@@ -46,6 +46,16 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record);
 #define DZQ_L LALT_T(KC_L)
 #define DZQ_SC RGUI_T(KC_SCLN)
 
+// one shot home row mods 
+// use on the nav and number layers
+#define DZ_LCTL OSM(MOD_LCTL)
+#define DZ_LSFT OSM(MOD_LSFT)
+#define DZ_LALT OSM(MOD_LALT)
+#define DZ_LGUI OSM(MOD_LGUI)
+#define DZ_RCTL OSM(MOD_RCTL)
+#define DZ_RSFT OSM(MOD_RSFT)
+#define DZ_RGUI OSM(MOD_RGUI)
+
 //#define DZ_VDRT G(C(KC_RIGHT))
 #define DZ_VDLT G(C(KC_LEFT))
 
@@ -72,14 +82,14 @@ enum my_keycodes {
   DZ_ABQ
 };
 
-#define DZ_SPC  LSFT_T(KC_SPC)
-#define DZ_NAV  LT(_NAV,KC_TAB)
-#define DZ_0    LT(3,KC_0)
-#define DZ_BSPC LT(_NUMBERS,KC_BSPC)
+//#define DZ_SPC  LSFT_T(KC_SPC)
+//#define DZ_NAV  LT(_NAV,KC_TAB)
+//#define DZ_0    LT(3,KC_0)
+//#define DZ_BSPC LT(_NUMBERS,KC_BSPC)
 #define DZ_OSS  OSM(MOD_LSFT)
 
-#define DZT1 RSFT_T(KC_BSPC)
-#define DZT2 LT(_NUMBERS,KC_ENT)
+//#define DZT1 RSFT_T(KC_BSPC)
+//#define DZT2 LT(_NUMBERS,KC_ENT)
 
 
 // Legal macros that are not keycodes

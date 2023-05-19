@@ -62,7 +62,7 @@
       "KC_UP",
       "KC_END",
       "KC_NO",
-      "KC_BSPC",
+      "KC_DEL",
       "KC_NO",
       "KC_LGUI",
       "KC_LALT",
@@ -74,7 +74,7 @@
       "KC_DOWN",
       "KC_RGHT",
       "KC_NO",
-      "KC_DQUO",
+      "KC_NO",
       "KC_NO",
       "KC_NO",
       "KC_NO",
@@ -90,8 +90,8 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "KC_NO",
-      "MO(3)",
+      "MO(4)",
+      "MO(5)",
       "KC_NO"
     ],
     [
@@ -222,7 +222,7 @@
       "KC_NO",
       "KC_NO",
       "ANY(nbsp)",
-      "KC_NO",
+      "KC_TRNS",
       "KC_NO",
       "KC_NO"
     ],
@@ -251,7 +251,7 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "ANY(WIN)",
+      "KC_TRNS",
       "KC_F10",
       "KC_F1",
       "KC_F2",
@@ -268,7 +268,7 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "KC_NO"
+      "KC_TRNS"
     ]
   ],
   "author": "ferrance"

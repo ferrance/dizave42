@@ -103,7 +103,7 @@ void dizave_render_numbers(bool show)
       } else {
         oled_write("[789]",false);
         oled_write(";456=",false);
-        oled_write("+123-",false); 
+        oled_write("`123\\",false); 
       }
   } else {
     oled_write_ln("",false);
