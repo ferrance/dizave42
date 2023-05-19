@@ -85,26 +85,15 @@ left, the top two keys are used to change the default layer go either QWERTY
 
 Double tap the bracket keys to get curly braces.
 
-### Adjust Layer
-![Adjust Layer](images/layer-adjust.png)
-
-This is mostly related to RGB. However, there is a reset in the upper 
-left. And the lower right toggles between windows and mac mode. Since 
-I wrote this I've discovered that QMK has OS detection, but so far I
-haven't played with it. Right now it is manual on this layout.
-
 
 ### Function Layer
 ![Number Layer](images/layer-fun.png)
 Function keys. Accessed via one shot from the number layer. I
-kept this the same as Miryoku. I personally never use any of the keys on 
+kept this the same as Miryoku. I almost never use any of the keys on 
 this layer.
 
 RGB controls are on the right half of this layer.
-
-The lower right switches between windows and mac mode. The current mode is 
-displayed in the OLED. Currently all this means is that the GUI and CTRL keys
-are switched.
+The lower left (DZ_WIN) switches between windows and mac mode. 
 
 ### Legal Layer
 ![Number Layer](images/layer-law.png)
@@ -151,22 +140,16 @@ Finally, the display will show "CAPS" when the caps lock is on.
 When the number layer is active, the left display shows the keymap for the main 5x3 keys.
 If you hit shift it will show the shifted values.
 
-## Windows and Mac 
+## Windows and Mac Mode
 
-There is an adjust key to switch between windows and mac modes.
+There is a key on the function layer to switch between windows and mac modes.
 The keymap decides what mode it is in by looking at whether gui 
 and control have been swapped. This setting is stored in the EEPROM
-so it is persistent.
+so it is persistent. The current status is shown in the OLED as an apple or a windows symbol. 
 
-The main difference is that the gui and control keys are swapped. This
-is shown in the OLED. This makes it pretty painless to switch between
-PC and Mac, at least for the tools that I use. But this also allows
-the keyboard to send unicode correctly based on the selected OS.
-
-## Misc Features
-
-The large thumb keys operate as shift when held. This has made a huge difference for
-me. I can'd believe space isn't shift everywhere, it just works so well.
+The main difference is that the gui and control keys are swapped. 
+The keyboard also chooses its unicode mode based on which OS is 
+configured.
 
 # Builds
 
