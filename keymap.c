@@ -1,7 +1,7 @@
 /*
 Copyright 2019 @foostan
 Copyright 2020 Drashna Jaelre <@drashna>
-Copyright 2023 @dizave
+Copyright 2023 @ferrance
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -51,9 +51,15 @@ tap_dance_action_t tap_dance_actions[] = {
 #define DZTDLBC TD(TD_LBKT_LBRC)
 #define DZTDRBC TD(TD_RBKT_RBRC)
 
-// temp while I try this out
-// #define DZ_SPC1 LT(_NAV, KC_SPC)
-// #define DZ_ENT1 LT(_NUM, KC_ENT)
+
+// key override - make shift backspace send a delete
+const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
+
+// This globally defines all key overrides to be used
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &delete_key_override,
+    NULL // Null terminate the array of overrides!
+};
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
