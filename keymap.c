@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include "dizave.h"
+#include "features/achordion.h"
 #include <stdio.h>
 
 // Layers
@@ -168,6 +169,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+// necessary for achordian
+void matrix_scan_user(void) {
+  achordion_task();
+}
+
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -241,6 +247,8 @@ bool oled_task_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+  if (!process_achordion(keycode, record)) { return false; }
 
   switch(keycode) {
 
