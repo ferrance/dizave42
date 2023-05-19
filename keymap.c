@@ -251,7 +251,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
         }
 
     // this picks up shift but not the one shot shift 
-    if(get_mods() & MOD_MASK_SHIFT){
+    if(get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT){
         rgb_matrix_set_color(6, RGB_PINK );
         rgb_matrix_set_color(13, RGB_PINK );
         rgb_matrix_set_color(14, RGB_PINK );
