@@ -19,11 +19,11 @@ the extra keys when they are available. Hopefully this layout can fill that need
 
 - Mostly compatible with the miryoku layout while taking
 advantage of the extra keys on the lily58 and six-row corne
-
 - Support both QWERTY and COLEMAK
 - Switch between windows and mac
 - Support unicode characters on windows and mac
 - Make better use of the display
+- use something like bilateral combos to mitigate effect of home row rolls
 
 The layout needs to accommodate both legal writing and programming.
 
@@ -54,9 +54,10 @@ of which OS I'm on (I switch constantly).
 For an amazing overview of home row mods, check out
 [precondition's page](https://precondition.github.io/home-row-mods).
 
-When/if it gets merged into QMK I need to implement Miryoku's bilateral 
-combinations, which I hope addresses the occasional problems I have with
-rolls on my right hand in Windows opening a bunch of windows.
+I've used [achordion](https://github.com/getreuer/qmk-keymap) to eliminate
+the issues I was having with home row mod rolls. For my purposes, it is basically
+a way to get bilateral combos but with userspace code. This made home row mods 
+useable for me.
 
 ### Nav Layer
 ![Nav Layer](images/layer-nav.png)
