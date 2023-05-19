@@ -93,16 +93,18 @@ left. And the lower right toggles between windows and mac mode. Since
 I wrote this I've discovered that QMK has OS detection, but so far I
 haven't played with it. Right now it is manual on this layout.
 
-The lower right switches between windows and mac mode. The current mode is 
-displayed in the OLED. Currently all this means is that the GUI and CTRL keys
-are switched.
-
 
 ### Function Layer
 ![Number Layer](images/layer-fun.png)
 Function keys. Accessed via one shot from the number layer. I
 kept this the same as Miryoku. I personally never use any of the keys on 
 this layer.
+
+RGB controls are on the right half of this layer.
+
+The lower right switches between windows and mac mode. The current mode is 
+displayed in the OLED. Currently all this means is that the GUI and CTRL keys
+are switched.
 
 ### Legal Layer
 ![Number Layer](images/layer-law.png)
