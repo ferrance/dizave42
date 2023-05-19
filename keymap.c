@@ -108,11 +108,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FUNC] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      QK_BOOT,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,  KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL,                      RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       DZ_WIN,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                     RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD, XXXXXXX,
+      XXXXXXX,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                     RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD,  DZ_WIN,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, DZ_NBSP,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -229,23 +229,33 @@ bool oled_task_user(void) {
 
 #endif // OLED_ENABLE
 
+// Nav        - right side lights up yellow
+// Numbers    - left side lights up yellow
+// Law        - entire board lights up red
+// Functions  - entire board lights up blue
+//
+// When shift is active, thumb cluster turns pink
+//
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
         switch(get_highest_layer(layer_state|default_layer_state)) {
             case _NUM:
                 for (uint8_t i=6; i<=26; i++) {
-                    rgb_matrix_set_color(i, RGB_BLUE);
+                    rgb_matrix_set_color(i, RGB_YELLOW);
                 }
                 break;
             case _NAV:
                 for (uint8_t i=33; i<=53; i++) {
-                    rgb_matrix_set_color(i, RGB_BLUE);
+                    rgb_matrix_set_color(i, RGB_YELLOW);
                 }
                 break;
             case _LAW:
                 rgb_matrix_set_color_all(RGB_RED);
-
                  break;
+            case _FUNC:
+                rgb_matrix_set_color_all(RGB_BLUE);
+                 break;
+
             default:
                 break;
         }
