@@ -241,4 +241,37 @@ bool oled_task_user(void) {
 
 #endif // OLED_ENABLE
 
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+
+        switch(get_highest_layer(layer_state|default_layer_state)) {
+            case _NUM:
+                for (uint8_t i=6; i<=26; i++) {
+                    rgb_matrix_set_color(i, RGB_BLUE);
+                }
+                break;
+            case _NAV:
+                for (uint8_t i=33; i<=53; i++) {
+                    rgb_matrix_set_color(i, RGB_BLUE);
+                }
+                break;
+            case _LAW:
+                rgb_matrix_set_color_all(RGB_RED);
+
+                 break;
+            default:
+                break;
+        }
+
+    // this picks up shift but not the one shot shift 
+    if(get_mods() & MOD_MASK_SHIFT){
+        rgb_matrix_set_color(6, RGB_PINK );
+        rgb_matrix_set_color(13, RGB_PINK );
+        rgb_matrix_set_color(14, RGB_PINK );
+        rgb_matrix_set_color(33, RGB_PINK );
+        rgb_matrix_set_color(40, RGB_PINK );
+        rgb_matrix_set_color(41, RGB_PINK );
+    }
+
+    return false;
+}
 
