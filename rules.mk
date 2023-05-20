@@ -10,7 +10,7 @@ UNICODE_ENABLE = yes
 MOUSEKEY_ENABLE = no
 TAP_DANCE_ENABLE = yes       # for double tapping brackets
 KEY_OVERRIDE_ENABLE = yes    # for shift backspace = delete
-
+CAPS_WORD_ENABLE = yes
 
 # to build for kb2040: qmk compile -e CONVERT_TO=kb2040
 ifeq ($(strip $(CONVERT_TO)), rp2040)
