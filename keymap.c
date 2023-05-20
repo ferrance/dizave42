@@ -242,7 +242,7 @@ bool oled_task_user(void) {
 //
 // When shift is active, thumb cluster turns pink
 //
-bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+bool rgb_matrix_indicators_user(void) {
 
         switch(get_highest_layer(layer_state|default_layer_state)) {
             case _NUM:

@@ -27,7 +27,7 @@ advantage of the extra keys on the lily58 and six-row corne
 - Make better use of the display
 - use something like bilateral combos to mitigate effect of home row rolls
 
-The layout needs to accommodate both legal writing and programming.
+And, for my use case, the layout needs to accommodate both legal writing and programming.
 
 ## The Layouts
 
