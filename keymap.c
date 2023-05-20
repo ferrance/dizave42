@@ -259,10 +259,47 @@ bool rgb_matrix_indicators_user(void) {
                 rgb_matrix_set_color(46, RGB_GOLD);
                 break;
             case _LAW:
-                rgb_matrix_set_color_all(RGB_PURPLE);
+                rgb_matrix_set_color(9, RGB_RED);
+                rgb_matrix_set_color(8, RGB_RED);
+                rgb_matrix_set_color(7, RGB_RED);
+
+                rgb_matrix_set_color(25, RGB_RED);
+                rgb_matrix_set_color(22, RGB_RED);
+                rgb_matrix_set_color(19, RGB_RED);
+                rgb_matrix_set_color(16, RGB_RED);
+                rgb_matrix_set_color(11, RGB_RED);
+
+                rgb_matrix_set_color(34, RGB_RED);
+                rgb_matrix_set_color(35, RGB_RED);
+                rgb_matrix_set_color(36, RGB_RED);
+
+                rgb_matrix_set_color(52, RGB_RED);
+                rgb_matrix_set_color(49, RGB_RED);
+                rgb_matrix_set_color(46, RGB_RED);
+                rgb_matrix_set_color(43, RGB_RED);
+                rgb_matrix_set_color(38, RGB_RED);
+
                  break;
             case _FUNC:
-                rgb_matrix_set_color_all(RGB_BLUE);
+                rgb_matrix_set_color(9, RGB_BLUE);
+                rgb_matrix_set_color(8, RGB_BLUE);
+                rgb_matrix_set_color(7, RGB_BLUE);
+
+                rgb_matrix_set_color(25, RGB_BLUE);
+                rgb_matrix_set_color(22, RGB_BLUE);
+                rgb_matrix_set_color(19, RGB_BLUE);
+                rgb_matrix_set_color(16, RGB_BLUE);
+                rgb_matrix_set_color(11, RGB_BLUE);
+
+                rgb_matrix_set_color(34, RGB_BLUE);
+                rgb_matrix_set_color(35, RGB_BLUE);
+                rgb_matrix_set_color(36, RGB_BLUE);
+
+                rgb_matrix_set_color(52, RGB_BLUE);
+                rgb_matrix_set_color(49, RGB_BLUE);
+                rgb_matrix_set_color(46, RGB_BLUE);
+                rgb_matrix_set_color(43, RGB_BLUE);
+                rgb_matrix_set_color(38, RGB_BLUEg);
                  break;
 
             default:

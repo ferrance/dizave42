@@ -21,8 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-//#define USE_MATRIX_I2C
-
 /* Select hand configuration */
 #define MASTER_LEFT
 
@@ -38,41 +36,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 180
 #define IGNORE_MOD_TAP_INTERRUPT
 
-// So that the tapping term can be lower on the thumb keys
-//#define TAPPING_TERM_PER_KEY
-//#define PERMISSIVE_HOLD_PER_KEY
-//#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
-
 // dizave supports mac and windows
 #define UNICODE_SELECTED_MODES UNICODE_MODE_MACOS, UNICODE_MODE_WINCOMPOSE
 
+// caps_word enabled by double tapping left shift
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 
 // for rgb matrix support
 #define SPLIT_LAYER_STATE_ENABLE
 #define SPLIT_MODS_ENABLE
 
-#ifdef RGBLIGHT_ENABLE
-    #define RGBLIGHT_EFFECT_BREATHING
-    #define RGBLIGHT_EFFECT_RAINBOW_MOOD
-    #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-    #define RGBLIGHT_EFFECT_SNAKE
-    #define RGBLIGHT_EFFECT_KNIGHT
-    #define RGBLIGHT_EFFECT_CHRISTMAS
-    #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-    #define RGBLIGHT_EFFECT_RGB_TEST
-    #define RGBLIGHT_EFFECT_ALTERNATING
-    #define RGBLIGHT_EFFECT_TWINKLE
-    #define RGBLIGHT_LIMIT_VAL 120
-    #define RGBLIGHT_HUE_STEP 10
-    #define RGBLIGHT_SAT_STEP 17
-    #define RGBLIGHT_VAL_STEP 17
-#endif
 
 /* much of this comes from the bermeo layout */
 
 #ifdef RGB_MATRIX_ENABLE
-#    define RGB_MATRIX_KEYPRESSES // reacts to keypresses #   define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects
+#    define RGB_MATRIX_KEYPRESSES // reacts to keypresses 
+#    define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects
 #    define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
 #    undef RGB_MATRIX_FRAMEBUFFER_EFFECTS
 // #    define RGB_MATRIX_LED_PROCESS_LIMIT (DRIVER_LED_TOTAL + 4) / 5 // limits the number of LEDs to process in an animation per task run (increases keyboard responsiveness)
@@ -87,19 +66,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * because they take up a lot of space.  Disable until you can successfully compile your firmware. */
 #    define ENABLE_RGB_MATRIX_ALPHAS_MODS
 #    define ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN			// solid bit w different colors
-#    define ENABLE_RGB_MATRIX_BREATHING
-#    define ENABLE_RGB_MATRIX_BAND_SAT				//not bad
+#    define ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON		// this one is great
 #    define ENABLE_RGB_MATRIX_BAND_VAL				// interesting one 
+
+#    undef ENABLE_RGB_MATRIX_BREATHING
+#    undef ENABLE_RGB_MATRIX_BAND_SAT				//not bad
 #    undef ENABLE_RGB_MATRIX_BAND_PINWHEEL_SAT			// not bad but there are better ones
 #    undef ENABLE_RGB_MATRIX_BAND_PINWHEEL_VAL
 #    undef ENABLE_RGB_MATRIX_BAND_SPIRAL_SAT              // kinda dumb
 #    undef ENABLE_RGB_MATRIX_BAND_SPIRAL_VAL
 #    undef ENABLE_RGB_MATRIX_CYCLE_ALL				// a little too freaky for me
-#    define ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT			// not bad
-#    define ENABLE_RGB_MATRIX_CYCLE_UP_DOWN			// not bad
+#    undef ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT			// not bad
+#    undef ENABLE_RGB_MATRIX_CYCLE_UP_DOWN			// not bad
 #    undef ENABLE_RGB_MATRIX_CYCLE_OUT_IN			// not bad
 #    undef ENABLE_RGB_MATRIX_CYCLE_OUT_IN_DUAL			// not bad a little fast tho
-#    define ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON		// this one is great
 #    undef ENABLE_RGB_MATRIX_DUAL_BEACON
 #    undef ENABLE_RGB_MATRIX_CYCLE_PINWHEEL
 #    undef ENABLE_RGB_MATRIX_CYCLE_SPIRAL
