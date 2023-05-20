@@ -60,6 +60,9 @@ As described below,the mod keys change depending on whether the keyboard is in w
 mode. This lets me keep the most important key under my middle finger regardless
 of which OS I'm on (I switch constantly).
 
+CAPS_WORD is enabled and configured to activate on a double tap of left shift. I
+meant for this to be used with the two one shot shifts in the thumb clusters.
+
 ### Nav Layer
 ![Nav Layer](images/layer-nav.png)
 
