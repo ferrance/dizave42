@@ -138,8 +138,13 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       return false;
 
     case DZ_RGB:
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
-        rgb_matrix_sethsv_noeeprom(HSV_OFF);
+/*        if (rgb_matrix_get_hsv().h==0 && rgb_matrix_get_hsv().s==0 && rgb_matrix_get_hsv().v==0) {
+            rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
+            rgb_matrix_sethsv_noeeprom(HSV_CYAN);
+        } else { */
+            rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+            rgb_matrix_sethsv_noeeprom(HSV_OFF);
+//        }
         break;
 
     case DZ_VDRT:

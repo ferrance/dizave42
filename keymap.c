@@ -249,11 +249,21 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 for (uint8_t i=6; i<=26; i++) {
                     rgb_matrix_set_color(i, RGB_YELLOW);
                 }
+		// make the number pad a different color
+                for (uint8_t i=10; i<=20; i++) {
+                    rgb_matrix_set_color(i, RGB_BLUE);
+                }
+                rgb_matrix_set_color(14, RGB_YELLOW);
                 break;
             case _NAV:
                 for (uint8_t i=33; i<=53; i++) {
-                    rgb_matrix_set_color(i, RGB_YELLOW);
+                    rgb_matrix_set_color(i, RGB_CORAL);
                 }
+                // arrow keys different color
+                rgb_matrix_set_color(43, RGB_GOLD);
+                rgb_matrix_set_color(44, RGB_GOLD);
+                rgb_matrix_set_color(38, RGB_GOLD);
+                rgb_matrix_set_color(46, RGB_GOLD);
                 break;
             case _LAW:
                 rgb_matrix_set_color_all(RGB_RED);

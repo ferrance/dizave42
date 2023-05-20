@@ -1,5 +1,7 @@
 # dizave42
 
+![crkbd dizave42](images/dizave42.jpg)
+
 The lily58 was my first alternative keyboard and is still a favorite. I knew right away
 however that I was going to want to go a bit smaller. I looked for a layout that worked on
 both the lily and the corne and quickly found [miryoku](https://github.com/manna-harbour/miryoku). 
