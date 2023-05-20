@@ -6,8 +6,8 @@ The lily58 was my first alternative keyboard and is still a favorite. I knew rig
 however that I was going to want to go a bit smaller. I looked for a layout that worked on
 both the lily and the corne and quickly found [miryoku](https://github.com/manna-harbour/miryoku). 
 
-While miryoku is amazing and very well thought out, it leaves some keys unused on the 
-six-column corne. And I just couldn't adjust to its nav layer.
+While miryoku is amazing and very well thought out, it leaves six keys unused on the 
+six-column corne. That's 14% of the keys!!! And I just couldn't adjust to its nav layer.
 After a good deal of thought and 
 experimentation I decided to work on a pair of layouts for these two keyboards that were
 inspired by miryoku but that made use of the extra keys.
