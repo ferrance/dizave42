@@ -246,19 +246,12 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
         switch(get_highest_layer(layer_state|default_layer_state)) {
             case _NUM:
-                for (uint8_t i=6; i<=26; i++) {
-                    rgb_matrix_set_color(i, RGB_YELLOW);
-                }
 		// make the number pad a different color
                 for (uint8_t i=10; i<=20; i++) {
-                    rgb_matrix_set_color(i, RGB_BLUE);
+                    if (i!=14) { rgb_matrix_set_color(i, RGB_GOLD); }
                 }
-                rgb_matrix_set_color(14, RGB_YELLOW);
                 break;
             case _NAV:
-                for (uint8_t i=33; i<=53; i++) {
-                    rgb_matrix_set_color(i, RGB_CORAL);
-                }
                 // arrow keys different color
                 rgb_matrix_set_color(43, RGB_GOLD);
                 rgb_matrix_set_color(44, RGB_GOLD);
@@ -266,7 +259,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 rgb_matrix_set_color(46, RGB_GOLD);
                 break;
             case _LAW:
-                rgb_matrix_set_color_all(RGB_RED);
+                rgb_matrix_set_color_all(RGB_PURPLE);
                  break;
             case _FUNC:
                 rgb_matrix_set_color_all(RGB_BLUE);
@@ -276,7 +269,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 break;
         }
 
-    // this picks up shift but not the one shot shift 
+    // this picks up shift and one shot shift but not caps lock 
     if(get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT){
         rgb_matrix_set_color(6, RGB_PINK );
         rgb_matrix_set_color(13, RGB_PINK );
