@@ -1,6 +1,6 @@
 # dizave42
 
-![crkbd dizave42](images/dizave42.jpg)
+![crkbd dizave42](https://github.com/ferrance/dizave42/images/dizave42.jpg)
 
 The lily58 was my first alternative keyboard and is still a favorite. I knew right away
 however that I was going to want to go a bit smaller. I looked for a layout that worked on
