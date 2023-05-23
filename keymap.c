@@ -80,9 +80,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______, DZ_CLSE, XXXXXXX, DZ_VDLT, DZ_VDRT, XXXXXXX,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END, XXXXXXX,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, DZ_LGUI, DZ_LALT, DZ_LCTL, DZ_LSFT, _______,                      KC_PGDN, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX, XXXXXXX,
+      _______, DZ_LGUI, DZ_LALT, DZ_LCTL, DZ_LSFT, _______,                      KC_PGDN, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX,  KC_INS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,                      KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX,  KC_INS,  KC_DEL,
+      _______, _______, _______, _______, _______, _______,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,  MO(_LAW),MO(_FUNC), _______
                                       //`--------------------------'  `--------------------------'
@@ -241,79 +241,52 @@ bool oled_task_user(void) {
 // Functions  - entire board lights up blue
 //
 // When shift is active, thumb cluster turns pink
-//
+//	
+
 bool rgb_matrix_indicators_user(void) {
 
+    const int arrows[] = { 43, 44, 38, 46 };
+    const int chevron[] = { 7,8,9, 11,16,19,22,25, 34,35,36, 38,43,46,49,52 } ;
+    const int shifts[] = { 6,13,14,33,40,41 };
+    const int numpad[] = { 10,11,12,13,15,16,17,18,19,20 };
+
         switch(get_highest_layer(layer_state|default_layer_state)) {
+
+            // make the number pad a different color
             case _NUM:
-		// make the number pad a different color
-                for (uint8_t i=10; i<=20; i++) {
-                    if (i!=14) { rgb_matrix_set_color(i, RGB_GOLD); }
-                }
+		for (int i=0;i<sizeof(numpad)/sizeof(*numpad);i++) { rgb_matrix_set_color(numpad[i], RGB_GOLD); }
                 break;
+
+            // arrow keys different color
             case _NAV:
-                // arrow keys different color
-                rgb_matrix_set_color(43, RGB_GOLD);
-                rgb_matrix_set_color(44, RGB_GOLD);
-                rgb_matrix_set_color(38, RGB_GOLD);
-                rgb_matrix_set_color(46, RGB_GOLD);
+		for (int i=0;i<sizeof(arrows)/sizeof(*arrows)	;i++) { rgb_matrix_set_color(arrows[i], RGB_GOLD); }
                 break;
+
             case _LAW:
-                rgb_matrix_set_color(9, RGB_RED);
-                rgb_matrix_set_color(8, RGB_RED);
-                rgb_matrix_set_color(7, RGB_RED);
-
-                rgb_matrix_set_color(25, RGB_RED);
-                rgb_matrix_set_color(22, RGB_RED);
-                rgb_matrix_set_color(19, RGB_RED);
-                rgb_matrix_set_color(16, RGB_RED);
-                rgb_matrix_set_color(11, RGB_RED);
-
-                rgb_matrix_set_color(34, RGB_RED);
-                rgb_matrix_set_color(35, RGB_RED);
-                rgb_matrix_set_color(36, RGB_RED);
-
-                rgb_matrix_set_color(52, RGB_RED);
-                rgb_matrix_set_color(49, RGB_RED);
-                rgb_matrix_set_color(46, RGB_RED);
-                rgb_matrix_set_color(43, RGB_RED);
-                rgb_matrix_set_color(38, RGB_RED);
-
+		for (int i=0;i<sizeof(chevron)/sizeof(*chevron);i++) { rgb_matrix_set_color(chevron[i], RGB_RED); }
                  break;
+
             case _FUNC:
-                rgb_matrix_set_color(9, RGB_BLUE);
-                rgb_matrix_set_color(8, RGB_BLUE);
-                rgb_matrix_set_color(7, RGB_BLUE);
-
-                rgb_matrix_set_color(25, RGB_BLUE);
-                rgb_matrix_set_color(22, RGB_BLUE);
-                rgb_matrix_set_color(19, RGB_BLUE);
-                rgb_matrix_set_color(16, RGB_BLUE);
-                rgb_matrix_set_color(11, RGB_BLUE);
-
-                rgb_matrix_set_color(34, RGB_BLUE);
-                rgb_matrix_set_color(35, RGB_BLUE);
-                rgb_matrix_set_color(36, RGB_BLUE);
-
-                rgb_matrix_set_color(52, RGB_BLUE);
-                rgb_matrix_set_color(49, RGB_BLUE);
-                rgb_matrix_set_color(46, RGB_BLUE);
-                rgb_matrix_set_color(43, RGB_BLUE);
-                rgb_matrix_set_color(38, RGB_BLUEg);
+		for (int i=0;i<sizeof(chevron)/sizeof(*chevron);i++) { rgb_matrix_set_color(chevron[i], RGB_BLUE); }
                  break;
 
             default:
                 break;
         }
 
-    // this picks up shift and one shot shift but not caps lock 
-    if(get_mods() & MOD_MASK_SHIFT || get_oneshot_mods() & MOD_MASK_SHIFT){
-        rgb_matrix_set_color(6, RGB_PINK );
-        rgb_matrix_set_color(13, RGB_PINK );
-        rgb_matrix_set_color(14, RGB_PINK );
-        rgb_matrix_set_color(33, RGB_PINK );
-        rgb_matrix_set_color(40, RGB_PINK );
-        rgb_matrix_set_color(41, RGB_PINK );
+    // this picks up shift, one shot shift, and caps_word but not caps lock 
+    // caps_word state does not sync across kb halves, so only the master side will
+    // light up when caps word is active
+    // same is true for caps lock
+    //
+    if(get_mods() & MOD_MASK_SHIFT || 
+       get_oneshot_mods() & MOD_MASK_SHIFT || 
+       is_caps_word_on() || 
+       host_keyboard_led_state().caps_lock )
+    {
+
+        for (int i=0;i<sizeof(shifts)/sizeof(*shifts);i++) { rgb_matrix_set_color(shifts[i], RGB_PINK); }
+
     }
 
     return false;
