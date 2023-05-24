@@ -47,7 +47,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPLIT_MODS_ENABLE
 #define SPLIT_LED_STATE_ENABLE
 
-
 /* much of this comes from the bermeo layout */
 
 #ifdef RGB_MATRIX_ENABLE
@@ -67,7 +66,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * because they take up a lot of space.  Disable until you can successfully compile your firmware. */
 #    define ENABLE_RGB_MATRIX_ALPHAS_MODS
 #    define ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN			// solid bit w different colors
-#    define ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON		// this one is great
+#    undef ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON		// this one is great
 #    define ENABLE_RGB_MATRIX_BAND_VAL				// interesting one 
 
 #    undef ENABLE_RGB_MATRIX_BREATHING

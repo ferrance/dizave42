@@ -5,9 +5,18 @@ RGB_MATRIX_ENABLE = yes
 RGB_MATRIX_DRIVER = WS2812
 OLED_ENABLE     = yes
 OLED_DRIVER     = SSD1306
+
+# be small
 LTO_ENABLE      = yes
-UNICODE_ENABLE = yes
+CONSOLE_ENABLE  = no
+COMMAND_ENABLE  = no
+EXTRAKEY_ENABLE = no
 MOUSEKEY_ENABLE = no
+GRAVE_ESC_ENABLE= no
+SPACE_CADET_ENABLE = no
+
+# features this keymap uses
+UNICODE_ENABLE = yes
 TAP_DANCE_ENABLE = yes       # for double tapping brackets
 KEY_OVERRIDE_ENABLE = yes    # for shift backspace = delete
 CAPS_WORD_ENABLE = yes
