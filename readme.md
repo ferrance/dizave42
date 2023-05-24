@@ -21,7 +21,6 @@ the extra keys when they are available. Hopefully this layout can fill that need
 
 - Mostly compatible with the miryoku layout while taking
 advantage of the extra keys on the lily58 and six-row corne
-- Support both QWERTY and COLEMAK
 - Switch between windows and mac
 - Support unicode characters on windows and mac
 - Make better use of the display
@@ -46,7 +45,12 @@ those two areas. For example I'm still trying to figure out backspace, hence hav
 it in two places. I really liked it in the middle of the right thumb cluster but
 other things were more important there. 
 
+
 The layout uses home row mods in the GACS configuration (for windows) or CAGS (for mac). 
+The mod keys change depending on whether the keyboard is in windows or mac
+mode so that the most important key is under my middle finger regardless
+of which OS I'm on (I switch constantly).
+
 For a thorough overview of home row mods, check out
 [precondition's page](https://precondition.github.io/home-row-mods).
 
@@ -56,12 +60,8 @@ the issues I was having with home row mod rolls. For my purposes, it is basicall
 a way to get bilateral combos but with userspace code. This made home row mods 
 useable for me.
 
-As described below,the mod keys change depending on whether the keyboard is in windows or mac
-mode. This lets me keep the most important key under my middle finger regardless
-of which OS I'm on (I switch constantly).
-
-CAPS_WORD is enabled and configured to activate on a double tap of left shift. I
-meant for this to be used with the two one shot shifts in the thumb clusters.
+CAPS_WORD is enabled and configured to activate on a double tap of left shift. 
+This can be used with the two one shot shifts in the thumb clusters.
 
 ### Nav Layer
 ![Nav Layer](images/layer-nav.png)
@@ -83,10 +83,6 @@ board from the corresponding layer key, I have made a small departure here.
 The parentheses keys are duplicated under the index and middle fingers of the
 right hand. I have found this easy and useful in many cases where I am entering
 numbers (for example, when entering a phone number with area code).
-
-The number layer also has the ability to configure the keyboard. In the upper
-left, the top two keys are used to change the default layer go either QWERTY
-(df(0)) or COLEMAK (df(1)).
 
 Double tap the bracket keys to get curly braces.
 
@@ -129,14 +125,11 @@ On the left display, I have changed the text to be displayed vertically. This
 creates an obvious limitation: each line is only five characters. On the other 
 hand, there are many more lines to work with.
 
-At the top, it displays what layer is active. This is particularly important since 
-the default layer can be either QWERTY or COLEMAK. The other available layers are
-the navigation layer and the numbers layer.
+The first line shows what layer is active--usually colemak. The other available layers are
+navigation, numbers, function, and law.
 
-The dizave58 uses home row mods in the GACS configuration (for windows) or CAGS (for mac).
+The dizave42 uses home row mods in the GACS configuration (for windows) or CAGS (for mac).
 The display will show either a windows or mac symbol to indicate which mode the keyboard is in.
-This will also (eventually) also indicate which unicode mode is current, windows or mac.
-
 The display also shows the home row mods as either CAGS or GACS. When a modifier is
 pressed, that modifier is highlighted in the display.
 
@@ -144,6 +137,15 @@ Finally, the display will show "CAPS" when the caps lock is on.
 
 When the number layer is active, the left display shows the keymap for the main 5x3 keys.
 If you hit shift it will show the shifted values.
+
+## Lighting
+
+There are per-key lighting changes to help show what layer is active:
+- Navigation: the arrow keys turn gold
+- Numbers: the number pad turns gold
+- Law: many of the keys turn red
+- Func: many of the keys turn blue
+- Shift: the thumb clusters turn pink. This includes caps lock and the one shot shifts.
 
 ## Windows and Mac Mode
 
