@@ -166,6 +166,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+  return OLED_ROTATION_0;  // testing for larger display
   if (!is_keyboard_master()) {
     return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
   }
