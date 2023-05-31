@@ -175,12 +175,27 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 #define L_BASE 0
-#define L_NAV 2
+#define L_NAV (1 << _NAV)
 #define L_NUMBERS (1 << _NUM)
-#define L_LAW 8
-#define L_FUNC 16
+#define L_LAW (1 << _LAW)
+#define L_FUNC (1 << _FUNC)
 
 void oled_render_layer_state(void) {
+
+#ifdef OLED_DISPLAY_128X64
+    oled_write("Layer: ", false);
+    if (layer_state==L_BASE) {
+      oled_write_ln("Colemak", false);
+    } else if (layer_state==L_NAV) {
+      oled_write_ln("Navigation", false);
+    } else if (layer_state== L_NUMBERS) {
+      oled_write_ln("Numbers", false);
+    } else if (layer_state==L_LAW || layer_state==(L_LAW|L_NAV) ) {
+      oled_write_ln("Legal", false);
+    } else {
+      oled_write_ln("Unknown", false);
+    }
+#else
     oled_write_ln("Layer", false);
     switch (layer_state) {
         case L_BASE:
@@ -204,10 +219,51 @@ void oled_render_layer_state(void) {
             oled_write_ln("-unk-",false);
             break;
     }
+#endif
+}
+
+void dizave_render_bootmagic_status_at(bool status, uint8_t col, uint8_t line) {
+    /* Show Ctrl-Gui Swap options */
+    static const char PROGMEM logo[][2][3] = {
+        {{0x97, 0x98, 0}, {0xb7, 0xb8, 0}},
+        {{0x95, 0x96, 0}, {0xb5, 0xb6, 0}},
+    };
+    oled_set_cursor(col, line);
+    if (status) {
+        oled_write_P(logo[0][0], false);
+        oled_set_cursor(col, line+1);
+        oled_write_P(logo[0][1], false);
+    } else {
+        oled_write_P(logo[1][0], false);
+        oled_set_cursor(col, line+1);
+        oled_write_ln_P(logo[1][1], false);
+    }
+}
+
+bool big_oled(void) {
+
+    oled_render_layer_state();
+    oled_write(" Mods: ", false);
+    dizave_render_master();
+    dizave_render_bootmagic_status_at(!is_mac(),18,0);
+
+  return false;
 }
 
 bool oled_task_user(void) {
 
+    return big_oled();
+
+    // testing big oled
+//    oled_write_ln("test", false);
+//    oled_write_ln("test two", true);
+/*
+    oled_render_layer_state();
+    dizave_render_master();
+    dizave_render_bootmagic_status(!is_mac());
+
+    return false;
+*/
     if (is_keyboard_master()) {
 
         oled_render_layer_state();
