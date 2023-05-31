@@ -47,7 +47,7 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 
 // hit bracket twice for curly brace
-// pondering making a double semicolon be a colona--
+// pondering making a double semicolon be a colon
 #define DZTDLBC TD(TD_LBKT_LBRC)
 #define DZTDRBC TD(TD_RBKT_RBRC)
 
@@ -245,6 +245,17 @@ bool big_oled(void) {
     oled_render_layer_state();
     oled_write(" Mods: ", false);
     dizave_render_master();
+    oled_write(" Lock: ", false);
+     
+    // CAPS LOCK
+    // there is no num or scroll lock in this keymap
+    oled_write("CAPS",host_keyboard_led_state().caps_lock);
+
+    // if nothing else to do, display the logo at bottom	
+    oled_set_cursor(0,5);
+    dizave_render_logo();
+
+    // display the apple/windows logo in the upper right
     dizave_render_bootmagic_status_at(!is_mac(),18,0);
 
   return false;
