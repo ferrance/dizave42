@@ -21,9 +21,11 @@ bool is_mac(void);
 void dizave_set_win_mode(void);
 void dizave_set_mac_mode(void);
 void dizave_render_master(void);
-void dizave_render_numbers(bool);
+void dizave_render_numbers(bool, uint8_t, uint8_t);
+void dizave_render_nav(uint8_t, uint8_t);
 void dizave_render_logo(void);
 void dizave_render_bootmagic_status(bool);
+void dizave_render_bootmagic_status_at(bool, uint8_t, uint8_t);
 bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record);
 
 // Colemak home row mods

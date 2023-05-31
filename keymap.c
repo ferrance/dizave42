@@ -192,6 +192,8 @@ void oled_render_layer_state(void) {
       oled_write_ln("Numbers", false);
     } else if (layer_state==L_LAW || layer_state==(L_LAW|L_NAV) ) {
       oled_write_ln("Legal", false);
+    } else if (layer_state==L_FUNC) {
+      oled_write_ln("Function", false);
     } else {
       oled_write_ln("Unknown", false);
     }
@@ -222,25 +224,13 @@ void oled_render_layer_state(void) {
 #endif
 }
 
-void dizave_render_bootmagic_status_at(bool status, uint8_t col, uint8_t line) {
-    /* Show Ctrl-Gui Swap options */
-    static const char PROGMEM logo[][2][3] = {
-        {{0x97, 0x98, 0}, {0xb7, 0xb8, 0}},
-        {{0x95, 0x96, 0}, {0xb5, 0xb6, 0}},
-    };
-    oled_set_cursor(col, line);
-    if (status) {
-        oled_write_P(logo[0][0], false);
-        oled_set_cursor(col, line+1);
-        oled_write_P(logo[0][1], false);
-    } else {
-        oled_write_P(logo[1][0], false);
-        oled_set_cursor(col, line+1);
-        oled_write_ln_P(logo[1][1], false);
-    }
-}
-
 bool big_oled(void) {
+
+    // if we are going to need to display layout info, clear 
+    // the screen (basically to get rid of logo)
+    if (layer_state==L_NUMBERS || layer_state==L_NAV){
+        oled_clear();
+    }
 
     oled_render_layer_state();
     oled_write(" Mods: ", false);
@@ -251,16 +241,23 @@ bool big_oled(void) {
     // there is no num or scroll lock in this keymap
     oled_write("CAPS",host_keyboard_led_state().caps_lock);
 
-    // if nothing else to do, display the logo at bottom	
-    oled_set_cursor(0,5);
-    dizave_render_logo();
 
-    if (layer_state == L_NUM) {
-        dizave_render_numbers(true);
+    if (layer_state == L_NUMBERS) {       
+        dizave_render_numbers(true,0,4);
+    } else if (layer_state == L_NAV) {
+        dizave_render_nav(10,5);
     } else {
-        // display the apple/windows logo in the upper right
-        dizave_render_bootmagic_status_at(!is_mac(),18,0);
+        // if nothing else to do, display the logo at bottom
+        oled_write_ln("",false);	
+        oled_write_ln("",false);	
+        oled_write_ln("",false);	
+//        oled_set_cursor(0,5);
+        dizave_render_logo();
     }
+
+    // display the apple/windows logo in the upper right
+    dizave_render_bootmagic_status_at(!is_mac(),18,0);
+
   return false;
 }
 
@@ -268,16 +265,6 @@ bool oled_task_user(void) {
 
     return big_oled();
 
-    // testing big oled
-//    oled_write_ln("test", false);
-//    oled_write_ln("test two", true);
-/*
-    oled_render_layer_state();
-    dizave_render_master();
-    dizave_render_bootmagic_status(!is_mac());
-
-    return false;
-*/
     if (is_keyboard_master()) {
 
         oled_render_layer_state();
@@ -287,7 +274,7 @@ bool oled_task_user(void) {
         dizave_render_bootmagic_status(!is_mac());
         oled_write_ln("    ", false);
 
-        dizave_render_numbers(layer_state==4);
+        dizave_render_numbers(layer_state==4, 0, 5);
         oled_write_ln("     ", false);
 
         // CAPS LOCK

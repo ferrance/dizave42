@@ -50,7 +50,25 @@ void dizave_set_mac_mode(void) {
   set_unicode_input_mode(UNICODE_MODE_MACOS);
 }
 
+void dizave_render_bootmagic_status_at(bool status, uint8_t col, uint8_t line) {
+    /* Show Ctrl-Gui Swap options */
+    static const char PROGMEM logo[][2][3] = {
+        {{0x97, 0x98, 0}, {0xb7, 0xb8, 0}},
+        {{0x95, 0x96, 0}, {0xb5, 0xb6, 0}},
+    };
+    oled_set_cursor(col, line);
+    if (status) {
+        oled_write_P(logo[0][0], false);
+        oled_set_cursor(col, line+1);
+        oled_write_P(logo[0][1], false);
+    } else {
+        oled_write_P(logo[1][0], false);
+        oled_set_cursor(col, line+1);
+        oled_write_ln_P(logo[1][1], false);
+    }
+}
 
+// deprecated
 void dizave_render_bootmagic_status(bool status) {
     /* Show Ctrl-Gui Swap options */
     static const char PROGMEM logo[][2][3] = {
@@ -80,7 +98,6 @@ void dizave_render_master(void) {
       oled_write("A", get_mods() & MOD_MASK_ALT);
       oled_write("G", get_mods() & MOD_MASK_GUI);
       oled_write_ln("S", get_mods() & MOD_MASK_SHIFT);
-//      oled_write_ln("mac",false);
 
    } else {  // WIN
 
@@ -88,21 +105,25 @@ void dizave_render_master(void) {
       oled_write("A", get_mods() & MOD_MASK_ALT);
       oled_write("C", get_mods() & MOD_MASK_CTRL);
       oled_write_ln("S", get_mods() & MOD_MASK_SHIFT);
-      //oled_write_ln("pc",false);
    }
 
 }
 
-void dizave_render_numbers(bool show) 
+void dizave_render_numbers(bool show, uint8_t col, uint8_t line) 
 {
+  oled_set_cursor(col,line);
   if (show) {
       if (get_mods() & MOD_MASK_SHIFT) {
         oled_write("{&*(}",false);
+        oled_set_cursor(col,line+1);
         oled_write(":$%^+",false);
+        oled_set_cursor(col,line+2);
         oled_write("+!@#-",false);
       } else {
         oled_write("[789]",false);
+        oled_set_cursor(col,line+1);
         oled_write(";456=",false);
+        oled_set_cursor(col,line+2);
         oled_write("`123\\",false); 
       }
   } else {
@@ -110,6 +131,42 @@ void dizave_render_numbers(bool show)
     oled_write_ln("",false);
     oled_write_ln("",false);
   }
+}
+
+void dizave_render_nav(uint8_t col, uint8_t line) 
+{
+/*
+  static const char PROGMEM nav[] = {
+    30, 17, 24, 16, 
+    31, 27, 25, 26,
+    0 };
+*/
+  oled_set_cursor(col,line);
+  oled_write_char(30,false);
+  oled_write_char(17,false);
+  oled_write_char(24,false);
+  oled_write_char(16,false);
+  oled_write(" del", false);
+
+  oled_set_cursor(col,line+1);
+  oled_write_char(31,false);
+  oled_write_char(27,false);
+  oled_write_char(25,false);
+  oled_write_char(26,false);
+  oled_write(" ins", false);
+
+  oled_set_cursor(col,line+2);
+  oled_write("    caps",false);
+
+
+
+  for (int x=55; x<126; x++) {
+    oled_write_pixel(x,33,1);
+  }
+  for (int y=33; y<=63; y++) {
+    oled_write_pixel(55,y,1);
+  }
+
 }
 
 void dizave_render_logo(void) {
