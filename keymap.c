@@ -255,9 +255,12 @@ bool big_oled(void) {
     oled_set_cursor(0,5);
     dizave_render_logo();
 
-    // display the apple/windows logo in the upper right
-    dizave_render_bootmagic_status_at(!is_mac(),18,0);
-
+    if (layer_state == L_NUM) {
+        dizave_render_numbers(true);
+    } else {
+        // display the apple/windows logo in the upper right
+        dizave_render_bootmagic_status_at(!is_mac(),18,0);
+    }
   return false;
 }
 
