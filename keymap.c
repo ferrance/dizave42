@@ -236,12 +236,13 @@ bool big_oled(void) {
     oled_render_layer_state();
     oled_write(" Mods: ", false);
     dizave_render_master();
-    oled_write(" Lock: ", false);
+
+/*    oled_write(" Lock: ", false);
      
     // CAPS LOCK
     // there is no num or scroll lock in this keymap
     oled_write("CAPS",host_keyboard_led_state().caps_lock);
-
+*/
 
     if (layer_state == L_NUMBERS) {       
         dizave_render_numbers(true,0,4);
@@ -259,10 +260,13 @@ bool big_oled(void) {
     // display the apple/windows logo in the upper right
     dizave_render_bootmagic_status_at(!is_mac(),18,0);
 
-  oled_set_cursor(12,3);
-  oled_write_char(213,false);
-  oled_write_char(214,false);
-  oled_write_char(215,false);
+    if (host_keyboard_led_state().caps_lock) {
+      oled_set_cursor(16,2);
+      oled_write_char(213,false);
+      oled_write_char(214,false);
+      oled_write_char(215,false);
+      oled_write_char(216,false);
+    }
 
   return false;
 }

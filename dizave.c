@@ -120,13 +120,13 @@ void dizave_render_numbers(bool show, uint8_t col, uint8_t line)
         oled_set_cursor(col,line+2);
         oled_write("+!@#-",false);
       } else {
-        oled_write("[789]",false);
+        oled_write("esc  [789]",false);
         oled_set_cursor(col,line+1);
-        oled_write(";456=",false);
+        oled_write("bspc ;456=",false);
         oled_set_cursor(col,line+2);
-        oled_write("`123\\",false); 
+        oled_write("law  `123\\",false); 
         oled_set_cursor(col,line+3);
-        oled_write("   0 spc",false); 
+        oled_write("        0 spc",false); 
       }
   } else {
     oled_write_ln("",false);
@@ -134,9 +134,14 @@ void dizave_render_numbers(bool show, uint8_t col, uint8_t line)
     oled_write_ln("",false);
   }
 
-  for (int x=2; x<33; x++) {
-    oled_write_pixel(x,30,1);
-  }
+  for (int x=0; x<64; x++) 
+    oled_write_pixel(x,28,1);
+  
+  for (int y=28; y<=54; y++) 
+    oled_write_pixel(64,y,1);
+  
+  for (int x=64; x<74; x++) 
+    oled_write_pixel(x,54,1);
 
 }
 
