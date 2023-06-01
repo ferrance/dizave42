@@ -93,7 +93,7 @@ void dizave_render_mods(void) {
 }
 
 #ifdef OLED_DISPLAY_128X64
-void dizave_render_numbers(bool show, uint8_t col, uint8_t line) 
+void dizave_render_numbers(uint8_t col, uint8_t line) 
 {
 
     oled_set_cursor(col,line);

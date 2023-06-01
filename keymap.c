@@ -242,10 +242,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         oled_render_layer_state();
         oled_write(" Mods: ", false);
-        dizave_render_master();
+        dizave_render_mods();
 
         if (layer_state == L_NUMBERS) {       
-            dizave_render_numbers(true,0,4);
+            dizave_render_numbers(0,4);
         } else if (layer_state == L_NAV) {
             dizave_render_nav(12,5);
         } else {
