@@ -125,40 +125,40 @@ void dizave_render_numbers(bool show, uint8_t col, uint8_t line)
         oled_write(";456=",false);
         oled_set_cursor(col,line+2);
         oled_write("`123\\",false); 
+        oled_set_cursor(col,line+3);
+        oled_write("   0 spc",false); 
       }
   } else {
     oled_write_ln("",false);
     oled_write_ln("",false);
     oled_write_ln("",false);
   }
+
+  for (int x=2; x<33; x++) {
+    oled_write_pixel(x,30,1);
+  }
+
 }
 
 void dizave_render_nav(uint8_t col, uint8_t line) 
 {
-/*
-  static const char PROGMEM nav[] = {
-    30, 17, 24, 16, 
-    31, 27, 25, 26,
-    0 };
-*/
+
   oled_set_cursor(col,line);
   oled_write_char(30,false);
   oled_write_char(17,false);
   oled_write_char(24,false);
   oled_write_char(16,false);
-  oled_write(" del", false);
+  oled_write(" bspc", false);
 
   oled_set_cursor(col,line+1);
   oled_write_char(31,false);
   oled_write_char(27,false);
   oled_write_char(25,false);
   oled_write_char(26,false);
-  oled_write(" ins", false);
+  oled_write("  ins", false);
 
   oled_set_cursor(col,line+2);
-  oled_write("    caps",false);
-
-
+  oled_write("     caps",false);
 
   for (int x=55; x<126; x++) {
     oled_write_pixel(x,33,1);

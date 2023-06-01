@@ -224,6 +224,7 @@ void oled_render_layer_state(void) {
 #endif
 }
 
+// for drawind in a 128x64 oled
 bool big_oled(void) {
 
     // if we are going to need to display layout info, clear 
@@ -245,7 +246,7 @@ bool big_oled(void) {
     if (layer_state == L_NUMBERS) {       
         dizave_render_numbers(true,0,4);
     } else if (layer_state == L_NAV) {
-        dizave_render_nav(10,5);
+        dizave_render_nav(12,5);
     } else {
         // if nothing else to do, display the logo at bottom
         oled_write_ln("",false);	
@@ -257,6 +258,11 @@ bool big_oled(void) {
 
     // display the apple/windows logo in the upper right
     dizave_render_bootmagic_status_at(!is_mac(),18,0);
+
+  oled_set_cursor(12,3);
+  oled_write_char(213,false);
+  oled_write_char(214,false);
+  oled_write_char(215,false);
 
   return false;
 }
