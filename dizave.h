@@ -20,13 +20,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 bool is_mac(void);
 void dizave_set_win_mode(void);
 void dizave_set_mac_mode(void);
-void dizave_render_master(void);
-void dizave_render_numbers(bool, uint8_t, uint8_t);
+void dizave_render_mods(void);
 void dizave_render_nav(uint8_t, uint8_t);
 void dizave_render_logo(void);
 void dizave_render_bootmagic_status(bool);
 void dizave_render_bootmagic_status_at(bool, uint8_t, uint8_t);
 bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record);
+
+#ifdef OLED_DISPLAY_128X64
+void dizave_render_numbers(uint8_t, uint8_t);
+#else
+void dizave_render_numbers(void);
+#endif
 
 // Colemak home row mods
 #define DZ_A LGUI_T(KC_A)

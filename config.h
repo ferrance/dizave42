@@ -18,8 +18,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-
 #pragma once
 
 /* Select hand configuration */
@@ -32,9 +30,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef OLED_FONT_H
 #define OLED_FONT_H "dizave42.c"
 
-#define OLED_IC OLED_IC_SH1106
-#define OLED_COLUMN_OFFSET 2
-#define OLED_DISPLAY_128X64
+#ifdef BIG_OLED
+    #define OLED_IC OLED_IC_SH1106
+    #define OLED_COLUMN_OFFSET 2
+    #define OLED_DISPLAY_128X64
+#endif 
 
 // home row mods
 #define TAPPING_FORCE_HOLD

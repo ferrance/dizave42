@@ -165,140 +165,160 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
 #ifdef OLED_ENABLE
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-  return OLED_ROTATION_0;  // testing for larger display
-  if (!is_keyboard_master()) {
-    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+
+  // bigoled is always at 0
+  // pair of small ones has left at 180, right at 270 
+  oled_rotation_t oled_init_user(oled_rotation_t rotation) 
+  {
+    #ifdef OLED_DISPLAY_128X64
+      return OLED_ROTATION_0;  // testing for larger display
+    #else
+      if (!is_keyboard_master()) {
+        return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+      }
+      return OLED_ROTATION_270;
+    #endif 
   }
- return OLED_ROTATION_270;
-  return rotation;
-}
 
-#define L_BASE 0
-#define L_NAV (1 << _NAV)
-#define L_NUMBERS (1 << _NUM)
-#define L_LAW (1 << _LAW)
-#define L_FUNC (1 << _FUNC)
+  #define L_BASE 0
+  #define L_NAV (1 << _NAV)
+  #define L_NUMBERS (1 << _NUM)
+  #define L_LAW (1 << _LAW)
+  #define L_FUNC (1 << _FUNC)
 
-void oled_render_layer_state(void) {
+  void oled_render_layer_state(void) {
 
-#ifdef OLED_DISPLAY_128X64
-    oled_write("Layer: ", false);
-    if (layer_state==L_BASE) {
-      oled_write_ln("Colemak", false);
-    } else if (layer_state==L_NAV) {
-      oled_write_ln("Navigation", false);
-    } else if (layer_state== L_NUMBERS) {
-      oled_write_ln("Numbers", false);
-    } else if (layer_state==L_LAW || layer_state==(L_LAW|L_NAV) ) {
-      oled_write_ln("Legal", false);
-    } else if (layer_state==L_FUNC) {
-      oled_write_ln("Function", false);
-    } else {
-      oled_write_ln("Unknown", false);
-    }
-#else
-    oled_write_ln("Layer", false);
-    switch (layer_state) {
-        case L_BASE:
-            oled_write_ln("-Dflt ", false);
-            break;
-        case L_NAV:
-            oled_write_ln("-nav-", false);
-            break;
-        case L_NUMBERS:
-            oled_write_ln("-num-", false);
-            break;
-        case L_LAW:
-        case L_LAW | L_NAV:
-            oled_write_ln("-law-", false);
-            break;
-        case L_FUNC:
-        case L_FUNC | L_NAV:  // because you can also get here from nav layer thumb key
-            oled_write_ln("-func", false);
-            break;
-        default:
-            oled_write_ln("-unk-",false);
-            break;
-    }
-#endif
-}
+  #ifdef OLED_DISPLAY_128X64
+      oled_write("Layer: ", false);
+      if (layer_state==L_BASE) {
+        oled_write_ln("Colemak", false);
+      } else if (layer_state==L_NAV) {
+        oled_write_ln("Navigation", false);
+      } else if (layer_state== L_NUMBERS) {
+        oled_write_ln("Numbers", false);
+      } else if (layer_state==L_LAW || layer_state==(L_LAW|L_NAV) ) {
+        oled_write_ln("Legal", false);
+      } else if (layer_state==L_FUNC) {
+        oled_write_ln("Function", false);
+      } else {
+        oled_write_ln("Unknown", false);
+      }
+  #else
+      oled_write_ln("Layer", false);
+      switch (layer_state) {
+          case L_BASE:
+              oled_write_ln("-Dflt ", false);
+              break;
+          case L_NAV:
+              oled_write_ln("-nav-", false);
+              break;
+          case L_NUMBERS:
+              oled_write_ln("-num-", false);
+              break;
+          case L_LAW:
+          case L_LAW | L_NAV:
+              oled_write_ln("-law-", false);
+              break;
+          case L_FUNC:
+          case L_FUNC | L_NAV:  // because you can also get here from nav layer thumb key
+              oled_write_ln("-func", false);
+              break;
+          default:
+              oled_write_ln("unkwn",false);
+              break;
+      }
+  #endif
+  }
 
-// for drawind in a 128x64 oled
-bool big_oled(void) {
+  // for drawing in a 128x64 oled
+  #ifdef OLED_DISPLAY_128X64
+    bool big_oled(void) {
 
-    // if we are going to need to display layout info, clear 
-    // the screen (basically to get rid of logo)
-    if (layer_state==L_NUMBERS || layer_state==L_NAV){
-        oled_clear();
-    }
-
-    oled_render_layer_state();
-    oled_write(" Mods: ", false);
-    dizave_render_master();
-
-/*    oled_write(" Lock: ", false);
-     
-    // CAPS LOCK
-    // there is no num or scroll lock in this keymap
-    oled_write("CAPS",host_keyboard_led_state().caps_lock);
-*/
-
-    if (layer_state == L_NUMBERS) {       
-        dizave_render_numbers(true,0,4);
-    } else if (layer_state == L_NAV) {
-        dizave_render_nav(12,5);
-    } else {
-        // if nothing else to do, display the logo at bottom
-        oled_write_ln("",false);	
-        oled_write_ln("",false);	
-        oled_write_ln("",false);	
-//        oled_set_cursor(0,5);
-        dizave_render_logo();
-    }
-
-    // display the apple/windows logo in the upper right
-    dizave_render_bootmagic_status_at(!is_mac(),18,0);
-
-    if (host_keyboard_led_state().caps_lock) {
-      oled_set_cursor(16,2);
-      oled_write_char(213,false);
-      oled_write_char(214,false);
-      oled_write_char(215,false);
-      oled_write_char(216,false);
-    }
-
-  return false;
-}
-
-bool oled_task_user(void) {
-
-    return big_oled();
-
-    if (is_keyboard_master()) {
+        // if we are going to need to display layout info, clear 
+        // the screen (basically to get rid of logo)
+        if (layer_state==L_NUMBERS || layer_state==L_NAV){
+            oled_clear();
+        }
 
         oled_render_layer_state();
+        oled_write(" Mods: ", false);
         dizave_render_master();
 
-        // display apple / windows logo
-        dizave_render_bootmagic_status(!is_mac());
-        oled_write_ln("    ", false);
-
-        dizave_render_numbers(layer_state==4, 0, 5);
-        oled_write_ln("     ", false);
-
-        // CAPS LOCK
-        if (host_keyboard_led_state().caps_lock) { 
-            oled_write_ln("CAPS",true);
+        if (layer_state == L_NUMBERS) {       
+            dizave_render_numbers(true,0,4);
+        } else if (layer_state == L_NAV) {
+            dizave_render_nav(12,5);
         } else {
-            oled_write_ln("    ", false);
-        } 
+            // if nothing else to do, display the logo at bottom
+            oled_write_ln("",false);	
+            oled_write_ln("",false);	
+            oled_write_ln("",false);	
+    //        oled_set_cursor(0,5);
+            dizave_render_logo();
+        }
 
-    } else {
-        dizave_render_logo();
+        // display the apple/windows logo in the upper right
+        dizave_render_bootmagic_status_at(!is_mac(),18,0);
+
+        if (host_keyboard_led_state().caps_lock) {
+          oled_set_cursor(16,2);
+          oled_write_char(213,false);
+          oled_write_char(214,false);
+          oled_write_char(215,false);
+          oled_write_char(216,false);
+        }
+
+      return false;
     }
-    return false;
-}
+
+  #else 
+    bool small_oled(void) {
+
+      if (is_keyboard_master()) {
+
+          oled_render_layer_state();
+          dizave_render_mods();
+          oled_write_ln("    ", false);
+
+        if (layer_state == L_NUMBERS) {       
+            dizave_render_numbers();
+        } else if (layer_state == L_NAV) {
+            dizave_render_nav(12,5);
+        } else {
+            // if nothing else to do, display the logo at bottom
+            oled_write_ln("",false);	
+            oled_write_ln("",false);	
+            oled_write_ln("",false);	
+            oled_write_ln("",false);	
+        }
+
+//          dizave_render_numbers(layer_state==4);
+          oled_write_ln("     ", false);
+
+          // CAPS LOCK
+          if (host_keyboard_led_state().caps_lock) { 
+              oled_write_ln("CAPS",true);
+          } else {
+              oled_write_ln("    ", false);
+          } 
+
+          // display apple / windows logo
+          dizave_render_bootmagic_status_at(!is_mac(), 0, 13);
+
+      } else {
+          dizave_render_logo();
+      }
+      return false;
+    }
+  #endif
+
+  bool oled_task_user(void) {
+    #ifdef OLED_DISPLAY_128X64
+      return big_oled();
+    #else
+      return small_oled();
+    #endif
+  }
 
 
 #endif // OLED_ENABLE

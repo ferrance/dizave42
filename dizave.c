@@ -68,28 +68,11 @@ void dizave_render_bootmagic_status_at(bool status, uint8_t col, uint8_t line) {
     }
 }
 
-// deprecated
-void dizave_render_bootmagic_status(bool status) {
-    /* Show Ctrl-Gui Swap options */
-    static const char PROGMEM logo[][2][3] = {
-        {{0x97, 0x98, 0}, {0xb7, 0xb8, 0}},
-        {{0x95, 0x96, 0}, {0xb5, 0xb6, 0}},
-    };
-    if (status) {
-        oled_write_ln_P(logo[0][0], false);
-        oled_write_ln_P(logo[0][1], false);
-    } else {
-        oled_write_ln_P(logo[1][0], false);
-        oled_write_ln_P(logo[1][1], false);
-    }
-}
-
-
 // renders the master OLED
 //  - expects that layer has already been written
 //  - expects a vertical OLED
 //
-void dizave_render_master(void) {
+void dizave_render_mods(void) {
 
     // show status of home row mods
     if (is_mac()) {   // MAC
@@ -109,68 +92,100 @@ void dizave_render_master(void) {
 
 }
 
+#ifdef OLED_DISPLAY_128X64
 void dizave_render_numbers(bool show, uint8_t col, uint8_t line) 
 {
-  oled_set_cursor(col,line);
-  if (show) {
-      if (get_mods() & MOD_MASK_SHIFT) {
-        oled_write("{&*(}",false);
-        oled_set_cursor(col,line+1);
-        oled_write(":$%^+",false);
-        oled_set_cursor(col,line+2);
-        oled_write("+!@#-",false);
-      } else {
-        oled_write("esc  [789]",false);
-        oled_set_cursor(col,line+1);
-        oled_write("bspc ;456=",false);
-        oled_set_cursor(col,line+2);
-        oled_write("law  `123\\",false); 
-        oled_set_cursor(col,line+3);
-        oled_write("        0 spc",false); 
-      }
-  } else {
-    oled_write_ln("",false);
-    oled_write_ln("",false);
-    oled_write_ln("",false);
-  }
 
-  for (int x=0; x<64; x++) 
-    oled_write_pixel(x,28,1);
-  
-  for (int y=28; y<=54; y++) 
-    oled_write_pixel(64,y,1);
-  
-  for (int x=64; x<74; x++) 
-    oled_write_pixel(x,54,1);
+    oled_set_cursor(col,line);
+    if (get_mods() & MOD_MASK_SHIFT) {
+      oled_write("{&*(}",false);
+      oled_set_cursor(col,line+1);
+      oled_write(":$%^+",false);
+      oled_set_cursor(col,line+2);
+      oled_write("+!@#-",false);
+    } else {
+      oled_write("esc  [789]",false);
+      oled_set_cursor(col,line+1);
+      oled_write("bspc ;456=",false);
+      oled_set_cursor(col,line+2);
+      oled_write("law  `123\\",false); 
+      oled_set_cursor(col,line+3);
+      oled_write("        0 spc",false); 
+    }
+
+    for (int x=0; x<64; x++) 
+      oled_write_pixel(x,28,1);
+    
+    for (int y=28; y<=54; y++) 
+      oled_write_pixel(64,y,1);
+    
+    for (int x=64; x<=80; x++) 
+      oled_write_pixel(x,54,1);
+
+    for (int y=54; y<=64; y++) 
+      oled_write_pixel(80,y,1);
+}
+#else 
+void dizave_render_numbers() 
+{
+    if (get_mods() & MOD_MASK_SHIFT) {
+      oled_write("{&*(}",false);
+      oled_write(":$%^+",false);
+      oled_write("+!@#-",false);
+    } else {
+      oled_write("[789]",false);
+      oled_write(";456=",false);
+      oled_write("`123\\",false); 
+      oled_write("    0",false); 
+    }
 
 }
+#endif  
 
 void dizave_render_nav(uint8_t col, uint8_t line) 
 {
 
-  oled_set_cursor(col,line);
-  oled_write_char(30,false);
-  oled_write_char(17,false);
-  oled_write_char(24,false);
-  oled_write_char(16,false);
-  oled_write(" bspc", false);
+  #ifdef OLED_DISPLAY_128X64
+    oled_set_cursor(col,line);
+    oled_write_char(30,false);
+    oled_write_char(17,false);
+    oled_write_char(24,false);
+    oled_write_char(16,false);
+    oled_write(" bspc", false);
 
-  oled_set_cursor(col,line+1);
-  oled_write_char(31,false);
-  oled_write_char(27,false);
-  oled_write_char(25,false);
-  oled_write_char(26,false);
-  oled_write("  ins", false);
+    oled_set_cursor(col,line+1);
+    oled_write_char(31,false);
+    oled_write_char(27,false);
+    oled_write_char(25,false);
+    oled_write_char(26,false);
+    oled_write("  ins", false);
 
-  oled_set_cursor(col,line+2);
-  oled_write("     caps",false);
+    oled_set_cursor(col,line+2);
+    oled_write("     caps",false);
 
-  for (int x=55; x<126; x++) {
-    oled_write_pixel(x,33,1);
-  }
-  for (int y=33; y<=63; y++) {
-    oled_write_pixel(55,y,1);
-  }
+    for (int x=55; x<126; x++) {
+      oled_write_pixel(x,33,1);
+    }
+    for (int y=33; y<=63; y++) {
+      oled_write_pixel(55,y,1);
+    }
+  #else
+
+    oled_write_char(30,false);
+    oled_write_char(17,false);
+    oled_write_char(24,false);
+    oled_write_char(16,false);
+    oled_write_ln("", false);
+
+    oled_write_char(31,false);
+    oled_write_char(27,false);
+    oled_write_char(25,false);
+    oled_write_char(26,false);
+    oled_write_ln("",false);
+    oled_write_ln("",false);
+    oled_write_ln("",false);
+
+  #endif
 
 }
 
