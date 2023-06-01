@@ -27,5 +27,12 @@ ifeq ($(strip $(CONVERT_TO)), rp2040)
   BOOTLOADER = RP2040
 endif
 
+# to build for the 1.3 inch 128x64  oled add 
+#   -e BIG_OLED=yes 
+# to the qmk compile command
+ifneq ($(strip $(BIG_OLED)),)
+    OPT_DEFS += -DBIG_OLED
+endif
+
 SRC += ./dizave.c
 SRC += features/achordion.c

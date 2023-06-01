@@ -168,6 +168,13 @@ To compile a .UF2 for the kb2040, use
 qmk compile -e CONVERT_TO=kb2040
 ```
 
+Whether to build for the 128x64 oled is also controlled from
+the compile command. By default it will build for the 128x32. 
+To build for the larger oled on RP2040, use:
+
+```
+qmk compile -e CONVERT_TO=kb2040 -e BIG_OLED=yes
+```
 
 # todo
 
