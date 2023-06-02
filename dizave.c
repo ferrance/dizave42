@@ -113,17 +113,13 @@ void dizave_render_numbers(uint8_t col, uint8_t line)
       oled_write("        0 spc",false); 
     }
 
-    for (int x=0; x<64; x++) 
-      oled_write_pixel(x,28,1);
-    
-    for (int y=28; y<=54; y++) 
-      oled_write_pixel(64,y,1);
-    
-    for (int x=64; x<=80; x++) 
-      oled_write_pixel(x,54,1);
-
-    for (int y=54; y<=64; y++) 
-      oled_write_pixel(80,y,1);
+    // make a sort of corne-shaped outline
+    plot_line(0,28,64,28,true);  
+    plot_line(64,28,64,47,true);
+    plot_line(64,47,85,54,true);
+    plot_line(85,54,80,64,true);
+    plot_line(46,64,40,56,true);
+    plot_line(0,56,40,56,true);
 }
 #else 
 void dizave_render_numbers() 

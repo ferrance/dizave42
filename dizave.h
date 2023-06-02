@@ -27,6 +27,8 @@ void dizave_render_bootmagic_status(bool);
 void dizave_render_bootmagic_status_at(bool, uint8_t, uint8_t);
 bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record);
 
+void plot_line (int, int, int, int, bool);
+
 #ifdef OLED_DISPLAY_128X64
 void dizave_render_numbers(uint8_t, uint8_t);
 #else
