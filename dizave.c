@@ -114,7 +114,9 @@ void dizave_render_numbers(uint8_t col, uint8_t line)
     }
 
     // make a sort of corne-shaped outline
-    plot_line(0,28,64,28,true);  
+    plot_line(0,30,28,30,true);
+    plot_line(28,30,28,28,true);
+    plot_line(28,28,64,28,true);  
     plot_line(64,28,64,47,true);
     plot_line(64,47,85,54,true);
     plot_line(85,54,80,64,true);
