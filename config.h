@@ -30,8 +30,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef OLED_FONT_H
 #define OLED_FONT_H "dizave42.c"
 
-//#define BIG_OLED
-
 #ifdef BIG_OLED
     #define OLED_IC OLED_IC_SH1106
     #define OLED_COLUMN_OFFSET 2
@@ -41,7 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // home row mods
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 180
-#define IGNORE_MOD_TAP_INTERRUPT
+//#define IGNORE_MOD_TAP_INTERRUPT // remove for qmk 21.0
 
 // dizave supports mac and windows
 #define UNICODE_SELECTED_MODES UNICODE_MODE_MACOS, UNICODE_MODE_WINCOMPOSE
