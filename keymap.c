@@ -190,12 +190,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     #endif 
   }
 
-  #define L_BASE 0
-  #define L_NAV (1 << _NAV)
-  #define L_NUMBERS (1 << _NUM)
-  #define L_LAW (1 << _LAW)
-  #define L_FUNC (1 << _FUNC)
-
   void oled_render_layer_state(void) {
 
   int l = get_highest_layer(layer_state);
