@@ -207,9 +207,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   #ifdef OLED_DISPLAY_128X64
     bool big_oled(void) {
 
+        int layer = get_highest_layer(layer_state);
+
         // if we are going to need to display layout info, clear 
         // the screen (basically to get rid of logo)
-        if (layer_state==L_NUMBERS || layer_state==L_NAV){
+        if (layer==_NUM || layer==_NAV){
             oled_clear();
         }
 
@@ -218,9 +220,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         oled_write(" Mods: ", false);
         dizave_render_mods();
 
-        if (layer_state == L_NUMBERS) {       
+        if (layer == _NUM) {       
             dizave_render_numbers(0,4);
-        } else if (layer_state == L_NAV) {
+        } else if (layer == _NAV) {
             dizave_render_nav(12,5);
         } else {
             // if nothing else to do, display the logo at bottom
