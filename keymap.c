@@ -29,6 +29,16 @@ enum layer_number {
   _NUM,
   _LAW,
   _FUNC,
+  _UNKNOWN
+};
+
+const char* layer_names[][2] = {
+  { "clmk", "Colemak"   },
+  { "-nav-", "Navgation"},
+  { "-num-", "Numbers"  },
+  { "-law-", "Legal"    },
+  { "-fun-", "Function" },
+  { "unkwn", "Unknown"  }
 };
 
 // tap dance declarations
@@ -188,45 +198,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   void oled_render_layer_state(void) {
 
+  int l = get_highest_layer(layer_state);
+
   #ifdef OLED_DISPLAY_128X64
       oled_write("Layer: ", false);
-      if (layer_state==L_BASE) {
-        oled_write_ln("Colemak", false);
-      } else if (layer_state==L_NAV) {
-        oled_write_ln("Navigation", false);
-      } else if (layer_state== L_NUMBERS) {
-        oled_write_ln("Numbers", false);
-      } else if (layer_state==L_LAW || layer_state==(L_LAW|L_NAV) ) {
-        oled_write_ln("Legal", false);
-      } else if (layer_state==L_FUNC) {
-        oled_write_ln("Function", false);
-      } else {
-        oled_write_ln("Unknown", false);
-      }
+      oled_write_ln(layer_names[l][1],false);
   #else
       oled_write_ln("Layer", false);
-      switch (layer_state) {
-          case L_BASE:
-              oled_write_ln("-Dflt ", false);
-              break;
-          case L_NAV:
-              oled_write_ln("-nav-", false);
-              break;
-          case L_NUMBERS:
-              oled_write_ln("-num-", false);
-              break;
-          case L_LAW:
-          case L_LAW | L_NAV:
-              oled_write_ln("-law-", false);
-              break;
-          case L_FUNC:
-          case L_FUNC | L_NAV:  // because you can also get here from nav layer thumb key
-              oled_write_ln("-func", false);
-              break;
-          default:
-              oled_write_ln("unkwn",false);
-              break;
-      }
+      oled_write_ln(layer_names[l][0],false);
   #endif
   }
 
@@ -241,6 +220,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
 
         oled_render_layer_state();
+
         oled_write(" Mods: ", false);
         dizave_render_mods();
 
@@ -253,13 +233,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             oled_write_ln("",false);	
             oled_write_ln("",false);	
             oled_write_ln("",false);	
-    //        oled_set_cursor(0,5);
             dizave_render_logo();
         }
 
         // display the apple/windows logo in the upper right
         dizave_render_bootmagic_status_at(!is_mac(),18,0);
 
+        // caps lock indicator
         if (host_keyboard_led_state().caps_lock) {
           oled_set_cursor(16,2);
           oled_write_char(213,false);
