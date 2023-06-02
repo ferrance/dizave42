@@ -342,3 +342,59 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
 
   return true;
 }
+
+// https://gist.github.com/bert/1085538
+
+void plot_line (int x0, int y0, int x1, int y1, bool on)
+{
+  int dx =  abs (x1 - x0), sx = x0 < x1 ? 1 : -1;
+  int dy = -abs (y1 - y0), sy = y0 < y1 ? 1 : -1; 
+  int err = dx + dy, e2; /* error value e_xy */
+ 
+  for (;;){  /* loop */
+    oled_write_pixel(x0,y0,on);
+//    setPixel (x0,y0);
+    if (x0 == x1 && y0 == y1) break;
+    e2 = 2 * err;
+    if (e2 >= dy) { err += dy; x0 += sx; } /* e_xy+e_x > 0 */
+    if (e2 <= dx) { err += dx; y0 += sy; } /* e_xy+e_y < 0 */
+  }
+}
+
+void
+raster_circle (int x0, int y0, int radius, bool on)
+{
+  int f = 1 - radius;
+  int ddF_x = 1;
+  int ddF_y = -2 * radius;
+  int x = 0;
+  int y = radius;
+ 
+  oled_write_pixel (x0, y0 + radius, on);
+  oled_write_pixel (x0, y0 - radius, on);
+  oled_write_pixel (x0 + radius, y0, on);
+  oled_write_pixel (x0 - radius, y0, on);
+  while (x < y)
+  {
+    // ddF_x == 2 * x + 1;
+    // ddF_y == -2 * y;
+    // f == x*x + y*y - radius*radius + 2*x - y + 1;
+    if (f >= 0) 
+    {
+      y--;
+      ddF_y += 2;
+      f += ddF_y;
+    }
+    x++;
+    ddF_x += 2;
+    f += ddF_x;    
+    oled_write_pixel (x0 + x, y0 + y, on);
+    oled_write_pixel (x0 - x, y0 + y, on);
+    oled_write_pixel (x0 + x, y0 - y, on);
+    oled_write_pixel (x0 - x, y0 - y, on);
+    oled_write_pixel (x0 + y, y0 + x, on);
+    oled_write_pixel (x0 - y, y0 + x, on);
+    oled_write_pixel (x0 + y, y0 - x, on);
+    oled_write_pixel (x0 - y, y0 - x, on);
+  }
+}
