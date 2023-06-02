@@ -33,7 +33,7 @@ enum layer_number {
 };
 
 const char* layer_names[][2] = {
-  { "clmk", "Colemak"   },
+  { "clmak", "Colemak"   },
   { "-nav-", "Navgation"},
   { "-num-", "Numbers"  },
   { "-law-", "Legal"    },
@@ -250,15 +250,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   #else 
     bool small_oled(void) {
 
+      int layer = get_highest_layer(layer_state);
+
       if (is_keyboard_master()) {
 
           oled_render_layer_state();
           dizave_render_mods();
           oled_write_ln("    ", false);
 
-        if (layer_state == L_NUMBERS) {       
+        if (layer == _NUM) {       
             dizave_render_numbers();
-        } else if (layer_state == L_NAV) {
+        } else if (layer == _NAV) {
             dizave_render_nav(12,5);
         } else {
             // if nothing else to do, display the logo at bottom
