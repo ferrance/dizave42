@@ -89,7 +89,8 @@ enum my_keycodes {
   DZ_F3D,
   DZ_F2D,
   DZ_ABQ,
-  DZ_RGB
+  DZ_RGB, 
+  DZ_SCAP   // cross platform screen cap
 };
 
 //#define DZ_SPC  LSFT_T(KC_SPC)

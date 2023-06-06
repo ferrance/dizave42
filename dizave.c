@@ -242,6 +242,16 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       }
       return false;
 
+    // mac - command shift 4
+    // win - gui shift S
+    case DZ_SCAP:
+      if (is_mac()) {
+        SEND_STRING(SS_LGUI("$"));
+      } else {
+        SEND_STRING(SS_LCTL("S"));
+      }
+      return false;
+
     case DZ_NMSA:
       if (record->event.pressed) {
         SEND_STRING("NMSA 1978, ");
