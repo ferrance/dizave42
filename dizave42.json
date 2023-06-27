@@ -90,8 +90,8 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "MO(3)",
-      "MO(4)",
+      "OSL(4)",
+      "OSL(3)",
       "KC_NO"
     ],
     [
@@ -179,7 +179,7 @@
       "KC_NO",
       "ANY(nbsp)",
       "KC_TRNS",
-      "KC_NO",
+      "KC_TRNS",
       "KC_NO"
     ],
     [
@@ -222,7 +222,7 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "KC_NO",
+      "KC_TRNS",
       "KC_NO",
       "KC_NO"
     ]
