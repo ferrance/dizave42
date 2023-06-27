@@ -22,10 +22,12 @@ KEY_OVERRIDE_ENABLE = yes    # for shift backspace = delete
 CAPS_WORD_ENABLE = yes
 
 # to build for kb2040: qmk compile -e CONVERT_TO=kb2040
-ifeq ($(strip $(CONVERT_TO)), rp2040)
-  MCU = kb2040
-  BOOTLOADER = RP2040
-endif
+
+# I had this in but it appears usless, commented out for now will delete soon
+#ifeq ($(strip $(CONVERT_TO)), rp2040)
+#  MCU = kb2040
+#  BOOTLOADER = RP2040
+#endif
 
 # to build for the 1.3 inch 128x64  oled add 
 #   -e BIG_OLED=yes 
