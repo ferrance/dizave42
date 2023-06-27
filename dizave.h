@@ -76,25 +76,25 @@ enum my_keycodes {
   DZ_QWTY,   // switch base layer to qwerty
   DZ_CLMK,   // switch base layer to colemak
   DZ_CLSE,   // close window
-  DZ_USC,
-  DZ_CFR,
-  DZ_NMSA,
-  DZ_NMRA,
-  DZ_RP,
-  DZ_BIC,
-  DZ_AB,
-  DZ_NMSC,
-  DZ_NMCA,
-  DZ_NM,
-  DZ_F3D,
-  DZ_F2D,
-  DZ_ABQ,
+  DZ_USC,    // U.S.C. §
+  DZ_CFR,    // C.F.R. §
+  DZ_NMSA,   // NMSA 1978, 
+  DZ_NMRA,   // Rule NMRA 
+  DZ_RP,     // [RP ]
+  DZ_BIC,    // [BIC ]
+  DZ_AB,     // [AB ]
+  DZ_NMSC,   // -NMSC-
+  DZ_NMCA,   // -NMCA-
+  DZ_NM,     // N.M.
+  DZ_NM2,    // New Mexico
+  DZ_F3D,    // F.3d
+  DZ_F2D,    // F.2d
+  DZ_ABQ,    // Albuquerque
   DZ_RGB, 
   DZ_SCAP   // cross platform screen cap
 };
 
 //#define DZ_SPC  LSFT_T(KC_SPC)
-//#define DZ_0    LT(3,KC_0)
 #define DZ_OSS  OSM(MOD_LSFT)
 
 // Legal macros that are not keycodes

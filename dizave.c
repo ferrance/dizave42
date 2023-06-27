@@ -230,6 +230,7 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
           SEND_STRING(SS_LGUI(SS_LCTL(SS_TAP(X_RIGHT))));
         }
       }
+//      break;
       return false;
 
     case DZ_CLSE:
@@ -345,6 +346,11 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       }
       return false;
 
+    case DZ_NM2:
+      if (record->event.pressed) {
+         SEND_STRING("New Mexico");
+      }
+      return false;
 
   }  // switch
 
