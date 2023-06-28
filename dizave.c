@@ -249,7 +249,7 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       if (is_mac()) {
         SEND_STRING(SS_LGUI("$"));
       } else {
-        SEND_STRING(SS_LCTL("S"));
+        SEND_STRING(SS_LGUI("S"));
       }
       return false;
 
