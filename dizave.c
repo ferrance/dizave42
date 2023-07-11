@@ -211,7 +211,7 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
         eeconfig_update_keymap(keymap_config.raw);
       }
       return false;
-
+      
     case DZ_RGB:
 /*        if (rgb_matrix_get_hsv().h==0 && rgb_matrix_get_hsv().s==0 && rgb_matrix_get_hsv().v==0) {
             rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);

@@ -25,6 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Layers
 enum layer_number {
   _COLEMAK = 0,
+  _QWERTY,
   _NAV,
   _NUM,
   _LAW,
@@ -34,6 +35,7 @@ enum layer_number {
 
 const char* layer_names[][2] = {
   { "clmak", "Colemak"   },
+  { "qwrty", "Qwerty"},
   { "-nav-", "Navgation"},
   { "-num-", "Numbers"  },
   { "-law-", "Legal"    },
@@ -86,6 +88,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   ),
 
+  [_QWERTY] = LAYOUT_split_3x6_3(
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSPC,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      KC_BSPC,   DZQ_A,   DZQ_S,   DZQ_D,   DZQ_F,    KC_G,                         KC_H,   DZQ_J,   DZQ_K,   DZQ_L,  DZQ_SC, KC_QUOT,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+       KC_ESC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_MINS,
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                          KC_LCTL,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM),  DZ_OSS
+                                      //`--------------------------'  `--------------------------'
+
+  ),
   [_NAV] = LAYOUT_split_3x6_3(  // nav layer
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______, DZ_CLSE, XXXXXXX, DZ_VDLT, DZ_VDRT, XXXXXXX,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END, XXXXXXX,  KC_DEL,
@@ -94,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, _______, _______, _______, _______, _______,                      DZ_SCAP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, _______, _______, OSL(_FUNC),OSL(_LAW), _______
+                                          _______, _______, _______,    _______,OSL(_LAW),OSL(_FUNC)
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -124,9 +138,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FUNC] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
+      DZ_QWTY,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,  KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL,                      RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI,  DZ_RGB,
+      DZ_CLMK,  KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL,                      RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI,  DZ_RGB,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                     RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD,  DZ_WIN,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -164,6 +178,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch(keycode) {
 
+    case DZ_QWTY:
+       set_single_persistent_default_layer(_QWERTY);
+      break;
+      
+    case DZ_CLMK:
+      set_single_persistent_default_layer(_COLEMAK);
+      break;
+
     default:
       return dizave_process_record_user(keycode, record);
       break;
@@ -192,15 +214,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   void oled_render_layer_state(void) {
 
-  int l = get_highest_layer(layer_state);
+    int l = get_highest_layer(layer_state);
 
-  #ifdef OLED_DISPLAY_128X64
+//    char layer_state_str[24];
+//    snprintf(layer_state_str, sizeof(layer_state_str), "Layer:-%d", layer_state);    
+//    oled_write_ln(layer_state_str, false);
+//    snprintf(layer_state_str, sizeof(layer_state_str), "dflt Layer-%d", default_layer_state);    
+//    oled_write_ln(layer_state_str, false);
+
+    // default layer state is 1 for colemak, two for qwerty
+    if (l==0) {
+      l = default_layer_state-1;
+    }
+
+    #ifdef OLED_DISPLAY_128X64
       oled_write("Layer: ", false);
       oled_write_ln(layer_names[l][1],false);
-  #else
+    #else
       oled_write_ln("Layer", false);
       oled_write_ln(layer_names[l][0],false);
-  #endif
+    #endif
   }
 
   // for drawing in a 128x64 oled
