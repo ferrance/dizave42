@@ -93,8 +93,9 @@ Double tap the bracket keys to get curly braces.
 ### Function Layer
 ![Number Layer](images/layer-fun.png)
 Function keys. Accessed via one shot from the number layer. I
-kept this the same as Miryoku. I almost never use any of the keys on 
-this layer.
+kept the left hand almost the same as Miryoku. I almost never use any of the keys on 
+this layer. Qwerty and colemak keys switch the default layer between 
+qwerty and colemak.
 
 RGB controls are on the right half of this layer.
 The lower left (DZ_WIN) switches between windows and mac mode. 
