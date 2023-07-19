@@ -45,6 +45,9 @@ those two areas. For example I'm still trying to figure out backspace, hence hav
 it in two places. I really liked it in the middle of the right thumb cluster but
 other things were more important there. 
 
+The function layer lets you switch between colemak and qwerty. I resisted this 
+for a long time but then I needed to use WASD controls for a game and, well,
+I couldn't. So now it is an option.
 
 The layout uses home row mods in the GACS configuration (for windows) or CAGS (for mac). 
 The mod keys change depending on whether the keyboard is in windows or mac
@@ -178,5 +181,5 @@ qmk compile -e CONVERT_TO=kb2040 -e BIG_OLED=yes
 
 # todo
 
-- add a qwerty layer
 - signals in the law layer?
+- add irritating disco words like "interrogatory"
