@@ -216,14 +216,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     int l = get_highest_layer(layer_state);
 
-//    char layer_state_str[24];
-//    snprintf(layer_state_str, sizeof(layer_state_str), "Layer:-%d", layer_state);    
-//    oled_write_ln(layer_state_str, false);
-//    snprintf(layer_state_str, sizeof(layer_state_str), "dflt Layer-%d", default_layer_state);    
-//    oled_write_ln(layer_state_str, false);
+/* debug stuff 
+    char layer_state_str[24];
+    snprintf(layer_state_str, sizeof(layer_state_str), "st-%d", layer_state);    
+    oled_write_ln(layer_state_str, false);
+    snprintf(layer_state_str, sizeof(layer_state_str), "dflt-%d", default_layer_state);    
+    oled_write_ln(layer_state_str, false);
+    snprintf(layer_state_str, sizeof(layer_state_str), "l-%d", l);    
+    oled_write_ln(layer_state_str, false);
 
-    // default layer state is 1 for colemak, two for qwerty
-    if (l==0) {
+//      oled_write_ln("Test1",false);
+//      return ;
+
+*/
+
+    // if highest layer state is 0, it means it could be either 
+    // colemak or qwerty. need to set it to the default 
+    // layer state. if default is 0 then no change.
+    // otherwise subtract one.
+    if (l==0 && default_layer_state>0) {
       l = default_layer_state-1;
     }
 
