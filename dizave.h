@@ -89,6 +89,8 @@ enum my_keycodes {
   DZ_NM2,    // New Mexico
   DZ_F3D,    // F.3d
   DZ_F2D,    // F.2d
+  DZ_P3D,
+  DZ_P2D,
   DZ_ABQ,    // Albuquerque
   DZ_RGB, 
   DZ_SCAP   // cross platform screen cap
