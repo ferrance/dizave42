@@ -91,6 +91,7 @@ enum my_keycodes {
   DZ_F2D,    // F.2d
   DZ_P3D,
   DZ_P2D,
+  DZ_SEE,
   DZ_ABQ,    // Albuquerque
   DZ_RGB, 
   DZ_SCAP   // cross platform screen cap
