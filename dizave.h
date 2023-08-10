@@ -96,6 +96,7 @@ enum my_keycodes {
   DZ_SEEG,   // See, e.g.
   DZ_SALSO,  // See also
   DZ_ID,     // Id.
+  DZ_ID2,    // id.
   DZ_ABQ,    // Albuquerque
   DZ_RGB, 
   DZ_SCAP   // cross platform screen cap
