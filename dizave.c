@@ -381,13 +381,22 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
     case DZ_SALSO:
       if (record->event.pressed) {
         if (is_mac()) {
-          SEND_STRING(SS_LGUI("i")"See also"SS_LGUI("i")", ");
+          SEND_STRING(SS_LGUI("i")"See also"SS_LGUI("i")" ");
         } else {
-          SEND_STRING(SS_LCTL("i")"See also"SS_LCTL("i")", ");
+          SEND_STRING(SS_LCTL("i")"See also"SS_LCTL("i")" ");
         }
       }
       return false;
 
+    case DZ_ID:
+      if (record->event.pressed) {
+        if (is_mac()) {
+          SEND_STRING(SS_LGUI("i")"Id."SS_LGUI("i")" ");
+        } else {
+          SEND_STRING(SS_LCTL("i")"Id."SS_LCTL("i")" ");
+        }
+      }
+      return false;
 
   }  // switch
 
