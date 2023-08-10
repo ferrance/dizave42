@@ -87,11 +87,15 @@ enum my_keycodes {
   DZ_NMCA,   // -NMCA-
   DZ_NM,     // N.M.
   DZ_NM2,    // New Mexico
+  DZ_F4,     // F.4th
   DZ_F3D,    // F.3d
   DZ_F2D,    // F.2d
-  DZ_P3D,
-  DZ_P2D,
-  DZ_SEE,
+  DZ_P3D,    // P.3d
+  DZ_P2D,    // P.2d
+  DZ_SEE,    // See
+  DZ_SEEG,   // See, e.g.
+  DZ_SALSO,  // See also
+  DZ_ID,     // Id.
   DZ_ABQ,    // Albuquerque
   DZ_RGB, 
   DZ_SCAP   // cross platform screen cap
