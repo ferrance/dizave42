@@ -346,6 +346,12 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       }
       return false;
 
+    case DZ_US:
+      if (record->event.pressed) {
+        SEND_STRING("U.S.");
+      }
+      return false;
+
     case DZ_P3D:
       if (record->event.pressed) {
         SEND_STRING("P.3d");

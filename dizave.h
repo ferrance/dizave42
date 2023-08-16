@@ -90,6 +90,7 @@ enum my_keycodes {
   DZ_F4,     // F.4th
   DZ_F3D,    // F.3d
   DZ_F2D,    // F.2d
+  DZ_US,     // U.S. 
   DZ_P3D,    // P.3d
   DZ_P2D,    // P.2d
   DZ_SEE,    // See
