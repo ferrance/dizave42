@@ -98,6 +98,8 @@ enum my_keycodes {
   DZ_ID,     // Id.
   DZ_ID2,    // id.
   DZ_ABQ,    // Albuquerque
+  DZ_EA,     // emphasis added
+  DZ_CO,     // citations omitted
   DZ_RGB, 
   DZ_SCAP   // cross platform screen cap
 };

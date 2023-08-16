@@ -346,6 +346,18 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       }
       return false;
 
+    case DZ_P3D:
+      if (record->event.pressed) {
+        SEND_STRING("P.3d");
+      }
+      return false;
+
+    case DZ_P2D:
+      if (record->event.pressed) {
+        SEND_STRING("P.2d");
+      }
+      return false;
+
     case DZ_ABQ:
       if (record->event.pressed) {
          SEND_STRING("Albuquerque");
@@ -408,6 +420,18 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
         }
       }
       return false;
+
+      case DZ_EA:
+      if (record->event.pressed) {
+        SEND_STRING("(emphasis added)");
+      }
+      return false;      
+
+      case DZ_CO:
+      if (record->event.pressed) {
+        SEND_STRING("(citations omitted)");
+      }
+      return false;      
 
   }  // switch
 
