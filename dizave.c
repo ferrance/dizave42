@@ -433,6 +433,12 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       }
       return false;      
 
+      case DZ_ROG:
+      if (record->event.pressed) {
+        SEND_STRING("Interrogatory");
+      }
+      return false;      
+
   }  // switch
 
   return true;

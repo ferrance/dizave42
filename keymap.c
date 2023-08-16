@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LAW] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX,  DZ_CFR,   DZ_F4, DZ_SEEG, XXXXXXX,                        DZ_RP, DZ_NMSC, DZ_NMRA,   DZ_CO, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX,  DZ_CFR,   DZ_F4, DZ_SEEG, XXXXXXX,                        DZ_RP, DZ_NMSC, DZ_NMRA,   DZ_CO,  DZ_ROG, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,  DZ_ABQ,  DZ_USC,  DZ_F3D,  DZ_SEE,  DZ_P3D,                       DZ_BIC, DZ_NMCA, DZ_NMSA,   DZ_EA, XXXXXXX, DZ_RQOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|

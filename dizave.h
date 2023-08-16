@@ -100,6 +100,7 @@ enum my_keycodes {
   DZ_ABQ,    // Albuquerque
   DZ_EA,     // emphasis added
   DZ_CO,     // citations omitted
+  DZ_ROG,    // Interrogatory
   DZ_RGB, 
   DZ_SCAP   // cross platform screen cap
 };
