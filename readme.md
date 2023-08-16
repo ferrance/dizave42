@@ -183,4 +183,6 @@ qmk compile -e CONVERT_TO=kb2040 -e BIG_OLED=yes
 # todo
 
 - signals in the law layer?
+- id. variants
+- parentheticals?
 - add irritating disco words like "interrogatory"
