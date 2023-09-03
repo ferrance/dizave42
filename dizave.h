@@ -94,6 +94,7 @@ enum my_keycodes {
   DZ_P3D,    // P.3d
   DZ_P2D,    // P.2d
   DZ_SEE,    // See
+  DZ_SID,    // See id. 
   DZ_SEEG,   // See, e.g.
   DZ_SALSO,  // See also
   DZ_ID,     // Id.
