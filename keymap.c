@@ -49,6 +49,7 @@ const char* layer_names[][2] = {
 enum {
   TD_LBKT_LBRC = 0,
   TD_RBKT_RBRC,
+  TD_PAREN
 };
 
 // tap dance definitions
@@ -56,12 +57,14 @@ tap_dance_action_t tap_dance_actions[] = {
   // tap once for left bracket, twice for left brace
   [TD_LBKT_LBRC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
   [TD_RBKT_RBRC] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
+  [TD_PAREN] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
 };
 
 // hit bracket twice for curly brace
 // pondering making a double semicolon be a colon
 #define DZTDLBC TD(TD_LBKT_LBRC)
 #define DZTDRBC TD(TD_RBKT_RBRC)
+#define DZTDPRN TD(TD_PAREN)
 
 
 // key override - make shift backspace send a delete
@@ -120,13 +123,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
     OSL(_LAW),  KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,                      _______, _______, _______, _______, _______, _______, 
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LPRN,    KC_0, KC_RPRN,    _______, _______, _______
+                                          KC_LPRN,    KC_0, DZTDPRN,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
   [_LAW] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX,  DZ_CFR,   DZ_F4, DZ_SEEG,   DZ_US,                        DZ_RP, DZ_NMSC, DZ_NMRA,   DZ_CO,  DZ_ROG, XXXXXXX,
+      XXXXXXX, XXXXXXX,  DZ_CFR,   DZ_F4,  DZ_SID,   DZ_US,                        DZ_RP, DZ_NMSC, DZ_NMRA,   DZ_CO,  DZ_ROG, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,  DZ_ABQ,  DZ_USC,  DZ_F3D,  DZ_SEE,  DZ_P3D,                       DZ_BIC, DZ_NMCA, DZ_NMSA,   DZ_EA, XXXXXXX, DZ_RQOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
