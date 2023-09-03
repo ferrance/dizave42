@@ -49,7 +49,8 @@ const char* layer_names[][2] = {
 enum {
   TD_LBKT_LBRC = 0,
   TD_RBKT_RBRC,
-  TD_PAREN
+  TD_PARENS, 
+  TD_BRACES,
 };
 
 // tap dance definitions
@@ -57,15 +58,16 @@ tap_dance_action_t tap_dance_actions[] = {
   // tap once for left bracket, twice for left brace
   [TD_LBKT_LBRC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
   [TD_RBKT_RBRC] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
-  [TD_PAREN] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
+  [TD_PARENS] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
+  [TD_BRACES] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
 };
 
 // hit bracket twice for curly brace
 // pondering making a double semicolon be a colon
 #define DZTDLBC TD(TD_LBKT_LBRC)
 #define DZTDRBC TD(TD_RBKT_RBRC)
-#define DZTDPRN TD(TD_PAREN)
-
+#define DZTDPRN TD(TD_PARENS)
+#define DZTDBRC TD(TD_BRACES)
 
 // key override - make shift backspace send a delete
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
@@ -86,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        DZ_OSS,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_MINS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_ESC,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM),  DZ_OSS
+                                           KC_ESC,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM), OSL(_LAW)
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -123,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
     OSL(_LAW),  KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,                      _______, _______, _______, _______, _______, _______, 
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LPRN,    KC_0, DZTDPRN,    _______, _______, _______
+                                          DZTDBRC,    KC_0, DZTDPRN,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
