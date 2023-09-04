@@ -13,9 +13,9 @@ experimentation I decided to work on a pair of layouts for these two keyboards t
 inspired by miryoku but that made use of the extra keys.
 
 In some ways this is inferior to simply using miryoku everywhere, an approach which 
-provides the highest level of consistency between keyboards. Nevertheless, I suspect there
-are other people like me out there that like miryoku but wouldn't mind being able to use 
-the extra keys when they are available. Hopefully this layout can fill that need.
+provides the highest level of consistency between keyboards. But I doubt I'll 
+ever go smaller than 42 keys, and I still do rock the lily from time to time. 
+Anyway, this is what I've come up with so far to make my own typing life better.
 
 ## Design Goals
 
@@ -45,7 +45,7 @@ those two areas. For example I'm still trying to figure out backspace, hence hav
 it in two places. I really liked it in the middle of the right thumb cluster but
 other things were more important there. 
 
-The function layer lets you switch between colemak and qwerty. I resisted this 
+The function layer lets you toggle between colemak and qwerty. I resisted this 
 for a long time but then I needed to use WASD controls for a game and, well,
 I couldn't. So now it is an option.
 
@@ -64,13 +64,15 @@ a way to get bilateral combos but with userspace code. This made home row mods
 useable for me.
 
 CAPS_WORD is enabled and configured to activate on a double tap of left shift. 
-This can be used with the two one shot shifts in the thumb clusters.
 
 ### Nav Layer
 ![Nav Layer](images/layer-nav.png)
 
-- close key that is cmd Q on mac and alt F4 on windows
-- key to switch virtual desktops on windows or mac
+Most of this is self explanatory. There are some less obvious things:
+
+- nav-Q: close key that is cmd Q on mac and alt F4 on windows
+- nav-F and -P: keys to switch virtual desktops on windows or mac
+- nav-K: screen capture on either windows or mac
 - the home row keys on this layer are one-shot mods
 
 I tried using the VIM style arrows, I really did. But I just can't.
@@ -87,7 +89,9 @@ The parentheses keys are duplicated under the index and middle fingers of the
 right hand. I have found this easy and useful in many cases where I am entering
 numbers (for example, when entering a phone number with area code).
 
-Double tap the bracket keys to get curly braces.
+You'll notice brackets and parens on the thumb keys. One tap to get the open,
+double tap to get the close. Shift will get you the curly braces on the bracket
+key.
 
 
 ### Function Layer
@@ -98,6 +102,7 @@ this layer. Qwerty and colemak keys switch the default layer between
 qwerty and colemak.
 
 RGB controls are on the right half of this layer.
+
 The lower left (DZ_WIN) switches between windows and mac mode. 
 
 ### Legal Layer
