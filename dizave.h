@@ -104,7 +104,8 @@ enum my_keycodes {
   DZ_CO,     // citations omitted
   DZ_ROG,    // Interrogatory
   DZ_RGB, 
-  DZ_SCAP   // cross platform screen cap
+  DZ_SCAP,   // cross platform screen cap
+  DZ_SCASE   // toggle sentence case
 };
 
 //#define DZ_SPC  LSFT_T(KC_SPC)

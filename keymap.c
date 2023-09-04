@@ -18,8 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include QMK_KEYBOARD_H
-#include "dizave.h"                // the dizave library
-#include "features/achordion.h"    // https://getreuer.info/posts/keyboards/achordion/index.html
+#include "dizave.h"                 // the dizave library
+#include "features/achordion.h"     // https://getreuer.info/posts/keyboards/achordion/index.html
+#include "features/sentence_case.h" // https://getreuer.info/posts/keyboards/sentence-case/index.html
 #include <stdio.h>
 
 // Layers
@@ -111,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, DZ_LGUI, DZ_LALT, DZ_LCTL, DZ_LSFT, _______,                      KC_PGDN, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX,  KC_INS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,                      DZ_SCAP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_CAPS,
+      _______, _______, _______, _______, _______, _______,                      DZ_SCAP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______,OSL(_LAW),OSL(_FUNC)
                                       //`--------------------------'  `--------------------------'
@@ -123,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSPC, KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL,                      XXXXXXX, DZ_RSFT, DZ_RCTL, DZ_LALT, DZ_RGUI, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    OSL(_LAW),  KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,                      _______, _______, _______, _______, _______, _______, 
+      KC_CAPS,  KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,                      _______, _______, _______, _______, _______, _______, 
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           DZTDBRC,    KC_0, DZTDPRN,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
@@ -145,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       DZ_QWTY,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      DZ_CLMK,  KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL,                      RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI,  DZ_RGB,
+      DZ_CLMK,  KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL,                      RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI,DZ_SCASE,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                     RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD,  DZ_WIN,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -180,6 +181,8 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   if (!process_achordion(keycode, record)) { return false; }
+  if (!process_sentence_case(keycode, record)) { return false; }
+  // select word will go here
 
   switch(keycode) {
 
@@ -189,6 +192,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       
     case DZ_CLMK:
       set_single_persistent_default_layer(_COLEMAK);
+      break;
+
+    case DZ_SCASE:
+        sentence_case_toggle();
       break;
 
     default:
@@ -319,8 +326,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             oled_write_ln("",false);	
         }
 
-//          dizave_render_numbers(layer_state==4);
           oled_write_ln("     ", false);
+          if (is_sentence_case_on()) {
+            oled_write_ln("SCASE", true);
+          } else {
+            oled_write_ln("",false);	
+          }
 
           // CAPS LOCK
           if (host_keyboard_led_state().caps_lock) { 
