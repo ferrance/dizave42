@@ -38,7 +38,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // home row mods
 #define TAPPING_FORCE_HOLD
-#define TAPPING_TERM 160
+#define TAPPING_TERM 180
+#define TAPPING_TERM_PER_KEY
+
+//#define HOLD_ON_OTHER_KEY_PRESS
+//#define PERMISSIVE_HOLD
 //#define IGNORE_MOD_TAP_INTERRUPT // remove for qmk 21.0
 
 // dizave supports mac and windows

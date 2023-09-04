@@ -177,6 +177,24 @@ bool achordion_chord(uint16_t tap_hold_keycode,
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
+// I'm playing with a shorter tapping term for the shift keys
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+//        case SFT_T(KC_SPC):
+//            return TAPPING_TERM + 1250;
+        case DZ_T:
+        case DZ_N:
+        case DZQ_F:
+        case DZQ_J:
+          return 150;
+        case KC_LPRN:
+        case KC_LBRC:
+          return 350;
+        default:
+            return TAPPING_TERM;
+    }
+}
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
