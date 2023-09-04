@@ -197,11 +197,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch(keycode) {
 
     case DZ_QWTY:
-       set_single_persistent_default_layer(_QWERTY);
+    {
+      uint8_t cdl = eeconfig_read_default_layer();
+      if (cdl==_QWERTY) {
+        set_single_persistent_default_layer(_COLEMAK);
+      } else {
+        set_single_persistent_default_layer(_QWERTY);
+      }
       break;
       
+    // toggle between colemak and qwerty  
     case DZ_CLMK:
+
+
       set_single_persistent_default_layer(_COLEMAK);
+    }
       break;
 
     case DZ_SCASE:
