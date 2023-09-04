@@ -92,9 +92,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSPC,   DZQ_A,   DZQ_S,   DZQ_D,   DZQ_F,    KC_G,                         KC_H,   DZQ_J,   DZQ_K,   DZQ_L,  DZQ_SC, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_ESC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_MINS,
+       DZ_OSS,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_MINS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LCTL,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM),  DZ_OSS
+                                           KC_ESC,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM), OSL(_LAW)
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -136,9 +136,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FUNC] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      DZ_QWTY,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,DZ_SCASE,
+      XXXXXXX,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,DZ_SCASE,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      DZ_CLMK,  KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL,                      RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI,DZ_SCASE,
+      XXXXXXX,  KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL,                      RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, DZ_CLMK,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                     RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD,  DZ_WIN,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -197,9 +197,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch(keycode) {
 
     case DZ_QWTY:
-    {
-      uint8_t cdl = eeconfig_read_default_layer();
-      if (cdl==_QWERTY) {
+      if (default_layer_state==2) {
         set_single_persistent_default_layer(_COLEMAK);
       } else {
         set_single_persistent_default_layer(_QWERTY);
@@ -208,19 +206,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       
     // toggle between colemak and qwerty  
     case DZ_CLMK:
-
-
-      set_single_persistent_default_layer(_COLEMAK);
-    }
-      break;
+      if (!record->event.pressed) 
+      {
+        if (default_layer_state==2) {
+          set_single_persistent_default_layer(_COLEMAK);
+        } else {
+          set_single_persistent_default_layer(_QWERTY);
+        }
+      }
+      return false;
 
     case DZ_SCASE:
+      if (record->event.pressed) 
+      {        
         sentence_case_toggle();
-      break;
+      }
+      return false;
+//    break;
 
     default:
       return dizave_process_record_user(keycode, record);
-      break;
 
   }  // switch
 
