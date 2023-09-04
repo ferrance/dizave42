@@ -196,14 +196,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch(keycode) {
 
-    case DZ_QWTY:
-      if (default_layer_state==2) {
-        set_single_persistent_default_layer(_COLEMAK);
-      } else {
-        set_single_persistent_default_layer(_QWERTY);
-      }
-      break;
-      
     // toggle between colemak and qwerty  
     case DZ_CLMK:
       if (!record->event.pressed) 
@@ -222,7 +214,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         sentence_case_toggle();
       }
       return false;
-//    break;
+
 
     default:
       return dizave_process_record_user(keycode, record);
