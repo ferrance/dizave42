@@ -30,39 +30,15 @@
     "8 *\nF.4th\n<i class='fa fa-toggle-left'></i>\n\n\n\n\n\n\nF",
     {
       "x": 7,
-      "t": "#00f\n#ff0000\n#086000",
-      "fa": [
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        4
-      ]
+      "t": "#00f\n#ff0000\n#086000"
     },
-    "(\nNMRA\n<i class='fa fa-arrow-up'></i>\n\n\n\n\n\n\nU"
+    "\nNMRA\n<i class='fa fa-arrow-up'></i>\n\n\n\n\n\n\nU"
   ],
   [
     {
       "y": -0.9,
       "x": 2,
-      "t": "#0000ff\n#ff0000\n\n\n\n\n\n\n\n#000",
-      "fa": [
-        2,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        4
-      ]
+      "t": "#0000ff\n#ff0000\n\n\n\n\n\n\n\n#000"
     },
     "7 &\ncfr\n\n\n\n\n\n\n\nW"
   ],
@@ -91,39 +67,15 @@
     },
     "\n-nmsc-\nhome\n\n\n\n\n\n\nL",
     {
-      "x": 1,
-      "fa": [
-        0,
-        1,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        4
-      ]
+      "x": 1
     },
-    ")\nomit\nend\n\n\n\n\n\n\nY"
+    "\nomit\nend\n\n\n\n\n\n\nY"
   ],
   [
     {
       "y": -0.9000000000000001,
       "x": 5,
-      "t": "#0000ff\n#FF0000\n\n\n\n\n\n\n\n#000",
-      "fa": [
-        2,
-        1,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        4
-      ]
+      "t": "#0000ff\n#FF0000\n\n\n\n\n\n\n\n#000"
     },
     "]\nU.S.\n\n\n\n\n\n\n\nG",
     {

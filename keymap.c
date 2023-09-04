@@ -48,27 +48,19 @@ const char* layer_names[][2] = {
 // eventually move to dizave.c and .h?
 //
 enum {
-  TD_LBKT_LBRC = 0,
-  TD_RBKT_RBRC,
-  TD_PARENS, 
+  TD_PARENS = 0, 
   TD_BRACES,
 };
 
 // tap dance definitions
 tap_dance_action_t tap_dance_actions[] = {
-  // tap once for left bracket, twice for left brace
-  [TD_LBKT_LBRC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
-  [TD_RBKT_RBRC] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
   [TD_PARENS] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
   [TD_BRACES] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
 };
 
-// hit bracket twice for curly brace
 // pondering making a double semicolon be a colon
-#define DZTDLBC TD(TD_LBKT_LBRC)
-#define DZTDRBC TD(TD_RBKT_RBRC)
-#define DZTDPRN TD(TD_PARENS)
-#define DZTDBRC TD(TD_BRACES)
+#define DZTDPRN TD(TD_PARENS)  // double tap ( to get )
+#define DZTDBRC TD(TD_BRACES)  // double tap [ to get ]
 
 // key override - make shift backspace send a delete
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
@@ -120,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NUM] = LAYOUT_split_3x6_3(  // number layer
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC, DZTDLBC,    KC_7,    KC_8,    KC_9, DZTDRBC,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+       KC_ESC, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSPC, KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL,                      XXXXXXX, DZ_RSFT, DZ_RCTL, DZ_LALT, DZ_RGUI, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
