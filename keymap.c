@@ -306,7 +306,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   #else 
     bool small_oled(void) {
 
-      int layer = get_highest_layer(layer_state);
+//      int layer = get_highest_layer(layer_state);
 
       if (is_keyboard_master()) {
 
@@ -314,17 +314,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           dizave_render_mods();
           oled_write_ln("    ", false);
 
-        if (layer == _NUM) {       
-            dizave_render_numbers();
-        } else if (layer == _NAV) {
-            dizave_render_nav(12,5);
-        } else {
+//        if (layer == _NUM) {       
+//            dizave_render_numbers();
+//        } else if (layer == _NAV) {
+//            dizave_render_nav(12,5);
+//        } else {
             // if nothing else to do, display the logo at bottom
             oled_write_ln("",false);	
             oled_write_ln("",false);	
-            oled_write_ln("",false);	
-            oled_write_ln("",false);	
-        }
+//            oled_write_ln("",false);	
+//            oled_write_ln("",false);	
+//        }
 
           oled_write_ln("     ", false);
           if (is_sentence_case_on()) {

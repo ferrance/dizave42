@@ -305,7 +305,9 @@ __attribute__((weak)) char sentence_case_press_user(uint16_t keycode,
                                                     keyrecord_t* record,
                                                     uint8_t mods) {
   if ((mods & ~(MOD_MASK_SHIFT | MOD_BIT(KC_RALT))) == 0) {
+//  if (1) {
     const bool shifted = mods & MOD_MASK_SHIFT;
+
     switch (keycode) {
       case KC_LCTL ... KC_RGUI:  // Mod keys.
         return '\0';  // These keys are ignored.
@@ -318,6 +320,8 @@ __attribute__((weak)) char sentence_case_press_user(uint16_t keycode,
       case KC_1:
       case KC_SLSH:
         return shifted ? '.' : '#';
+      case KC_EXLM: // daf added this
+        return '.';
       case KC_2 ... KC_0:  // 2 3 4 5 6 7 8 9 0
       case KC_MINS ... KC_SCLN:  // - = [ ] ; backslash
       case KC_GRV:
