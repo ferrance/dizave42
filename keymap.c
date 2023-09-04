@@ -180,16 +180,16 @@ bool achordion_chord(uint16_t tap_hold_keycode,
 // I'm playing with a shorter tapping term for the shift keys
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-//        case SFT_T(KC_SPC):
-//            return TAPPING_TERM + 1250;
-        case DZ_T:
+
+        case DZ_T:  // make it a little faster for the shift home row mods
         case DZ_N:
         case DZQ_F:
         case DZQ_J:
-          return 150;
-        case KC_LPRN:
-        case KC_LBRC:
-          return 350;
+          return 160;
+
+        case DZTDPRN: // 180 was a little too fast for the parens
+        case DZTDBRC:
+          return 220;
         default:
             return TAPPING_TERM;
     }
