@@ -1,6 +1,6 @@
 # dizave42
 
-![crkbd dizave42](https://raw.githubusercontent.com/ferrance/dizave42/main/images/crkbd-dizave42.jpg)
+![crkbd dizave42](https://raw.githubusercontent.com/ferrance/dizave42/main/images/dizave42.jpg)
 
 The lily58 was my first alternative keyboard and is still a favorite. I knew right away
 however that I was going to want to go a bit smaller. I looked for a layout that worked on
@@ -37,7 +37,7 @@ however.
 ### Colemak
 
 
-![Default Layer](images/layer-colemak.png)
+![Default Layer](https://raw.githubusercontent.com/ferrance/dizave42/main/images/crkbd-dizave42.jpg)
 
 This is my primary layer--standard colemak. I've departed from Miryoku in the
 thumb cluster and of course in the sixth columns. I'm still experimenting with 
