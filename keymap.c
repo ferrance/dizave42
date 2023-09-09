@@ -50,17 +50,20 @@ const char* layer_names[][2] = {
 enum {
   TD_PARENS = 0, 
   TD_BRACES,
+  TD_CBRACES
 };
 
 // tap dance definitions
 tap_dance_action_t tap_dance_actions[] = {
   [TD_PARENS] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
   [TD_BRACES] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
+  [TD_CBRACES]= ACTION_TAP_DANCE_DOUBLE(S(KC_LBRC), S(KC_RBRC))
 };
 
 // pondering making a double semicolon be a colon
 #define DZTDPRN TD(TD_PARENS)  // double tap ( to get )
 #define DZTDBRC TD(TD_BRACES)  // double tap [ to get ]
+#define DZTDCBR TD(TD_CBRACES) // double tap { to get }
 
 // key override - make shift backspace send a delete
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
@@ -112,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NUM] = LAYOUT_split_3x6_3(  // number layer
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,                      XXXXXXX, DZTDPRN, DZTDBRC, XXXXXXX, XXXXXXX, _______,
+       KC_ESC, XXXXXXX,    KC_7,    KC_8,    KC_9, XXXXXXX,                      XXXXXXX, DZTDPRN, DZTDBRC, DZTDCBR, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSPC, KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL,                      XXXXXXX, DZ_RSFT, DZ_RCTL, DZ_LALT, DZ_RGUI, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
