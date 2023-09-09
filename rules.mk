@@ -1,10 +1,10 @@
 # only one of these should be enabled
 RGBLIGHT_ENABLE = no    # Enable WS2812 RGB underlight.
 RGB_MATRIX_ENABLE = yes
-RGB_MATRIX_DRIVER = WS2812
+RGB_MATRIX_DRIVER = ws2812
 
 OLED_ENABLE     = yes
-OLED_DRIVER     = SSD1306
+OLED_DRIVER     = ssd1306
 
 # be small
 LTO_ENABLE      = yes
