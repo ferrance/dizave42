@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "dizave.h"                 // the dizave library
 #include "features/achordion.h"     // https://getreuer.info/posts/keyboards/achordion/index.html
 #include "features/sentence_case.h" // https://getreuer.info/posts/keyboards/sentence-case/index.html
+#include "features/select_word.h"   // https://getreuer.info/posts/keyboards/select-word/index.html
 #include <stdio.h>
 
 // Layers
@@ -107,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, DZ_LGUI, DZ_LALT, DZ_LCTL, DZ_LSFT, _______,                      KC_PGDN, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX,  KC_INS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,                      DZ_SCAP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      _______, _______, _______, _______, _______, _______,                      SELWORD, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DZ_SCAP,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______,OSL(_LAW),OSL(_FUNC)
                                       //`--------------------------'  `--------------------------'
@@ -195,7 +196,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   if (!process_achordion(keycode, record)) { return false; }
   if (!process_sentence_case(keycode, record)) { return false; }
-  // select word will go here
+  if (!process_select_word(keycode, record, SELWORD, is_mac())) { return false; }
 
   switch(keycode) {
 

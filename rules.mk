@@ -33,3 +33,4 @@ endif
 SRC += ./dizave.c
 SRC += features/achordion.c
 SRC += features/sentence_case.c
+SRC += features/select_word.c

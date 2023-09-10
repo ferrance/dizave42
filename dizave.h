@@ -105,7 +105,8 @@ enum my_keycodes {
   DZ_ROG,    // Interrogatory
   DZ_RGB, 
   DZ_SCAP,   // cross platform screen cap
-  DZ_SCASE   // toggle sentence case
+  DZ_SCASE,  // toggle sentence case
+  SELWORD    // select word function
 };
 
 //#define DZ_SPC  LSFT_T(KC_SPC)

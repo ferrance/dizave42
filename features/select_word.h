@@ -44,7 +44,9 @@ extern "C" {
 
 /** Handler function for select word. */
 bool process_select_word(uint16_t keycode, keyrecord_t* record,
-                         uint16_t sel_keycode);
+                         uint16_t sel_keycode,
+                         bool is_mac                // Daf - added for mac support 
+                         );
 
 /**
  * @fn select_word_task(void)

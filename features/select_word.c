@@ -11,6 +11,12 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
+//  2023 09 10  daf   breaking change--I made is_mac a parameter, not a #define
+//                    this is because my keebs have mac and pc modes and I need to be
+//                    able to switch back and forth
+//                    note that while select_word works in word, it does not work in every
+//                    app. For example, it doesn't work in textedit on mac
 
 /**
  * @file select_word.c
@@ -48,7 +54,7 @@ void select_word_task(void) {
 #endif  // SELECT_WORD_TIMEOUT > 0
 
 bool process_select_word(uint16_t keycode, keyrecord_t* record,
-                         uint16_t sel_keycode) {
+                         uint16_t sel_keycode, bool is_mac) {
   if (keycode == KC_LSFT || keycode == KC_RSFT) {
     return true;
   }
@@ -67,11 +73,13 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record,
 #endif  // NO_ACTION_ONESHOT
 
     if (!shifted) {  // Select word.
-#ifdef MAC_HOTKEYS
-      set_mods(MOD_BIT(KC_LALT));  // Hold Left Alt (Option).
-#else
-      set_mods(MOD_BIT(KC_LCTL));  // Hold Left Ctrl.
-#endif  // MAC_HOTKEYS
+
+      if (is_mac) {
+        set_mods(MOD_BIT(KC_LALT));  // Hold Left Alt (Option).
+      } else {
+        set_mods(MOD_BIT(KC_LCTL));  // Hold Left Ctrl.
+      }
+
       if (state == STATE_NONE) {
         // On first use, tap Ctrl+Right then Ctrl+Left (or with Alt on Mac) to
         // ensure the cursor is positioned at the beginning of the word.
@@ -84,21 +92,23 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record,
       state = STATE_WORD;
     } else {  // Select line.
       if (state == STATE_NONE) {
-#ifdef MAC_HOTKEYS
+
+      if (is_mac) {
         // Tap GUI (Command) + Left, then Shift + GUI + Right.
         set_mods(MOD_BIT(KC_LGUI));
         send_keyboard_report();
         tap_code(KC_LEFT);
         register_mods(MOD_BIT(KC_LSFT));
         tap_code(KC_RGHT);
-#else
+      } else {
         // Tap Home, then Shift + End.
         clear_mods();
         send_keyboard_report();
         tap_code(KC_HOME);
         register_mods(MOD_BIT(KC_LSFT));
         tap_code(KC_END);
-#endif  // MAC_HOTKEYS
+      }
+
         set_mods(mods);
         state = STATE_FIRST_LINE;
       } else {
@@ -113,11 +123,11 @@ bool process_select_word(uint16_t keycode, keyrecord_t* record,
   switch (state) {
     case STATE_WORD:
       unregister_code(KC_RGHT);
-#ifdef MAC_HOTKEYS
+      if (is_mac) {
       unregister_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_LALT));
-#else
+      } else {
       unregister_mods(MOD_BIT(KC_LSFT) | MOD_BIT(KC_LCTL));
-#endif  // MAC_HOTKEYS
+      }
       state = STATE_SELECTED;
       break;
 
