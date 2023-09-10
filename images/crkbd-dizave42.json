@@ -93,7 +93,7 @@
     {
       "x": 1
     },
-    "{ }\nomit\nend\n\n\n\n\n\n\nY"
+    "{ }\n(co)\nend\n\n\n\n\n\n\nY"
   ],
   [
     {
@@ -165,7 +165,7 @@
       "fa": [
         1,
         1,
-        0,
+        1,
         1,
         0,
         0,
@@ -175,7 +175,7 @@
         4
       ]
     },
-    "\n\n\nscase\n\n\n\n\n\n\\ |"
+    "\n\ndel\nscase\n\n\n\n\n\n\\ |"
   ],
   [
     {
@@ -186,7 +186,7 @@
       "fa": [
         2,
         1,
-        0,
+        1,
         1,
         0,
         0,
@@ -199,7 +199,19 @@
     "5 %\nF.3d\n\n\nctl\n\n\n\n\nS",
     {
       "x": 7,
-      "t": "#00f\n#ff0000\n#086000"
+      "t": "#00f\n#ff0000\n#086000",
+      "fa": [
+        2,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4
+      ]
     },
     "\nNMSA\n<i class='fa fa-arrow-down'></i>\n\n\nctl\n\n\n\nE"
   ],
@@ -225,7 +237,7 @@
     {
       "x": 1
     },
-    "\nadded\n<i class='fa fa-arrow-right'></i>\n\n\nalt\n\n\n\nI"
+    "\n(ea)\n<i class='fa fa-arrow-right'></i>\n\n\nalt\n\n\n\nI"
   ],
   [
     {
@@ -244,13 +256,21 @@
   [
     {
       "y": -0.9000000000000001,
-      "t": "#000000",
-      "a": 7,
+      "t": "#0000ff",
       "fa": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
         4
       ]
     },
-    "Bksp",
+    "del\n\n\n\n\n\n\n\n\nBksp",
     {
       "t": "#0000ff\n#FF0000\n\n\n\n\n\n\n\n#000",
       "a": 0,
@@ -258,7 +278,7 @@
         2,
         1,
         0,
-        0,
+        1,
         0,
         0,
         0,
@@ -320,7 +340,9 @@
       "y": -0.8999999999999999,
       "x": 2,
       "t": "#0000ff\n\n\n\n\n\n\n\n\n#000",
-      "f": 3
+      "fa": [
+        2
+      ]
     },
     "1 !\n\n\n\n\n\n\n\n\nX",
     {
@@ -332,7 +354,10 @@
     {
       "x": 5,
       "t": "#00f\n#ff0000",
-      "f": 3
+      "fa": [
+        2,
+        1
+      ]
     },
     "\nN.M.\n\n\n\n\n\n\n\nM",
     {
@@ -350,8 +375,8 @@
       "fa": [
         0,
         1,
-        1,
-        1,
+        0,
+        0,
         0,
         0,
         0,
@@ -367,8 +392,8 @@
       "fa": [
         0,
         1,
-        0,
         1,
+        0,
         0,
         0,
         0,
@@ -377,7 +402,7 @@
         4
       ]
     },
-    "\n[ab]\n<i class='fa fa-photo'></i>\n\n\n\n\n\n\nK"
+    "\n[ab]\nselword\n\n\n\n\n\n\nK"
   ],
   [
     {
@@ -386,8 +411,8 @@
       "fa": [
         1,
         1,
-        0,
         1,
+        0,
         0,
         0,
         0,
@@ -415,7 +440,7 @@
         2
       ]
     },
-    "_\n-\n\n<i class='fa fa-apple'></i>&nbsp;<i class='fa fa-windows'></i>"
+    "_\n-\n<i class='fa fa-photo'></i>\n<i class='fa fa-apple'></i>&nbsp;<i class='fa fa-windows'></i>"
   ],
   [
     {
