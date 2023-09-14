@@ -41,23 +41,22 @@ however.
 
 This is my primary layer--standard colemak. I've departed from Miryoku in the
 thumb cluster and of course in the sixth columns. I'm still experimenting with 
-those two areas. For example I'm still trying to figure out backspace, hence having 
-it in two places. I really liked it in the middle of the right thumb cluster but
-other things were more important there. 
+those two areas. 
 
 The function layer lets you toggle between colemak and qwerty. I resisted this 
 for a long time but then I needed to use WASD controls for a game and, well,
-I couldn't. So now it is an option.
+I couldn't do that with colemak. So now it is an option.
 
 The layout uses home row mods in the GACS configuration (for windows) or CAGS (for mac). 
 The mod keys change depending on whether the keyboard is in windows or mac
 mode so that the most important key is under my middle finger regardless
-of which OS I'm on (I switch constantly).
+of which OS I'm on (I switch constantly). In other words command-S and ctrl-S
+to save are the same keystroke for me.
 
 For a thorough overview of home row mods, check out
 [precondition's page](https://precondition.github.io/home-row-mods).
 
-I do have some problems with the home row keys, at least on the pinky and ring fingers. 
+I did have some problems with the home row keys, at least on the pinky and ring fingers. 
 I've used [achordion](https://github.com/getreuer/qmk-keymap) to eliminate
 the issues I was having with home row mod rolls. For my purposes, it is basically
 a way to get bilateral combos but with userspace code. This made home row mods 
@@ -72,11 +71,17 @@ Most of this is self explanatory. There are some less obvious things:
 
 - nav-Q: close key that is cmd Q on mac and alt F4 on windows
 - nav-F and -P: keys to switch virtual desktops on windows or mac
-- nav-K: screen capture on either windows or mac
 - the home row keys on this layer are one-shot mods
+- nav-dash: Screen capture, OS-aware.
+
+I added word navigation, left and right, under the left and right 
+arrows. These keys will go forward or back a word, at least in 
+Microsoft Word, and are OS-aware. Nav-n is select word, which
+is similar to word-right but holds shift down to select entire
+words.
 
 I tried using the VIM style arrows, I really did. But I just can't.
-This is one area where I had to depart from Miryoku, the nav layer
+This is one area where I had to depart from Miryoku, the arrows
 just didn't work for me. My brain needs up to be above down, not to
 the right of it.
 
@@ -89,9 +94,8 @@ The parentheses keys are duplicated under the index and middle fingers of the
 right hand. I have found this easy and useful in many cases where I am entering
 numbers (for example, when entering a phone number with area code).
 
-You'll notice brackets and parens on the thumb keys. One tap to get the open,
-double tap to get the close. Shift will get you the curly braces on the bracket
-key.
+Parens, brackets, and curly braces are on the right hand. One tap to get the open,
+double tap to get the close. 
 
 
 ### Function Layer
@@ -120,8 +124,6 @@ The quote gives you a close quote single quote, the kind you use at
 the beginning of a shortened patent number that can be such a pain to
 enter.
 
-Some of this uses unicode. I'm running wincompose on windows and using unicode
-hex input on mac.
 
 ## The Displays
 
@@ -144,8 +146,9 @@ pressed, that modifier is highlighted in the display.
 
 Finally, the display will show "CAPS" when the caps lock is on.
 
-When the number layer is active, the left display shows the keymap for the main 5x3 keys.
-If you hit shift it will show the shifted values.
+On the large OLED version, when the number layer is active, the left display shows the keymap for the main 5x3 keys.
+If you hit shift it will show the shifted values. I took this out for 128x32 because there 
+just isn't enough screen real estate.
 
 ## Lighting
 
@@ -163,14 +166,16 @@ The keymap decides what mode it is in by looking at whether gui
 and control have been swapped. This setting is stored in the EEPROM
 so it is persistent. The current status is shown in the OLED as an apple or a windows symbol. 
 
+To make unicode work, I'm running wincompose on windows and using unicode
+hex input on mac.
+
 The main difference is that the gui and control keys are swapped. 
 The keyboard also chooses its unicode mode based on which OS is 
 configured.
 
 # Builds
 
-I use this on promicros and adafruit 2040s, so it has to compile for both platforms.
-By default, it will compile for the promicro.
+By default, it will compile for the promicro. But I only use KB2040's now.
 To compile a .UF2 for the kb2040, use
 
 ```
@@ -189,5 +194,4 @@ qmk compile -e CONVERT_TO=kb2040 -e BIG_OLED=yes
 
 - signals in the law layer?
 - id. variants
-- parentheticals?
 - add irritating disco words like "interrogatory"
