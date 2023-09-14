@@ -454,6 +454,16 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       }
       return false;      
 
+      case WLEFT:
+      if (record->event.pressed) {
+        if (is_mac()) {
+          SEND_STRING(SS_LALT(SS_TAP(KC_LEFT)));
+        } else {
+          SEND_STRING(SS_LCTL("i")"id."SS_LCTL("i")" ");
+        }
+      }    
+      return false;
+
   }  // switch
 
   return true;
