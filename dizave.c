@@ -379,9 +379,9 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
     case DZ_SEE:
       if (record->event.pressed) {
         if (is_mac()) {
-          SEND_STRING(SS_LGUI("i")"See"SS_LGUI("i")" ");
+          SEND_STRING(SS_LGUI("i")"see"SS_LGUI("i")" ");
         } else {
-          SEND_STRING(SS_LCTL("i")"See"SS_LCTL("i")" ");
+          SEND_STRING(SS_LCTL("i")"see"SS_LCTL("i")" ");
         }
       }
       return false;
