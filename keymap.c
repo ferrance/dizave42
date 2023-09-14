@@ -132,9 +132,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,  DZ_ABQ,  DZ_USC,  DZ_F3D,  DZ_SEE,  DZ_P3D,                       DZ_BIC, DZ_NMCA, DZ_NMSA,   DZ_EA, XXXXXXX, DZ_RQOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,  DZ_NM2, XXXXXXX,  DZ_F2D,DZ_SALSO,  DZ_P2D,                        DZ_AB,   DZ_NM, XXXXXXX, XXXXXXX, XXXXXXX, DZ_EMDS,
+       DZ_OSS,  DZ_NM2, XXXXXXX,  DZ_F2D,DZ_SALSO,  DZ_P2D,                        DZ_AB,   DZ_NM, XXXXXXX, XXXXXXX, XXXXXXX, DZ_EMDS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          DZ_NBSP,  DZ_SEC, DZ_PARA,      DZ_ID,  DZ_ID2, OSL(_FUNC)
+                                           DZ_SEC, DZ_PARA,  DZ_ID2,      DZ_ID,  DZ_ID2, OSL(_FUNC)
                                       //`--------------------------'  `--------------------------'
   ),
 
