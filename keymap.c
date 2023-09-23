@@ -104,11 +104,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_NAV] = LAYOUT_split_3x6_3(  // nav layer
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC, DZ_CLSE, XXXXXXX, DZ_VDLT, DZ_VDRT, XXXXXXX,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END, XXXXXXX,  KC_DEL,
+       KC_ESC, DZ_CLSE, XXXXXXX, DZ_VDLT, DZ_VDRT, XXXXXXX,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END, XXXXXXX,   WBSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, DZ_LGUI, DZ_LALT, DZ_LCTL, DZ_LSFT, _______,                      KC_PGDN, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX,  KC_INS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,                      SELWORD,   WLEFT, XXXXXXX,  WRIGHT, XXXXXXX, DZ_SCAP,
+      _______, _______, _______, _______, _______, _______,                      XXXXXXX,   WLEFT, SELWORD,  WRIGHT, XXXXXXX, DZ_SCAP,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______,OSL(_LAW),OSL(_FUNC)
                                       //`--------------------------'  `--------------------------'
@@ -118,11 +118,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_ESC, XXXXXXX,    KC_7,    KC_8,    KC_9, KC_PPLS,                      XXXXXXX, DZTDPRN, DZTDBRC, DZTDCBR, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_BSPC, KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL,                      XXXXXXX, DZ_RSFT, DZ_RCTL, DZ_LALT, DZ_RGUI, _______,
+      _______,S(KC_SCLN),  KC_4,    KC_5,    KC_6,  KC_EQL,                      XXXXXXX, DZ_RSFT, DZ_RCTL, DZ_LALT, DZ_RGUI, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_CAPS,  KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,                      _______, _______, _______, _______, _______, _______, 
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          DZTDBRC,    KC_0, _______,    _______, _______, _______
+                                          DZTDPRN,    KC_0, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        DZ_OSS,  DZ_NM2, XXXXXXX,  DZ_F2D,DZ_SALSO,  DZ_P2D,                        DZ_AB,   DZ_NM, XXXXXXX, XXXXXXX, XXXXXXX, DZ_EMDS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           DZ_SEC, DZ_PARA,  DZ_ID2,      DZ_ID,  DZ_ID2, OSL(_FUNC)
+                                           DZ_SEC, DZ_PARA,  DZ_ID2,    _______, _______,OSL(_FUNC)
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -195,7 +195,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   if (!process_achordion(keycode, record)) { return false; }
-  if (!process_sentence_case(keycode, record)) { return false; }
+//  if (!process_sentence_case(keycode, record)) { return false; }
   if (!process_select_word(keycode, record, SELWORD, is_mac())) { return false; }
 
   switch(keycode) {

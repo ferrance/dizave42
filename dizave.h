@@ -106,8 +106,9 @@ enum my_keycodes {
   DZ_RGB, 
   DZ_SCAP,   // cross platform screen cap
   DZ_SCASE,  // toggle sentence case
-  WLEFT,
-  WRIGHT,
+  WLEFT,     // navigate one word left 
+  WRIGHT,    // navigate one word right
+  WBSPC,      // backsepace one word
   SELWORD    // select word function
 };
 

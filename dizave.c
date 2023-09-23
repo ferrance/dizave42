@@ -473,7 +473,19 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
         }
       }    
       return false;
+
+      case WBSPC:
+      if (record->event.pressed) {
+        if (is_mac()) {
+          SEND_STRING(SS_LALT(SS_TAP(X_BSPC)));
+        } else {
+          SEND_STRING(SS_LCTL(SS_TAP(X_BSPC)));
+        }
+      }    
+      return false;
+
   }  // switch
+
 
   return true;
 }
