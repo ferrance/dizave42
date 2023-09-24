@@ -22,6 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "features/achordion.h"     // https://getreuer.info/posts/keyboards/achordion/index.html
 #include "features/sentence_case.h" // https://getreuer.info/posts/keyboards/sentence-case/index.html
 #include "features/select_word.h"   // https://getreuer.info/posts/keyboards/select-word/index.html
+
 #include <stdio.h>
 
 // Layers
@@ -56,29 +57,6 @@ enum {
   TD_CLOSE
 };
 
-void dz_open(tap_dance_state_t *state, void *user_data)
-{
-  if (state->count == 1) {
-    SEND_STRING( SS_LSFT(SS_TAP(X_9)) );
-  } else if (state->count == 2) {
-    SEND_STRING( SS_TAP(X_LBRC) );
-  } else if (state->count == 3) {
-    SEND_STRING( SS_LSFT(SS_TAP(X_LBRC)) );
-  }
-
-}
-
-void dz_close(tap_dance_state_t *state, void *user_data)
-{
-  if (state->count == 1) {
-    SEND_STRING( SS_LSFT(SS_TAP(X_0)) );
-  } else if (state->count == 2) {
-    SEND_STRING( SS_TAP(X_RBRC) );
-  } else if (state->count == 3) {
-    SEND_STRING( SS_LSFT(SS_TAP(X_RBRC)) );
-  }
-
-}
 // tap dance definitions
 tap_dance_action_t tap_dance_actions[] = {
   [TD_PARENS] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
@@ -112,9 +90,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSPC,    DZ_A,    DZ_R,    DZ_S,    DZ_T,    KC_D,                         KC_H,    DZ_N,    DZ_E,    DZ_I,    DZ_O, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       DZ_OSS,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_MINS,
+       KC_ESC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_MINS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_ESC,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM), OSL(_LAW)
+                                           DZ_OSS,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM), DZ_OSSR
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -125,9 +103,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSPC,   DZQ_A,   DZQ_S,   DZQ_D,   DZQ_F,    KC_G,                         KC_H,   DZQ_J,   DZQ_K,   DZQ_L,  DZQ_SC, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       DZ_OSS,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_MINS,
+       KC_ESC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_MINS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_ESC,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM), OSL(_LAW)
+                                           DZ_OSS,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM),DZ_OSSR
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -149,9 +127,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,S(KC_SCLN),  KC_4,    KC_5,    KC_6,  KC_EQL,                      XXXXXXX, DZ_RSFT, DZ_RCTL, DZ_LALT, DZ_RGUI, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_CAPS,  KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,                      _______, _______, _______, _______, _______, _______, 
+      _______,  KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,                      _______, _______, _______, _______, _______, _______, 
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______,    KC_0, _______,    _______, _______, _______
+                                          KC_CAPS,    KC_0, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 

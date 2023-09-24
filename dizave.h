@@ -27,6 +27,9 @@ void dizave_render_bootmagic_status(bool);
 void dizave_render_bootmagic_status_at(bool, uint8_t, uint8_t);
 bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record);
 
+void dz_open(tap_dance_state_t *state, void *user_data);
+void dz_close(tap_dance_state_t *state, void *user_data);
+
 void plot_line (int, int, int, int, bool);
 
 #ifdef OLED_DISPLAY_128X64
@@ -114,6 +117,7 @@ enum my_keycodes {
 
 //#define DZ_SPC  LSFT_T(KC_SPC)
 #define DZ_OSS  OSM(MOD_LSFT)
+#define DZ_OSSR OSM(MOD_RSFT)
 
 // Legal macros that are not keycodes
 #define DZ_LAW  OSL(_LEGAL)

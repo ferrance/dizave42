@@ -50,6 +50,30 @@ void dizave_set_mac_mode(void) {
   set_unicode_input_mode(UNICODE_MODE_MACOS);
 }
 
+void dz_open(tap_dance_state_t *state, void *user_data)
+{
+  if (state->count == 1) {
+    SEND_STRING( SS_LSFT(SS_TAP(X_9)) );
+  } else if (state->count == 2) {
+    SEND_STRING( SS_TAP(X_LBRC) );
+  } else if (state->count == 3) {
+    SEND_STRING( SS_LSFT(SS_TAP(X_LBRC)) );
+  }
+
+}
+
+void dz_close(tap_dance_state_t *state, void *user_data)
+{
+  if (state->count == 1) {
+    SEND_STRING( SS_LSFT(SS_TAP(X_0)) );
+  } else if (state->count == 2) {
+    SEND_STRING( SS_TAP(X_RBRC) );
+  } else if (state->count == 3) {
+    SEND_STRING( SS_LSFT(SS_TAP(X_RBRC)) );
+  }
+
+}
+
 void dizave_render_bootmagic_status_at(bool status, uint8_t col, uint8_t line) {
     /* Show Ctrl-Gui Swap options */
     static const char PROGMEM logo[][2][3] = {
