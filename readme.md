@@ -25,6 +25,7 @@ advantage of the extra keys on the lily58 and six-row corne
 - Support unicode characters on windows and mac
 - Make better use of the display
 - use something like bilateral combos to mitigate effect of home row rolls
+- space key only means space
 
 And, for my use case, the layout needs to accommodate both legal writing and programming.
 

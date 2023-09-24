@@ -51,20 +51,49 @@ const char* layer_names[][2] = {
 enum {
   TD_PARENS = 0, 
   TD_BRACES,
-  TD_CBRACES
+  TD_CBRACES, 
+  TD_OPEN,
+  TD_CLOSE
 };
 
+void dz_open(tap_dance_state_t *state, void *user_data)
+{
+  if (state->count == 1) {
+    SEND_STRING( SS_LSFT(SS_TAP(X_9)) );
+  } else if (state->count == 2) {
+    SEND_STRING( SS_TAP(X_LBRC) );
+  } else if (state->count == 3) {
+    SEND_STRING( SS_LSFT(SS_TAP(X_LBRC)) );
+  }
+
+}
+
+void dz_close(tap_dance_state_t *state, void *user_data)
+{
+  if (state->count == 1) {
+    SEND_STRING( SS_LSFT(SS_TAP(X_0)) );
+  } else if (state->count == 2) {
+    SEND_STRING( SS_TAP(X_RBRC) );
+  } else if (state->count == 3) {
+    SEND_STRING( SS_LSFT(SS_TAP(X_RBRC)) );
+  }
+
+}
 // tap dance definitions
 tap_dance_action_t tap_dance_actions[] = {
   [TD_PARENS] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
   [TD_BRACES] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
-  [TD_CBRACES]= ACTION_TAP_DANCE_DOUBLE(S(KC_LBRC), S(KC_RBRC))
+  [TD_CBRACES]= ACTION_TAP_DANCE_DOUBLE(S(KC_LBRC), S(KC_RBRC)),
+  [TD_OPEN] = ACTION_TAP_DANCE_FN(dz_open),
+  [TD_CLOSE] = ACTION_TAP_DANCE_FN(dz_close)
 };
 
 // pondering making a double semicolon be a colon
 #define DZTDPRN TD(TD_PARENS)  // double tap ( to get )
 #define DZTDBRC TD(TD_BRACES)  // double tap [ to get ]
 #define DZTDCBR TD(TD_CBRACES) // double tap { to get }
+#define DZOPEN  TD(TD_OPEN)
+#define DZCLOSE TD(TD_CLOSE)
 
 // key override - make shift backspace send a delete
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
@@ -110,31 +139,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, _______, _______, _______, _______, _______,                      XXXXXXX,   WLEFT, SELWORD,  WRIGHT, XXXXXXX, DZ_SCAP,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, _______, _______,    _______,OSL(_LAW),OSL(_FUNC)
+                                          _______, _______, _______, OSL(_FUNC),OSL(_LAW),_______
                                       //`--------------------------'  `--------------------------'
   ),
 
   [_NUM] = LAYOUT_split_3x6_3(  // number layer
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC, XXXXXXX,    KC_7,    KC_8,    KC_9, KC_PPLS,                      XXXXXXX, DZTDPRN, DZTDBRC, DZTDCBR, XXXXXXX, _______,
+       KC_ESC, XXXXXXX,    KC_7,    KC_8,    KC_9, KC_PPLS,                      XXXXXXX,  DZOPEN, DZCLOSE, DZTDCBR, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,S(KC_SCLN),  KC_4,    KC_5,    KC_6,  KC_EQL,                      XXXXXXX, DZ_RSFT, DZ_RCTL, DZ_LALT, DZ_RGUI, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_CAPS,  KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,                      _______, _______, _______, _______, _______, _______, 
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          DZTDPRN,    KC_0, _______,    _______, _______, _______
+                                          _______,    KC_0, _______,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
   [_LAW] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX,  DZ_CFR,   DZ_F4,  DZ_SID,   DZ_US,                        DZ_RP, DZ_NMSC, DZ_NMRA,   DZ_CO,  DZ_ROG, XXXXXXX,
+      XXXXXXX, XXXXXXX,  DZ_CFR,   DZ_F4,  DZ_SEE,   DZ_US,                        DZ_RP, DZ_NMSC, DZ_NMRA,   DZ_CO,  DZ_ROG, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,  DZ_ABQ,  DZ_USC,  DZ_F3D,  DZ_SEE,  DZ_P3D,                       DZ_BIC, DZ_NMCA, DZ_NMSA,   DZ_EA, XXXXXXX, DZ_RQOT,
+      XXXXXXX,  DZ_ABQ,  DZ_USC,  DZ_F3D,  DZ_ID2,  DZ_P3D,                       DZ_BIC, DZ_NMCA, DZ_NMSA,   DZ_EA, XXXXXXX, DZ_RQOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       DZ_OSS,  DZ_NM2, XXXXXXX,  DZ_F2D,DZ_SALSO,  DZ_P2D,                        DZ_AB,   DZ_NM, XXXXXXX, XXXXXXX, XXXXXXX, DZ_EMDS,
+       DZ_OSS,  DZ_NM2, XXXXXXX,  DZ_F2D, XXXXXXX,  DZ_P2D,                        DZ_AB,   DZ_NM, XXXXXXX, XXXXXXX, XXXXXXX, DZ_EMDS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           DZ_SEC, DZ_PARA,  DZ_ID2,    _______, _______,OSL(_FUNC)
+                                           DZ_SEC, DZ_PARA, _______,    _______, _______,OSL(_FUNC)
                                       //`--------------------------'  `--------------------------'
   ),
 
