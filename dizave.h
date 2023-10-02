@@ -69,13 +69,14 @@ void dizave_render_numbers(void);
 #define DZ_RGUI OSM(MOD_RGUI)
 
 //#define DZ_VDRT G(C(KC_RIGHT))
-#define DZ_VDLT G(C(KC_LEFT))
+//#define DZ_VDLT G(C(KC_LEFT))
 
 // Dizave Keycodes
 enum my_keycodes {
   DZ_WIN = SAFE_RANGE,
 //  DZ_MAC,    // switch to mac mode  (not used?)
-  DZ_VDRT,
+  DZ_VDRT,   // switch virtual desktops - right
+  DZ_VDLT,   // switch virtual desktops - left
   DZ_QWTY,   // switch base layer to qwerty
   DZ_CLMK,   // switch base layer to colemak
   DZ_CLSE,   // close window
