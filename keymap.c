@@ -20,7 +20,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include "dizave.h"                 // the dizave library
 #include "features/achordion.h"     // https://getreuer.info/posts/keyboards/achordion/index.html
-#include "features/sentence_case.h" // https://getreuer.info/posts/keyboards/sentence-case/index.html
 #include "features/select_word.h"   // https://getreuer.info/posts/keyboards/select-word/index.html
 
 #include <stdio.h>
@@ -147,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_FUNC] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,DZ_SCASE,
+      XXXXXXX,  KC_F12,   KC_F7,   KC_F8,   KC_F9, KC_PSCR,                      RGB_TOG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       XXXXXXX,  KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SCRL,                      RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, DZ_CLMK,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -218,14 +217,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
       }
       return false;
-
-    case DZ_SCASE:
-      if (record->event.pressed) 
-      {        
-        sentence_case_toggle();
-      }
-      return false;
-
 
     default:
       return dizave_process_record_user(keycode, record);
@@ -354,12 +345,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //            oled_write_ln("",false);	
 //        }
 
+          // sentence case was here before I eleminated it
           oled_write_ln("     ", false);
-          if (is_sentence_case_on()) {
-            oled_write_ln("SCASE", true);
-          } else {
-            oled_write_ln("",false);	
-          }
+          oled_write_ln("     ", false);
 
           // CAPS LOCK
           if (host_keyboard_led_state().caps_lock) { 
