@@ -24,6 +24,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <stdio.h>
 
+
+// todo put in dizave42.h
+extern const unsigned char dz_oled_colemak[];
+extern const unsigned char dz_oled_legal[];
+extern const unsigned char dz_oled_nav[];
+extern const unsigned char dz_oled_num[];
+extern const unsigned char dz_oled_func[];
+
 // Layers
 enum layer_number {
   _COLEMAK = 0,
@@ -239,7 +247,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (!is_keyboard_master()) {
         return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
       }
-      return OLED_ROTATION_270;
+//      return OLED_ROTATION_0; // for image test 11-25-23
+      return OLED_ROTATION_180;
     #endif 
   }
 
@@ -329,9 +338,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
       if (is_keyboard_master()) {
 
-          oled_render_layer_state();
-          dizave_render_mods();
-          oled_write_ln("    ", false);
+
+          oled_render_layer_state();      // show what layer we are in
+          dizave_render_mods();           // show which home row mods are active
+          oled_write_ln("    ", false);   // blank line
 
 //        if (layer == _NUM) {       
 //            dizave_render_numbers();
@@ -359,18 +369,69 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           // display apple / windows logo
           dizave_render_bootmagic_status_at(!is_mac(), 0, 13);
 
+          const unsigned char *data = dz_oled_legal;
+          for (int i=0;i<128*4;i++)
+          {
+            uint8_t c = pgm_read_byte(data++);
+            oled_write_raw_byte(c, i);            
+          }
+
+
       } else {
           dizave_render_logo();
       }
       return false;
     }
+
+    bool small_oled2(void) {
+
+      int layer = get_highest_layer(layer_state);
+
+      if (is_keyboard_master()) {
+
+//          dizave_render_mods();           // show which home row mods are active
+
+          const unsigned char *data = dz_oled_colemak;
+          if (layer==_LAW)
+            data = dz_oled_legal;
+          else if (layer==_NAV)
+            data = dz_oled_nav;
+          else if (layer==_NUM)
+            data = dz_oled_num;
+          else if (layer==_FUNC)
+            data = dz_oled_func;
+
+          for (int i=0;i<128*4;i++)
+          {
+            uint8_t c = pgm_read_byte(data++);
+            oled_write_raw_byte(c, i);            
+          }
+
+          // delete caps if necessary - from (56,24 to 93,32)
+          if (!host_keyboard_led_state().caps_lock) { 
+            rect(56,21,39,11,false);
+          }
+
+          // delete either win or apple
+          if (is_mac())
+            rect(97,21,15,11,false); // delete the windows logo
+          else
+            rect(113,21,16,11,false); // delete the mac logo
+
+      } else {
+          dizave_render_logo();
+      }
+      return false;
+    }
+
   #endif
 
   bool oled_task_user(void) {
     #ifdef OLED_DISPLAY_128X64
       return big_oled();
     #else
-      return small_oled();
+//      return small_oled();
+      return small_oled2();
     #endif
   }
 

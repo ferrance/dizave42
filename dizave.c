@@ -543,6 +543,15 @@ void plot_line (int x0, int y0, int x1, int y1, bool on)
   }
 }
 
+void rect(int r, int c, int w, int h, bool on)
+{
+  for (int rr=0;rr<w;rr++)
+    for (int cc=0;cc<h;cc++)
+  {
+    oled_write_pixel (r+rr, c+cc, on);
+  }
+}
+
 void
 raster_circle (int x0, int y0, int radius, bool on)
 {
