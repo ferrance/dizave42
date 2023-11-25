@@ -66,7 +66,7 @@ useable for me.
 CAPS_WORD is enabled and configured to activate on a double tap of left shift. 
 
 ### Nav Layer
-![Nav Layer](images/layer-nav.png)
+![Nav Layer](images/layers/layer-nav.png)
 
 Most of this is self explanatory. There are some less obvious things:
 
@@ -87,7 +87,7 @@ just didn't work for me. My brain needs up to be above down, not to
 the right of it.
 
 ### Number Layer
-![Number Layer](images/layer-numbers.png)
+![Number Layer](images/layers/layer-numbers.png)
 
 Although in general I have tried to keep keys on the opposite side of the 
 board from the corresponding layer key, I have made a small departure here.
@@ -100,7 +100,7 @@ double tap to get the close.
 
 
 ### Function Layer
-![Number Layer](images/layer-fun.png)
+![Number Layer](images/layers/layer-fun.png)
 Function keys. Accessed via one shot from the number layer. I
 kept the left hand almost the same as Miryoku. I almost never use any of the keys on 
 this layer. Qwerty and colemak keys switch the default layer between 
@@ -111,7 +111,7 @@ RGB controls are on the right half of this layer.
 The lower left (DZ_WIN) switches between windows and mac mode. 
 
 ### Legal Layer
-![Number Layer](images/layer-law.png)
+![Number Layer](images/layers/layer-law.png)
 
 OK, so, admittedly this layer is only useful to people who are 
 appellate lawyers in New Mexico and rock a corne or a lily. So,
@@ -133,20 +133,26 @@ display itself is vertical, the text on it is horizontal. And the information
 on the display wasn't particularly useful either, consisting mostly of information
 about the most recently typed keys.
 
-On the left display, I have changed the text to be displayed vertically. This
-creates an obvious limitation: each line is only five characters. On the other 
-hand, there are many more lines to work with.
+This keymap can be compiled for either twin 128x32 displays or for 
+a 128x64 display.
 
-The first line shows what layer is active--usually colemak. The other available layers are
-navigation, numbers, function, and law.
+### Small OLEDS
+
+The left OLED mostly uses graphics from the images/128x32 directory.
+There is one for each layer. It shows what layer you are in, whether
+caps lock is on, and whether the keyboard is in windows or mac
+mode.
+
+The right side displays my useless dizave42 logo.
+
+TODO: put the modifiers back in
 
 The dizave42 uses home row mods in the GACS configuration (for windows) or CAGS (for mac).
 The display will show either a windows or mac symbol to indicate which mode the keyboard is in.
 The display also shows the home row mods as either CAGS or GACS. When a modifier is
 pressed, that modifier is highlighted in the display.
 
-Finally, the display will show "CAPS" when the caps lock is on.
-
+### Large OLEDs
 On the large OLED version, when the number layer is active, the left display shows the keymap for the main 5x3 keys.
 If you hit shift it will show the shifted values. I took this out for 128x32 because there 
 just isn't enough screen real estate.
