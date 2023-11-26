@@ -31,6 +31,7 @@ extern const unsigned char dz_oled_legal[];
 extern const unsigned char dz_oled_nav[];
 extern const unsigned char dz_oled_num[];
 extern const unsigned char dz_oled_func[];
+extern const unsigned char dz_oled_qwerty[];
 
 // Layers
 enum layer_number {
@@ -322,10 +323,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     bool small_oled2(void) {
 
       int layer = get_highest_layer(layer_state);
+      if (layer==0 && default_layer_state>0) {
+        layer = default_layer_state-1;
+      }
 
       if (is_keyboard_master()) {
-
-//          dizave_render_mods();           // show which home row mods are active
 
           // select the bitmap for this layer
           const unsigned char *data = dz_oled_colemak;
@@ -337,6 +339,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             data = dz_oled_num;
           else if (layer==_FUNC)
             data = dz_oled_func;
+          else if (layer==_QWERTY)
+            data = dz_oled_qwerty;
 
           // display the bitmap
           for (int i=0;i<128*4;i++)
