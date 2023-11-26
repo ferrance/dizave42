@@ -247,7 +247,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (!is_keyboard_master()) {
         return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
       }
-//      return OLED_ROTATION_0; // for image test 11-25-23
       return OLED_ROTATION_180;
     #endif 
   }
@@ -255,20 +254,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   void oled_render_layer_state(void) {
 
     int l = get_highest_layer(layer_state);
-
-/* debug stuff 
-    char layer_state_str[24];
-    snprintf(layer_state_str, sizeof(layer_state_str), "st-%d", layer_state);    
-    oled_write_ln(layer_state_str, false);
-    snprintf(layer_state_str, sizeof(layer_state_str), "dflt-%d", default_layer_state);    
-    oled_write_ln(layer_state_str, false);
-    snprintf(layer_state_str, sizeof(layer_state_str), "l-%d", l);    
-    oled_write_ln(layer_state_str, false);
-
-//      oled_write_ln("Test1",false);
-//      return ;
-
-*/
 
     // if highest layer state is 0, it means it could be either 
     // colemak or qwerty. need to set it to the default 
@@ -303,6 +288,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         oled_write(" Mods: ", false);
         dizave_render_mods();
+        oled_write_ln("",false);
 
         if (layer == _NUM) {       
             dizave_render_numbers(0,4);
@@ -332,56 +318,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
   #else 
-    bool small_oled(void) {
-
-//      int layer = get_highest_layer(layer_state);
-
-      if (is_keyboard_master()) {
-
-
-          oled_render_layer_state();      // show what layer we are in
-          dizave_render_mods();           // show which home row mods are active
-          oled_write_ln("    ", false);   // blank line
-
-//        if (layer == _NUM) {       
-//            dizave_render_numbers();
-//        } else if (layer == _NAV) {
-//            dizave_render_nav(12,5);
-//        } else {
-            // if nothing else to do, display the logo at bottom
-            oled_write_ln("",false);	
-            oled_write_ln("",false);	
-//            oled_write_ln("",false);	
-//            oled_write_ln("",false);	
-//        }
-
-          // sentence case was here before I eleminated it
-          oled_write_ln("     ", false);
-          oled_write_ln("     ", false);
-
-          // CAPS LOCK
-          if (host_keyboard_led_state().caps_lock) { 
-              oled_write_ln("CAPS",true);
-          } else {
-              oled_write_ln("    ", false);
-          } 
-
-          // display apple / windows logo
-          dizave_render_bootmagic_status_at(!is_mac(), 0, 13);
-
-          const unsigned char *data = dz_oled_legal;
-          for (int i=0;i<128*4;i++)
-          {
-            uint8_t c = pgm_read_byte(data++);
-            oled_write_raw_byte(c, i);            
-          }
-
-
-      } else {
-          dizave_render_logo();
-      }
-      return false;
-    }
 
     bool small_oled2(void) {
 
@@ -391,6 +327,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 //          dizave_render_mods();           // show which home row mods are active
 
+          // select the bitmap for this layer
           const unsigned char *data = dz_oled_colemak;
           if (layer==_LAW)
             data = dz_oled_legal;
@@ -401,6 +338,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           else if (layer==_FUNC)
             data = dz_oled_func;
 
+          // display the bitmap
           for (int i=0;i<128*4;i++)
           {
             uint8_t c = pgm_read_byte(data++);
@@ -417,6 +355,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             rect(97,21,15,11,false); // delete the windows logo
           else
             rect(113,21,16,11,false); // delete the mac logo
+
+
+        oled_set_cursor(1,3);
+        dizave_render_mods();           // show which home row mods are active
+        //oled_write("C", get_mods() & MOD_MASK_CTRL);
 
       } else {
           dizave_render_logo();

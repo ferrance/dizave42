@@ -104,14 +104,14 @@ void dizave_render_mods(void) {
       oled_write("C", get_mods() & MOD_MASK_CTRL);
       oled_write("A", get_mods() & MOD_MASK_ALT);
       oled_write("G", get_mods() & MOD_MASK_GUI);
-      oled_write_ln("S", get_mods() & MOD_MASK_SHIFT);
+      oled_write("S", get_mods() & MOD_MASK_SHIFT);
 
    } else {  // WIN
 
       oled_write("G", get_mods() & MOD_MASK_GUI);
       oled_write("A", get_mods() & MOD_MASK_ALT);
       oled_write("C", get_mods() & MOD_MASK_CTRL);
-      oled_write_ln("S", get_mods() & MOD_MASK_SHIFT);
+      oled_write("S", get_mods() & MOD_MASK_SHIFT);
    }
 
 }
