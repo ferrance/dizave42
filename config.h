@@ -86,7 +86,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    undef ENABLE_RGB_MATRIX_BAND_SPIRAL_SAT              // kinda dumb
 #    undef ENABLE_RGB_MATRIX_BAND_SPIRAL_VAL
 #    undef ENABLE_RGB_MATRIX_CYCLE_ALL				// a little too freaky for me
-#    undef ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT			// not bad
+#    define ENABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT			// not bad
 #    undef ENABLE_RGB_MATRIX_CYCLE_UP_DOWN			// not bad
 #    undef ENABLE_RGB_MATRIX_CYCLE_OUT_IN			// not bad
 #    undef ENABLE_RGB_MATRIX_CYCLE_OUT_IN_DUAL			// not bad a little fast tho
