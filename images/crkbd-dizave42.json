@@ -72,7 +72,7 @@
       "x": 4,
       "t": "#0000ff\n#FF0000\n\n\n\n\n\n\n\n#000"
     },
-    "9\nsee\n<i class='fa fa-toggle-right'></i>\nf9\n\n\n\n\n\nP",
+    "9\nU.S.\n<i class='fa fa-toggle-right'></i>\nf9\n\n\n\n\n\nP",
     {
       "x": 5,
       "t": "#00f\n#ff0000\n#086000",
@@ -101,7 +101,7 @@
       "x": 5,
       "t": "#0000ff\n#FF0000\n\n\n\n\n\n\n\n#000"
     },
-    "\nU.S.\n\n\n\n\n\n\n\nG",
+    "]}\nsee\n\n\n\n\n\n\n\nG",
     {
       "x": 3,
       "t": "#00f\n#ff0000\n#086000",
@@ -129,7 +129,7 @@
     {
       "t": "#0000ff\n\n\n\n\n\n\n\n\n#000"
     },
-    "\n\n<i class='fa fa-close'></i>\nf12\n\n\n\n\n\nQ",
+    "{[\n\n<i class='fa fa-close'></i>\nf12\n\n\n\n\n\nQ",
     {
       "x": 11,
       "t": "#00f\n#ff0000",
@@ -203,7 +203,7 @@
       "t": "#0000ff\n#FF0000\n\n\n\n\n\n\n\n#000",
       "n": true
     },
-    "6 ^\nid.\n\nf6\nshft\n\n\n\n\nT",
+    "6 ^\nP.3d\n\nf6\nshft\n\n\n\n\nT",
     {
       "x": 5,
       "t": "#00f\n#ff0000\n#086000",
@@ -222,7 +222,7 @@
       "t": "#0000ff\n#FF0000\n\n\n\n\n\n\n\n#000",
       "a": 4
     },
-    "= +\nP.3d\n\n\n\n\n\n\n\nD",
+    "= +\nid.\n\n\n\n\n\n\n\nD",
     {
       "x": 3,
       "t": "#00f\n#ff0000\n#086000"
@@ -330,9 +330,10 @@
     "1 !\n\n\nf1\n\n\n\n\n\nX",
     {
       "x": 1,
+      "t": "#0000ff\n#ff0000\n\n\n\n\n\n\n\n#000",
       "fa": [
         2,
-        0,
+        1,
         1,
         1,
         0,
@@ -343,7 +344,7 @@
         4
       ]
     },
-    "3 #\n\n\nf3\n\n\n\n\n\nV",
+    "3 #\nP.2d\n\nf3\n\n\n\n\n\nV",
     {
       "x": 5,
       "t": "#00f\n#ff0000\n#086000",
@@ -386,7 +387,7 @@
         4
       ]
     },
-    "\\ |\nP.2d\n\n\n\n\n\n\n\nB",
+    "\\ |\n\n\n\n\n\n\n\n\nB",
     {
       "x": 3,
       "t": "#00f\n#ff0000"
