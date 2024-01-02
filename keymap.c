@@ -123,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, DZ_LGUI, DZ_LALT, DZ_LCTL, DZ_LSFT, _______,                      KC_PGDN, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX,  KC_INS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,                      XXXXXXX,   WLEFT, SELWORD,  WRIGHT, XXXXXXX, DZ_SCAP,
+      _______, _______, _______, _______, _______, _______,                      XXXXXXX,   WLEFT, _______,  WRIGHT, XXXXXXX, DZ_SCAP,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______, _______,    _______,OSL(_LAW),OSL(_FUNC)
                                       //`--------------------------'  `--------------------------'
@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NUM] = LAYOUT_split_3x6_3(  // number layer
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC, XXXXXXX,    KC_7,    KC_8,    KC_9, KC_PPLS,                      XXXXXXX,  DZOPEN, DZCLOSE, _______, XXXXXXX, _______,
+       KC_ESC, XXXXXXX,    KC_7,    KC_8,    KC_9, _______,                      XXXXXXX,  DZOPEN, DZCLOSE, _______, XXXXXXX, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,S(KC_SCLN),  KC_4,    KC_5,    KC_6,  KC_EQL,                      XXXXXXX, DZ_RSFT, DZ_RCTL, DZ_LALT, DZ_RGUI, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -212,7 +212,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   if (!process_achordion(keycode, record)) { return false; }
 //  if (!process_sentence_case(keycode, record)) { return false; }
-  if (!process_select_word(keycode, record, SELWORD, is_mac())) { return false; }
+//  if (!process_select_word(keycode, record, SELWORD, is_mac())) { return false; }
 
   switch(keycode) {
 
