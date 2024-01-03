@@ -21,7 +21,12 @@ TAP_DANCE_ENABLE = yes       # for double tapping brackets
 KEY_OVERRIDE_ENABLE = yes    # for shift backspace = delete
 CAPS_WORD_ENABLE = yes
 
-# to build for kb2040: qmk compile -e CONVERT_TO=kb2040
+# i've given up on promicro, it's just too small
+# all my crkbds run on adafruit kb2040s
+CONVERT_TO=kb2040
+
+# for testing
+#LTO_ENABLE=no
 
 # to build for the 1.3 inch 128x64  oled add 
 #   -e BIG_OLED=yes 
