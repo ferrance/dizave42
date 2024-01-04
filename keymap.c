@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_CAPS,  KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,                      _______, _______, _______, _______, _______, _______, 
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______,    KC_0, _______,    _______, _______, _______
+                                          _______,    KC_0, KC_MINS,    _______, _______, _______
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -180,7 +180,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-//  if (!process_achordion(keycode, record)) { return false; }
+  if (!process_achordion(keycode, record)) { return false; }
 //  if (!process_sentence_case(keycode, record)) { return false; }
 //  if (!process_select_word(keycode, record, SELWORD, is_mac())) { return false; }
 
