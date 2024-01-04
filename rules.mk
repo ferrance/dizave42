@@ -17,7 +17,7 @@ SPACE_CADET_ENABLE = no
 
 # features this keymap uses
 UNICODE_ENABLE = yes
-TAP_DANCE_ENABLE = yes       # for double tapping brackets
+TAP_DANCE_ENABLE = no      # for double tapping brackets
 KEY_OVERRIDE_ENABLE = yes    # for shift backspace = delete
 CAPS_WORD_ENABLE = yes
 

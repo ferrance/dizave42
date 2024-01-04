@@ -54,33 +54,6 @@ const char* layer_names[][2] = {
   { "unkwn", "Unknown"  }
 };
 
-// tap dance declarations
-// eventually move to dizave.c and .h?
-//
-enum {
-  TD_PARENS = 0, 
-  TD_BRACES,
-  TD_CBRACES, 
-  TD_OPEN,
-  TD_CLOSE
-};
-
-// tap dance definitions
-tap_dance_action_t tap_dance_actions[] = {
-  [TD_PARENS] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
-  [TD_BRACES] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
-  [TD_CBRACES]= ACTION_TAP_DANCE_DOUBLE(S(KC_LBRC), S(KC_RBRC)),
-  [TD_OPEN] = ACTION_TAP_DANCE_FN(dz_open),
-  [TD_CLOSE] = ACTION_TAP_DANCE_FN(dz_close)
-};
-
-// pondering making a double semicolon be a colon
-#define DZTDPRN TD(TD_PARENS)  // double tap ( to get )
-#define DZTDBRC TD(TD_BRACES)  // double tap [ to get ]
-#define DZTDCBR TD(TD_CBRACES) // double tap { to get }
-#define DZOPEN  TD(TD_OPEN)
-#define DZCLOSE TD(TD_CLOSE)
-
 // key override - make shift backspace send a delete
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 
@@ -199,9 +172,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case DZQ_J:
           return 160;
 
-        case DZTDPRN: // 180 was a little too fast for the parens
-        case DZTDBRC:
-          return 220;
         default:
             return TAPPING_TERM;
     }
@@ -210,7 +180,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-  if (!process_achordion(keycode, record)) { return false; }
+//  if (!process_achordion(keycode, record)) { return false; }
 //  if (!process_sentence_case(keycode, record)) { return false; }
 //  if (!process_select_word(keycode, record, SELWORD, is_mac())) { return false; }
 

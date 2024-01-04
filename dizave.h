@@ -27,9 +27,6 @@ void dizave_render_bootmagic_status(bool);
 void dizave_render_bootmagic_status_at(bool, uint8_t, uint8_t);
 bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record);
 
-void dz_open(tap_dance_state_t *state, void *user_data);
-void dz_close(tap_dance_state_t *state, void *user_data);
-
 void rect(int, int, int, int, bool);
 void plot_line (int, int, int, int, bool);
 
