@@ -37,4 +37,4 @@ endif
 
 SRC += ./dizave.c
 SRC += features/achordion.c
-SRC += features/select_word.c
+#SRC += features/select_word.c
