@@ -113,8 +113,9 @@ enum my_keycodes {
   DZ_SCASE,  // toggle sentence case
   WLEFT,     // navigate one word left 
   WRIGHT,    // navigate one word right
-  WBSPC,      // backsepace one word
-  SELWORD    // select word function
+  WBSPC,     // backsepace one word
+  SELWORD,   // select word function
+  DZ_TEST    // have a keycode sitting around for development testing
 };
 
 //#define DZ_SPC  LSFT_T(KC_SPC)
