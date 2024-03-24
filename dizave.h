@@ -111,6 +111,7 @@ enum my_keycodes {
   WLEFT,     // navigate one word left 
   WRIGHT,    // navigate one word right
   WBSPC,     // backsepace one word
+  WDEL,      // delete word to the right
   SELWORD,   // select word function
   DZ_TEST    // have a keycode sitting around for development testing
 };
