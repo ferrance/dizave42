@@ -2,7 +2,7 @@
   {
     "name": "crkbd dizave42",
     "author": "dizave",
-    "notes": "forked from bcat",
+    "notes": "https://github.com/ferrance/dizave42",
     "background": {
       "name": "Aluminium brushed",
       "style": "background-image: url('/bg/metal/aluminum_texture1642.jpg');"
@@ -419,7 +419,7 @@
     },
     "?\n/",
     {
-      "t": "#00f\n#ff0000",
+      "t": "#00f",
       "fa": [
         1,
         1,
@@ -487,9 +487,21 @@
       "y": -1.5,
       "x": 0.09999999999999964,
       "t": "#000000",
+      "fa": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        4
+      ],
       "h": 1.5
     },
-    "-\n\n\n\n\n\n\n\n\nSpc"
+    "-\n\n\n\n\n\n\n\ntab\nSpc"
   ],
   [
     {
