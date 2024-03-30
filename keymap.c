@@ -73,6 +73,7 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 // try some combos
 // tab + q = esc
 
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -376,6 +377,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 
 #endif // OLED_ENABLE
+
 
 // Nav        - right side lights up yellow
 // Numbers    - left side lights up yellow

@@ -113,6 +113,7 @@ enum my_keycodes {
   WBSPC,     // backsepace one word
   WDEL,      // delete word to the right
   SELWORD,   // select word function
+
   DZ_TEST    // have a keycode sitting around for development testing
 };
 
