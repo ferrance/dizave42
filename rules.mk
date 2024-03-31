@@ -16,7 +16,6 @@ GRAVE_ESC_ENABLE= no
 SPACE_CADET_ENABLE = no
 
 # features this keymap uses
-#UNICODE_ENABLE = yes
 UNICODEMAP_ENABLE = yes
 TAP_DANCE_ENABLE = no      # for double tapping brackets
 KEY_OVERRIDE_ENABLE = yes    # for shift backspace = delete

@@ -49,8 +49,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define UNICODE_SELECTED_MODES UNICODE_MODE_MACOS, UNICODE_MODE_WINCOMPOSE
 
 // caps_word enabled by double tapping left shift
-#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
-//#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD   // this isn't working.
+//#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD   
 
 // for rgb matrix support
 #define SPLIT_LAYER_STATE_ENABLE

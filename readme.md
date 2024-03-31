@@ -67,7 +67,7 @@ useable for me. But I have still not been able to tune this so that it is
 reliable. Currently, I've added back shift keys and am trying to stop using
 the shift on the index fingers.
 
-CAPS_WORD is enabled and configured to activate on a double tap of left shift. 
+CAPS_WORD is enabled and configured to activate on by hitting both shift keys at once. 
 
 I find the outermost thumb keys hard to use on a corne. I have put a paragraph
 key on the right hand one, which shifts to a section key, because I use these
