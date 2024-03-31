@@ -59,14 +59,17 @@ const char* layer_names[][2] = {
 // key override
 //   - make shift backspace send a delete
 //   - make shift space send a tab
+//   - make shift para a section sumbol
 //
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 const key_override_t shift_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, KC_TAB);
+const key_override_t para_key_override = ko_make_basic(MOD_MASK_SHIFT, DZ_PARA, DZ_SEC);
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
     &delete_key_override,
     &shift_key_override,
+    &para_key_override,
     NULL // Null terminate the array of overrides!
 };
 
@@ -74,16 +77,40 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 // tab + q = esc
 
 
+enum unicode_names {
+  U_PARA_LOWER,
+  U_PARA_UPPER,
+  U_RQOT,
+  U_MDASH,
+  U_NBSP
+};
+
+const uint32_t unicode_map[] PROGMEM = {
+  [U_PARA_LOWER]   = 0x00B6, // ¶
+  [U_PARA_UPPER]   = 0x00a7, // §
+  [U_RQOT] = 0x2019, 
+  [U_MDASH] = 0x2014, 
+  [U_NBSP] = 0x202F
+};
+
+#define PARASEC UP(U_PARA_LOWER, U_PARA_UPPER)
+#define DZ_SEC  UM(U_PARA_UPPER)
+#define DZ_PARA UM(U_PARA_LOWER)
+#define DZ_RQOT UM(U_RQOT) 
+#define DZ_EMDS UM(U_MDASH)  
+
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,
+       KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSPC,    DZ_A,    DZ_R,    DZ_S,    DZ_T,    KC_D,                         KC_H,    DZ_N,    DZ_E,    DZ_I,    DZ_O, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        DZ_OSS,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  DZ_OSS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_ESC,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM), KC_DEL
+                                        PARASEC,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM), KC_DEL
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -132,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        DZ_OSS,  DZ_NM2, XXXXXXX,  DZ_F2D,  DZ_P2D, XXXXXXX,                       DZ_AB,   DZ_NM, XXXXXXX, XXXXXXX, XXXXXXX, DZ_EMDS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           DZ_SEC, DZ_PARA, _______,    _______, _______,_______
+                                          _______, DZ_PARA, _______,    _______, _______,_______
                                       //`--------------------------'  `--------------------------'
   ),
 

@@ -505,6 +505,18 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
       }    
       return false;
 
+      case DZ_PARA:
+      if (record->event.pressed) {
+        register_unicode(0x00B6);
+      }
+      return false; 
+
+      case DZ_SEC:
+      if (record->event.pressed) {
+        register_unicode(0x00A7);
+      }
+      return false; 
+
   }  // switch
 
 

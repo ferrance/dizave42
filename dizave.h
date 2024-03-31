@@ -113,6 +113,9 @@ enum my_keycodes {
   WBSPC,     // backsepace one word
   WDEL,      // delete word to the right
   SELWORD,   // select word function
+  DZ_BERN,   // Bernalillo
+  DZ_SEC,    // section symbol
+  DZ_PARA,   // para symbol
 
   DZ_TEST    // have a keycode sitting around for development testing
 };
@@ -123,12 +126,4 @@ enum my_keycodes {
 
 // Legal macros that are not keycodes
 #define DZ_LAW  OSL(_LEGAL)
-#define DZ_SEC  UC(0x00A7)
-#define DZ_PARA UC(0x00B6)
-#define DZ_RQOT UC(0x2019) 
-#define DZ_EMDS UC(0x2014)  
 
-// A0 does not work on mac? and although alt space works in US layout mac, it
-// does not work on US unicode input mac????? But the narrow one 202F appears to work.
-//#define DZ_NBSP UC(0x00A0) 
-#define DZ_NBSP UC(0x202F)
