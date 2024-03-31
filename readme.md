@@ -60,12 +60,21 @@ For a thorough overview of home row mods, check out
 [precondition's page](https://precondition.github.io/home-row-mods).
 
 I did have some problems with the home row keys, at least on the pinky and ring fingers. 
-I've used [achordion](https://github.com/getreuer/qmk-keymap) to eliminate
+I've used [achordion](https://github.com/getreuer/qmk-keymap) to try to eliminate
 the issues I was having with home row mod rolls. For my purposes, it is basically
 a way to get bilateral combos but with userspace code. This made home row mods 
-useable for me.
+useable for me. But I have still not been able to tune this so that it is 
+reliable. Currently, I've added back shift keys and am trying to stop using
+the shift on the index fingers.
 
 CAPS_WORD is enabled and configured to activate on a double tap of left shift. 
+
+I find the outermost thumb keys hard to use on a corne. I have put a paragraph
+key on the right hand one, which shifts to a section key, because I use these
+all the time in legal writing and they can't be on the same finger as the space 
+key. I put the delete key on the left hand one for lack of any better ideas.
+
+Space key has tab on it (shift-space) and dash/underscore (num-space).
 
 ### Nav Layer
 ![Nav Layer](images/layers/layer-nav.png)
@@ -76,20 +85,23 @@ Most of this is self explanatory. There are some less obvious things:
 - nav-F and -P: keys to switch virtual desktops on windows or mac
 - the home row keys on this layer are one-shot mods
 - nav-dash: Screen capture, OS-aware.
+- nav-enter: backspace
 
 I added word navigation, left and right, under the left and right 
 arrows. These keys will go forward or back a word, at least in 
-Microsoft Word, and are OS-aware. Nav-n is select word, which
-is similar to word-right but holds shift down to select entire
-words.
+Microsoft Word, and are OS-aware. Nav-bspc backspaces an entire
+word.
 
 I tried using the VIM style arrows, I really did. But I just can't.
 This is one area where I had to depart from Miryoku, the arrows
 just didn't work for me. My brain needs up to be above down, not to
-the right of it.
+the right of it. Apparently I independly came up with a layout that is
+very close to [seniply](https://stevep99.github.io/seniply/).
 
 ### Number Layer
 ![Number Layer](images/layers/layer-numbers.png)
+
+Most of the left side is like miryoku. 
 
 Although in general I have tried to keep keys on the opposite side of the 
 board from the corresponding layer key, I have made a small departure here.
@@ -97,16 +109,13 @@ The parentheses keys are duplicated under the index and middle fingers of the
 right hand. I have found this easy and useful in many cases where I am entering
 numbers (for example, when entering a phone number with area code).
 
-Parens, brackets, and curly braces are on the right hand. One tap to get the open,
-double tap to get the close. 
-
-
 ### Function Layer
-![Number Layer](images/layers/layer-fun.png)
-Function keys. Accessed via one shot from the number layer. I
-kept the left hand almost the same as Miryoku. I almost never use any of the keys on 
+![Function Layer](images/layers/layer-fun.png)
+The function layer is a one shot accessed by nav-¶.
+
+I kept the left hand almost the same as Miryoku. I almost never use any of the keys on 
 this layer. Qwerty and colemak keys switch the default layer between 
-qwerty and colemak.
+qwerty and colemak. Board boot in the upper outer keys of both sides.
 
 RGB controls are on the right half of this layer.
 
@@ -116,12 +125,11 @@ The lower left (DZ_WIN) switches between windows and mac mode.
 ![Number Layer](images/layers/layer-law.png)
 
 OK, so, admittedly this layer is only useful to people who are 
-appellate lawyers in New Mexico and rock a corne or a lily. So,
-just me. 
+appellate lawyers in New Mexico and rock a corne. So,
+just me. But it's a main focus of this keyboard.
 
-I put federal on the left and New Mexico on the right. Section is on
-the "S" key for obvious reasons, "Albuquerque" is on the "A" key.
-I'm still working my way through what should be on this layer.
+I sort of generaaly put federal on the left and New Mexico on the right. 
+There's a lot of stuff on here, it's easiest just to consult the graphic.
 
 The quote gives you a close quote single quote, the kind you use at
 the beginning of a shortened patent number that can be such a pain to
@@ -130,10 +138,8 @@ enter.
 
 ## The Displays
 
-I didn't find the display on the default keymap very useful. Although the
-display itself is vertical, the text on it is horizontal. And the information
-on the display wasn't particularly useful either, consisting mostly of information
-about the most recently typed keys.
+This keymap is meant for left display only. If you do have a display
+on the right, it will show a dizave42 logo.
 
 This keymap can be compiled for either twin 128x32 displays or for 
 a 128x64 display.
@@ -146,8 +152,6 @@ caps lock is on, and whether the keyboard is in windows or mac
 mode.
 
 The right side displays my useless dizave42 logo.
-
-TODO: put the modifiers back in
 
 The dizave42 uses home row mods in the GACS configuration (for windows) or CAGS (for mac).
 The display will show either a windows or mac symbol to indicate which mode the keyboard is in.
@@ -184,23 +188,16 @@ configured.
 
 # Builds
 
-By default, it will compile for the promicro. But I only use KB2040's now.
-To compile a .UF2 for the kb2040, use
+This keymap will not fit in a promicro. It now compiles for RP2040 only.
 
-```
-qmk compile -e CONVERT_TO=kb2040
-```
-
-Whether to build for the 128x64 oled is also controlled from
+Whether to build for the 128x64 oled is controlled from
 the compile command. By default it will build for the 128x32. 
 To build for the larger oled on RP2040, use:
 
 ```
-qmk compile -e CONVERT_TO=kb2040 -e BIG_OLED=yes
+qmk compile -e BIG_OLED=yes
 ```
 
 # todo
 
-- signals in the law layer?
-- id. variants
-- add irritating disco words like "interrogatory"
+- figure out something better than home row mods
