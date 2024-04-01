@@ -57,6 +57,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPLIT_MODS_ENABLE
 #define SPLIT_LED_STATE_ENABLE
 
+#define ONE_SHOT_TIMEOUT 1000
+
 /* much of this comes from the bermeo layout */
 
 #ifdef RGB_MATRIX_ENABLE
