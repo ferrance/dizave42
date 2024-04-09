@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           _______, _______, _______,    KC_BSPC,OSL(_LAW),OSL(_FUNC)
                                       //`--------------------------'  `--------------------------'
   ),
-
+  
   [_NUM] = LAYOUT_split_3x6_3(  // number layer
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______, KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,                      XXXXXXX, S(KC_9), S(KC_0), _______, XXXXXXX,    WDEL,
@@ -197,8 +197,14 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                      uint16_t other_keycode,
                      keyrecord_t* other_record) 
 {
+  if (tap_hold_keycode==DZL1)
+  {
+    return true; // consider it held, not tapped
+  }
+
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
+
 
 // I'm playing with a shorter tapping term for the shift keys
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
