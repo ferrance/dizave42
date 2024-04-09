@@ -68,7 +68,7 @@ const key_override_t para_key_override = ko_make_basic(MOD_MASK_SHIFT, DZ_PARA, 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
     &delete_key_override,
-    &shift_key_override,
+//    &shift_key_override,
     &para_key_override,
     NULL // Null terminate the array of overrides!
 };
@@ -99,7 +99,8 @@ const uint32_t unicode_map[] PROGMEM = {
 #define DZ_RQOT UM(U_RQOT) 
 #define DZ_EMDS UM(U_MDASH)  
 
-
+//#define DZL1 MO(_NAV)
+#define DZL1 LT(_NAV, KC_TAB)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_split_3x6_3(
@@ -110,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        DZ_OSS,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, DZ_OSSR,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_DEL,MO(_NAV),  KC_SPC,     KC_ENT,MO(_NUM),PARASEC
+                                           KC_TAB,    DZL1,  KC_SPC,     KC_ENT,MO(_NUM),PARASEC
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -131,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______, DZ_CLSE, XXXXXXX, DZ_VDLT, DZ_VDRT, XXXXXXX,                      KC_PGUP, KC_HOME,   KC_UP,  KC_END, XXXXXXX,   WBSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, DZ_LGUI, DZ_LALT, DZ_LCTL, DZ_LSFT, _______,                      KC_PGDN, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX,  KC_INS,
+       KC_DEL, DZ_LGUI, DZ_LALT, DZ_LCTL, DZ_LSFT, _______,                      KC_PGDN, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX,  KC_INS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, _______, _______, _______, _______, _______,                      XXXXXXX,   WLEFT, _______,  WRIGHT, XXXXXXX, DZ_SCAP,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|

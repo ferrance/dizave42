@@ -123,7 +123,5 @@ enum my_keycodes {
 //#define DZ_SPC  LSFT_T(KC_SPC)
 #define DZ_OSS  OSM(MOD_LSFT)
 #define DZ_OSSR OSM(MOD_RSFT)
-
-// Legal macros that are not keycodes
 #define DZ_LAW  OSL(_LEGAL)
-
+//#define DZ_ENT  LT(layer, KC_ENT) 
