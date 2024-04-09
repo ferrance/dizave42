@@ -99,8 +99,11 @@ const uint32_t unicode_map[] PROGMEM = {
 #define DZ_RQOT UM(U_RQOT) 
 #define DZ_EMDS UM(U_MDASH)  
 
-//#define DZL1 MO(_NAV)
-#define DZL1 LT(_NAV, KC_TAB)
+//#define DZNAV MO(_NAV)
+#define DZNAV LT(_NAV, KC_TAB)
+#define DZNUM MO(_NUM)
+//#define DZL2 LT(_NUM, KC_BSPC)
+#define DZLAW LT(_LAW, KC_DEL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_split_3x6_3(
@@ -111,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        DZ_OSS,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, DZ_OSSR,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_TAB,    DZL1,  KC_SPC,     KC_ENT,MO(_NUM),PARASEC
+                                          PARASEC,   DZNAV,  KC_SPC,     KC_ENT,   DZNUM,   DZLAW
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -197,12 +200,22 @@ bool achordion_chord(uint16_t tap_hold_keycode,
                      uint16_t other_keycode,
                      keyrecord_t* other_record) 
 {
-  if (tap_hold_keycode==DZL1)
+  if (tap_hold_keycode==DZNAV)
   {
     return true; // consider it held, not tapped
   }
 
   return achordion_opposite_hands(tap_hold_record, other_record);
+}
+
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  switch (tap_hold_keycode) {
+    case DZNAV:
+    case DZLAW:
+      return 200;  // Bypass Achordion for these keys.
+  }
+
+  return 800;  // Otherwise use a timeout of 800 ms.
 }
 
 
