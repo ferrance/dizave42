@@ -102,8 +102,9 @@ const uint32_t unicode_map[] PROGMEM = {
 //#define DZNAV MO(_NAV)
 #define DZNAV LT(_NAV, KC_TAB)
 #define DZNUM MO(_NUM)
-//#define DZL2 LT(_NUM, KC_BSPC)
-#define DZLAW LT(_LAW, KC_DEL)
+//#define DZNUM LT(_NUM, KC_BSPC)
+//#define DZLAW LT(_LAW, KC_DEL)
+#define DZLAW OSL(_LAW)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_split_3x6_3(
