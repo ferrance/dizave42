@@ -75,7 +75,10 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 // try some combos
 // tab + q = esc
-
+const uint16_t PROGMEM esc_combo[] = { KC_TAB, KC_Q, COMBO_END};
+combo_t key_combos[] = {
+  COMBO(esc_combo, KC_ESC),
+};
 
 enum unicode_names {
   U_PARA_LOWER,
@@ -109,7 +112,7 @@ const uint32_t unicode_map[] PROGMEM = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_ESC,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,
+       KC_TAB,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_BSPC,    DZ_A,    DZ_R,    DZ_S,    DZ_T,    KC_D,                         KC_H,    DZ_N,    DZ_E,    DZ_I,    DZ_O, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|

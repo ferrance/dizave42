@@ -20,6 +20,7 @@ UNICODEMAP_ENABLE = yes
 TAP_DANCE_ENABLE = no      # for double tapping brackets
 KEY_OVERRIDE_ENABLE = yes    # for shift backspace = delete
 CAPS_WORD_ENABLE = yes
+COMBO_ENABLE = yes
 
 # i've given up on promicro, it's just too small
 # all my crkbds run on adafruit kb2040s
