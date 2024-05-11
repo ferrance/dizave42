@@ -75,6 +75,7 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 // try some combos
 // tab + q = esc
+// = law layer
 const uint16_t PROGMEM esc_combo[] = { KC_TAB, KC_Q, COMBO_END};
 combo_t key_combos[] = {
   COMBO(esc_combo, KC_ESC),
@@ -102,8 +103,9 @@ const uint32_t unicode_map[] PROGMEM = {
 #define DZ_RQOT UM(U_RQOT) 
 #define DZ_EMDS UM(U_MDASH)  
 
-//#define DZNAV MO(_NAV)
-#define DZNAV LT(_NAV, KC_TAB)
+#define DZNAV MO(_NAV)
+//#define DZNAV LT(_NAV, KC_TAB)
+
 #define DZNUM MO(_NUM)
 //#define DZNUM LT(_NUM, KC_BSPC)
 //#define DZLAW LT(_LAW, KC_DEL)
