@@ -171,7 +171,6 @@
       "y": -0.30000000000000004,
       "x": 3,
       "t": "#0000ff\n#ff0000\n\n#800080\n\n\n\n\n\n#000",
-      "a": 0,
       "fa": [
         2,
         1,
@@ -185,7 +184,7 @@
         4
       ]
     },
-    "5 %\nF.3d\n\nf5\nctl\n\n\n\n\nS",
+    "5 %\nF.3d\n\nf5\n\n\n\n\n\nS",
     {
       "x": 7,
       "t": "#00f\n#ff0000\n#009900",
@@ -202,7 +201,7 @@
         4
       ]
     },
-    "\nNMSA\n<i class='fa fa-arrow-down'></i>\n\n\nctl\n\n\n\nE"
+    "\nNMSA\n<i class='fa fa-arrow-down'></i>\n\n\n\n\n\n\nE"
   ],
   [
     {
@@ -210,30 +209,29 @@
       "x": 2,
       "t": "#0000ff\n#ff0000\n\n#800080\n\n\n\n\n\n#000"
     },
-    "4 $\nUSC\n\nf4\nalt\n\n\n\n\nR",
+    "4 $\nUSC\n\nf4\n\n\n\n\n\nR",
     {
       "x": 1,
       "t": "#0000ff\n#FF0000\n\n#800080\n\n\n\n\n\n#000",
       "n": true
     },
-    "6 ^\nP.3d\n\nf6\nshft\n\n\n\n\nT",
+    "6 ^\nP.3d\n\nf6\n\n\n\n\n\nT",
     {
       "x": 5,
       "t": "#00f\n#ff0000\n#009900",
       "n": true
     },
-    "\n-nmca-\n<i class='fa fa-arrow-left'></i>\n\n\nshft\n\n\n\nN",
+    "\n-nmca-\n<i class='fa fa-arrow-left'></i>\n\n\n\n\n\n\nN",
     {
       "x": 1
     },
-    "\n(ea)\n<i class='fa fa-arrow-right'></i>\n\n\nalt\n\n\n\nI"
+    "\n(ea)\n<i class='fa fa-arrow-right'></i>\n\n\n\n\n\n\nI"
   ],
   [
     {
       "y": -0.9000000000000001,
       "x": 5,
-      "t": "#0000ff\n#FF0000\n\n#800080\n\n\n\n\n\n#000",
-      "a": 4
+      "t": "#0000ff\n#FF0000\n\n#800080\n\n\n\n\n\n#000"
     },
     "= +\nid.\n\nscrl\n\n\n\n\n\nD",
     {
@@ -265,10 +263,10 @@
         1
       ]
     },
-    "del\n\n\n\n\n\nBksp",
+    "del\n\n\n\n\n\nBspc",
     {
       "t": "#0000ff\n#FF0000\n\n#800080\n\n\n\n\n\n#000",
-      "a": 0,
+      "a": 4,
       "fa": [
         2,
         1,
@@ -282,16 +280,16 @@
         4
       ]
     },
-    ":\nABQ\n\nf11\ngui\n\n\n\n\nA",
+    ":\nABQ\n\nf11\n\n\n\n\n\nA",
     {
       "x": 11,
       "t": "#00f",
-      "a": 3,
+      "a": 7,
       "fa": [
         4
       ]
     },
-    "O\n\n\n\n\ngui"
+    "O"
   ],
   [
     {
@@ -316,17 +314,15 @@
     {
       "x": 7,
       "t": "#00f",
-      "a": 4,
       "f": 3
     },
-    "<\n,"
+    "<\n,\n\n\nctl"
   ],
   [
     {
       "y": -0.8999999999999999,
       "x": 2,
       "t": "#0000ff\n\n\n#800080\n\n\n\n\n\n#000",
-      "a": 0,
       "fa": [
         2,
         1,
@@ -354,22 +350,22 @@
     "3 #\nP.2d\n\nf3\nshift\n\n\n\n\nV",
     {
       "x": 5,
-      "t": "#00f\n#ff0000\n#009900",
-      "a": 4
+      "t": "#00f\n#ff0000\n#009900"
     },
-    "\nN.M.\n<i class='fa fa-angle-double-left'></i>\n\n\n\n\n\n\nM",
+    "\nN.M.\n<i class='fa fa-angle-double-left'></i>\n\nshift\n\n\n\n\nM",
     {
       "x": 1,
       "t": "#00f\n\n#009900",
       "f": 3
     },
-    ">\n.\n<i class='fa fa-angle-double-right'></i>"
+    ">\n.\n<i class='fa fa-angle-double-right'></i>\n\nalt"
   ],
   [
     {
       "y": -0.8999999999999999,
       "x": 5,
       "t": "#0000ff\n#ff0000\n\n#800080\n\n\n\n\n\n#000",
+      "a": 4,
       "fa": [
         0,
         1,
@@ -419,12 +415,12 @@
     {
       "x": 11,
       "t": "#00f\n#000000",
-      "a": 4,
       "f": 3
     },
-    "?\n/",
+    "?\n/\n\n\ngui",
     {
       "t": "#00f\n\n\n#800080",
+      "a": 4,
       "fa": [
         1,
         1,
@@ -484,7 +480,7 @@
         4
       ]
     },
-    "0\n\n\n\nNav\n\n\n\n\nTab"
+    "0\n\n\n\n\n\n\n\n\nNav"
   ],
   [
     {

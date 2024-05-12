@@ -44,6 +44,13 @@ enum layer_number {
   _UNKNOWN
 };
 
+#define DZNAV MO(_NAV)
+//#define DZNAV LT(_NAV, KC_TAB)
+#define DZNUM MO(_NUM)
+//#define DZNUM LT(_NUM, KC_BSPC)
+//#define DZLAW LT(_LAW, KC_DEL)
+#define DZLAW OSL(_LAW)
+
 // not sure these are used anymore, replaced with graphics
 // still used for big oled, not small one
 const char* layer_names[][2] = {
@@ -77,8 +84,10 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 // tab + q = esc
 // = law layer
 const uint16_t PROGMEM esc_combo[] = { KC_TAB, KC_Q, COMBO_END};
+const uint16_t PROGMEM law_combo[] = { KC_F, KC_P, COMBO_END};
 combo_t key_combos[] = {
   COMBO(esc_combo, KC_ESC),
+  COMBO(law_combo, DZLAW),
 };
 
 enum unicode_names {
@@ -102,14 +111,6 @@ const uint32_t unicode_map[] PROGMEM = {
 #define DZ_PARA UM(U_PARA_LOWER)
 #define DZ_RQOT UM(U_RQOT) 
 #define DZ_EMDS UM(U_MDASH)  
-
-#define DZNAV MO(_NAV)
-//#define DZNAV LT(_NAV, KC_TAB)
-
-#define DZNUM MO(_NUM)
-//#define DZNUM LT(_NUM, KC_BSPC)
-//#define DZLAW LT(_LAW, KC_DEL)
-#define DZLAW OSL(_LAW)
 
 // experimenting with different shift options
 #define SF_Z LSFT_T(KC_Z)
