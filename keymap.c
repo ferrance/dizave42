@@ -127,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        DZ_OSS,    DZ_Z,    DZ_X,    DZ_C,    DZ_V,    KC_B,                         KC_K,    DZ_M, DZ_COMM,  DZ_DOT, DZ_SLSH, DZ_OSSR,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           DZLAW,   DZNAV,  KC_SPC,     KC_ENT,   DZNUM, PARASEC
+                                          QK_LEAD,   DZNAV,  KC_SPC,     KC_ENT,   DZNUM, PARASEC
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -494,5 +494,18 @@ bool rgb_matrix_indicators_user(void) {
     }
 
     return false;
+}
+
+
+void leader_start_user(void) {
+    // Do something when the leader key is pressed
+}
+
+void leader_end_user(void) {
+    if (leader_sequence_one_key(KC_A)) {
+        SEND_STRING("Albuquerque");
+    } else if (leader_sequence_two_keys(KC_N, KC_M)) {
+        SEND_STRING("New Mexico");
+    }
 }
 

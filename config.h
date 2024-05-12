@@ -36,11 +36,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define OLED_DISPLAY_128X64
 #endif 
 
+// leader key
+#define LEADER_KEY_PER_TIMING
+#define LEADER_KEY_TIMEOUT 250
+
 // home row mods
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 180
 #define TAPPING_TERM_PER_KEY
-
 //#define HOLD_ON_OTHER_KEY_PRESS
 //#define PERMISSIVE_HOLD
 //#define IGNORE_MOD_TAP_INTERRUPT // remove for qmk 21.0
@@ -49,7 +52,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define UNICODE_SELECTED_MODES UNICODE_MODE_MACOS, UNICODE_MODE_WINCOMPOSE
 
 // caps_word enabled by double tapping left shift
-//#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD   
 
 // for rgb matrix support
