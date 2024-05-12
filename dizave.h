@@ -41,10 +41,23 @@ void dizave_render_numbers(void);
 #define DZ_R LALT_T(KC_R)
 #define DZ_S LCTL_T(KC_S)
 #define DZ_T LSFT_T(KC_T)
+
 #define DZ_N RSFT_T(KC_N)
 #define DZ_E RCTL_T(KC_E)
 #define DZ_I LALT_T(KC_I)
 #define DZ_O RGUI_T(KC_O)
+
+// colemak lower row mods
+#define DZ_Z LGUI_T(KC_Z)
+#define DZ_X LALT_T(KC_X)
+#define DZ_C LCTL_T(KC_C)
+#define DZ_V LSFT_T(KC_V)
+
+#define DZ_M RSFT_T(KC_M)
+#define DZ_COMM RCTL_T(KC_COMM)
+#define DZ_DOT LALT_T(KC_DOT)
+#define DZ_SLSH RGUI_T(KC_SLSH)
+
 
 // QWERTY home row mods - GACS
 #define DZQ_A LGUI_T(KC_A)

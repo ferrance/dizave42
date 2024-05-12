@@ -111,14 +111,20 @@ const uint32_t unicode_map[] PROGMEM = {
 //#define DZLAW LT(_LAW, KC_DEL)
 #define DZLAW OSL(_LAW)
 
+// experimenting with different shift options
+#define SF_Z LSFT_T(KC_Z)
+#define SF_V LSFT_T(KC_V)
+#define SF_SLSH RSFT_T(KC_SLSH)
+#define SF_M RSFT_T(KC_M)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_BSPC,    DZ_A,    DZ_R,    DZ_S,    DZ_T,    KC_D,                         KC_H,    DZ_N,    DZ_E,    DZ_I,    DZ_O, KC_QUOT,
+      KC_BSPC,    KC_A,    KC_R,    KC_S,    KC_T,    KC_D,                         KC_H,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       DZ_OSS,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, DZ_OSSR,
+       DZ_OSS,    DZ_Z,    DZ_X,    DZ_C,    DZ_V,    KC_B,                         KC_K,    DZ_M, DZ_COMM,  DZ_DOT, DZ_SLSH, DZ_OSSR,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                            DZLAW,   DZNAV,  KC_SPC,     KC_ENT,   DZNUM, PARASEC
                                       //`--------------------------'  `--------------------------'
