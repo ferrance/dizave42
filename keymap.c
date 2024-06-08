@@ -1,7 +1,7 @@
 /*
 Copyright 2019 @foostan
 Copyright 2020 Drashna Jaelre <@drashna>
-Copyright 2023 @ferrance
+Copyright 2024 @ferrance
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,18 +20,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include "dizave.h"                 // the dizave library
 #include "features/achordion.h"     // https://getreuer.info/posts/keyboards/achordion/index.html
-#include "features/select_word.h"   // https://getreuer.info/posts/keyboards/select-word/index.html
+//#include "features/select_word.h"   // https://getreuer.info/posts/keyboards/select-word/index.html
 
 #include <stdio.h>
 
 // graphics for the small oled layer names
 // todo put in dizave42.h
+#ifdef KB2040
 extern const unsigned char dz_oled_colemak[];
 extern const unsigned char dz_oled_legal[];
 extern const unsigned char dz_oled_nav[];
 extern const unsigned char dz_oled_num[];
 extern const unsigned char dz_oled_func[];
 extern const unsigned char dz_oled_qwerty[];
+#endif
 
 // Layers
 enum layer_number {
@@ -269,6 +271,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return false;
 
       case DZ_TEST:
+#ifdef RGB_MATRIX_ENABLE
+
 //        rgb_matrix_toggle();
 //          rgb_matrix_enable(); return false;
         if (record->event.pressed) {
@@ -278,6 +282,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             rgb_matrix_enable();
           }
         }
+#endif
         return false;
 
     default:
@@ -372,6 +377,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
   #else 
+    #ifdef KB2040
 
     bool small_oled2(void) {
 
@@ -423,6 +429,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
+    #else
+
+    bool small_oled2(void)
+    {
+      //int layer = get_highest_layer(layer_state);
+
+        oled_render_layer_state();
+        oled_write(" Mods: ", false);
+        dizave_render_mods();
+        oled_write_ln("",false);
+
+      return false;
+    }
+    #endif
 
   #endif
 
@@ -430,7 +450,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     #ifdef OLED_DISPLAY_128X64
       return big_oled();
     #else
-//      return small_oled();
       return small_oled2();
     #endif
   }
@@ -446,6 +465,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //
 // When shift is active, thumb cluster turns pink
 //	
+#ifdef RGB_MATRIX_ENABLE
 
 bool rgb_matrix_indicators_user(void) {
 
@@ -495,7 +515,10 @@ bool rgb_matrix_indicators_user(void) {
 
     return false;
 }
+#endif
 
+
+#ifdef LEADER_ENABLE
 
 void leader_start_user(void) {
     // Do something when the leader key is pressed
@@ -509,3 +532,4 @@ void leader_end_user(void) {
     }
 }
 
+#endif

@@ -217,8 +217,10 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
             rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
             rgb_matrix_sethsv_noeeprom(HSV_CYAN);
         } else { */
+#ifdef RGB_MATRIX_ENABLE
             rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
             rgb_matrix_sethsv_noeeprom(HSV_OFF);
+#endif
 //        }
         break;
 

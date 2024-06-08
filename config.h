@@ -61,6 +61,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define ONE_SHOT_TIMEOUT 1000
 
+// trying to be small
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+#define NO_MUSIC_MODE
+#define LAYER_STATE_8BIT
+
 /* much of this comes from the bermeo layout */
 
 #ifdef RGB_MATRIX_ENABLE
