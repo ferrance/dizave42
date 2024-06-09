@@ -26,14 +26,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // graphics for the small oled layer names
 // todo put in dizave42.h
-#ifdef KB2040
 extern const unsigned char dz_oled_colemak[];
 extern const unsigned char dz_oled_legal[];
 extern const unsigned char dz_oled_nav[];
 extern const unsigned char dz_oled_num[];
 extern const unsigned char dz_oled_func[];
 extern const unsigned char dz_oled_qwerty[];
-#endif
 
 // Layers
 enum layer_number {
@@ -377,7 +375,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
   #else 
-    #ifdef KB2040
 
     bool small_oled2(void) {
 
@@ -429,8 +426,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     }
-    #else
 
+/* for promicro 
     bool small_oled2(void)
     {
       //int layer = get_highest_layer(layer_state);
@@ -442,7 +439,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
       return false;
     }
-    #endif
+*/
 
   #endif
 
@@ -529,7 +526,11 @@ void leader_end_user(void) {
         SEND_STRING("Albuquerque");
     } else if (leader_sequence_two_keys(KC_N, KC_M)) {
         SEND_STRING("New Mexico");
+    } else if (leader_sequence_three_keys(KC_R, KC_O, KC_G)) {
+        SEND_STRING("Interrogatory");
+    } else if (leader_sequence_five_keys(KC_N, KC_M, KC_P, KC_E, KC_L)) {
+        SEND_STRING("New Mexico Probate & Estate Lawyers");
     }
-}
+  }
 
 #endif

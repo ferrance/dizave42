@@ -23,7 +23,7 @@ CAPS_WORD_ENABLE = yes      # can't live without
 KEY_OVERRIDE_ENABLE = yes   # for shift backspace = delete
 COMBO_ENABLE = yes          # for the escape key
 TAP_DANCE_ENABLE = no       # for double tapping brackets
-LEADER_ENABLE = no          # tried to make this work
+LEADER_ENABLE = yes          # tried to make this work
 
 # i've given up on promicro, it's just too small
 # all my crkbds run on adafruit kb2040s
