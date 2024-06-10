@@ -186,6 +186,20 @@ The main difference is that the gui and control keys are swapped.
 The keyboard also chooses its unicode mode based on which OS is 
 configured.
 
+## Leader Key
+
+I'm giving the leader key a try for things I have to type a lot.
+Here's what is in there so far:
+
+| code  | expands to 
+| ----- | ---
+| NM    | New Mexico
+| PR    | Personal Representative
+| ROG   | Interrogatory
+| BERN  | Bernalillo
+
+Still considering adding: court of appeals, supreme court.
+
 # Builds
 
 This keymap will not fit in a promicro. It now compiles for RP2040 only.

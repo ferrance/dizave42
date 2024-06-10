@@ -526,8 +526,12 @@ void leader_end_user(void) {
         SEND_STRING("Albuquerque");
     } else if (leader_sequence_two_keys(KC_N, KC_M)) {
         SEND_STRING("New Mexico");
+    } else if (leader_sequence_two_keys(KC_P, KC_R)) {
+        SEND_STRING("Personal Representative");
     } else if (leader_sequence_three_keys(KC_R, KC_O, KC_G)) {
         SEND_STRING("Interrogatory");
+    } else if (leader_sequence_four_keys(KC_B, KC_E, KC_R, KC_N)) {
+        SEND_STRING("Bernalillo");
     } else if (leader_sequence_five_keys(KC_N, KC_M, KC_P, KC_E, KC_L)) {
         SEND_STRING("New Mexico Probate & Estate Lawyers");
     }
