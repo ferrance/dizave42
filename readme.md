@@ -197,6 +197,7 @@ Here's what is in there so far:
 | PR    | Personal Representative
 | ROG   | Interrogatory
 | BERN  | Bernalillo
+| NMSC  | New Mexico Supreme Court
 
 Still considering adding: court of appeals, supreme court.
 

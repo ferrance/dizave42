@@ -38,7 +38,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // leader key
 #define LEADER_PER_KEY_TIMING
-#define LEADER_TIMEOUT 250
+#define LEADER_TIMEOUT 300
 #define LEADER_NO_TIMEOUT
 
 // home row mods
