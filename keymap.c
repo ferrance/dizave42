@@ -82,7 +82,7 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 // try some combos
 // tab + q = esc
-// = law layer
+// F + P = law layer (not using and will probably remove?)
 const uint16_t PROGMEM esc_combo[] = { KC_TAB, KC_Q, COMBO_END};
 const uint16_t PROGMEM law_combo[] = { KC_F, KC_P, COMBO_END};
 combo_t key_combos[] = {
@@ -170,9 +170,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LAW] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX,  DZ_CFR,   DZ_F4,  DZ_US,   DZ_SEE,                        DZ_RP, DZ_NMSC, DZ_NMRA,   DZ_CO,  DZ_ROG, XXXXXXX,
+      XXXXXXX, XXXXXXX,  DZ_CFR,   DZ_F4,  DZ_US,   DZ_SEE,                        DZ_RP, DZ_NMSC, DZ_NMRA, XXXXXXX,  DZ_ROG, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,  DZ_ABQ,  DZ_USC,  DZ_F3D,  DZ_P3D,  DZ_ID2,                       DZ_BIC, DZ_NMCA, DZ_NMSA,   DZ_EA, XXXXXXX, DZ_RQOT,
+      XXXXXXX,  DZ_ABQ,  DZ_USC,  DZ_F3D,  DZ_P3D,  DZ_ID2,                       DZ_BIC, DZ_NMCA, DZ_NMSA, XXXXXXX, XXXXXXX, DZ_RQOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______,  DZ_NM2, XXXXXXX,  DZ_F2D,  DZ_P2D, DZ_BERN,                       DZ_AB,   DZ_NM, XXXXXXX, XXXXXXX, XXXXXXX, DZ_EMDS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -526,6 +526,10 @@ void leader_end_user(void) {
         SEND_STRING("Albuquerque");
     } else if (leader_sequence_two_keys(KC_N, KC_M)) {
         SEND_STRING("New Mexico");
+    } else if (leader_sequence_two_keys(KC_E, KC_A)) {
+        SEND_STRING("(emphasis added)");        
+    } else if (leader_sequence_two_keys(KC_C, KC_O)) {
+        SEND_STRING("(citation omitted)");
     } else if (leader_sequence_two_keys(KC_P, KC_R)) {
         SEND_STRING("Personal Representative");
     } else if (leader_sequence_three_keys(KC_R, KC_O, KC_G)) {
