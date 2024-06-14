@@ -193,6 +193,8 @@ Here's what is in there so far:
 
 | code  | expands to 
 | ----- | ---
+| CO    | (citation omitted)
+| EA    | (emphasis added)
 | NM    | New Mexico
 | PR    | Personal Representative
 | ROG   | Interrogatory
