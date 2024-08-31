@@ -74,11 +74,10 @@ const key_override_t shift_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, 
 const key_override_t para_key_override = ko_make_basic(MOD_MASK_SHIFT, DZ_PARA, DZ_SEC);
 
 // This globally defines all key overrides to be used
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
     &delete_key_override,
 //    &shift_key_override,
-    &para_key_override,
-    NULL // Null terminate the array of overrides!
+    &para_key_override
 };
 
 // try some combos
