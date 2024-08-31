@@ -17,12 +17,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <stdio.h>
+
 #include QMK_KEYBOARD_H
 #include "dizave.h"                 // the dizave library
 #include "features/achordion.h"     // https://getreuer.info/posts/keyboards/achordion/index.html
 //#include "features/select_word.h"   // https://getreuer.info/posts/keyboards/select-word/index.html
-
-#include <stdio.h>
+#include "os_detection.h"
 
 // graphics for the small oled layer names
 // todo put in dizave42.h
@@ -253,6 +254,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (!process_achordion(keycode, record)) { return false; }
 //  if (!process_sentence_case(keycode, record)) { return false; }
 //  if (!process_select_word(keycode, record, SELWORD, is_mac())) { return false; }
+//  if (!process_record_num_word(keycode, record)) { return false; }
 
   switch(keycode) {
 
@@ -538,9 +540,20 @@ void leader_end_user(void) {
         SEND_STRING("Bernalillo");
     } else if (leader_sequence_four_keys(KC_N, KC_M, KC_S, KC_C)) {
         SEND_STRING("New Mexico Supreme Court");
+    } else if (leader_sequence_four_keys(KC_N, KC_M, KC_C, KC_A)) {
+        SEND_STRING("New Mexico Court of Appeals");
     } else if (leader_sequence_five_keys(KC_N, KC_M, KC_P, KC_E, KC_L)) {
         SEND_STRING("New Mexico Probate & Estate Lawyers");
     }
   }
 
 #endif
+
+bool process_detected_host_os_user(os_variant_t os) {
+  if (os==OS_MACOS || os==OS_IOS) {
+    dizave_set_mac_mode();
+  } else {
+    dizave_set_win_mode();
+  }
+  return true;
+}

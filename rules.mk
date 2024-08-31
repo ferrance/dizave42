@@ -16,6 +16,7 @@ GRAVE_ESC_ENABLE= no
 SPACE_CADET_ENABLE = no
 MUSIC_ENABLE = no
 AVR_USE_MINIMAL_PRINTF = yes
+OS_DETECTION_ENABLE = YES
 
 # features this keymap uses
 UNICODEMAP_ENABLE = yes     # req'd for some law characters
