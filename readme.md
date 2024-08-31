@@ -193,6 +193,7 @@ Here's what is in there so far:
 
 | code  | expands to 
 | ----- | ---
+| A     | Albuquerque
 | CO    | (citation omitted)
 | EA    | (emphasis added)
 | NM    | New Mexico
