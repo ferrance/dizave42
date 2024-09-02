@@ -85,9 +85,14 @@ const key_override_t *key_overrides[] = {
 // F + P = law layer (not using and will probably remove?)
 const uint16_t PROGMEM esc_combo[] = { KC_TAB, KC_Q, COMBO_END};
 const uint16_t PROGMEM law_combo[] = { KC_F, KC_P, COMBO_END};
+const uint16_t PROGMEM caps_combo[] = { KC_D, KC_H, COMBO_END};
+const uint16_t PROGMEM lead_combo[] = { KC_G, KC_J, COMBO_END};
+
 combo_t key_combos[] = {
   COMBO(esc_combo, KC_ESC),
   COMBO(law_combo, DZLAW),
+  COMBO(caps_combo, CW_TOGG),
+  COMBO(lead_combo, QK_LEAD)
 };
 
 enum unicode_names {
