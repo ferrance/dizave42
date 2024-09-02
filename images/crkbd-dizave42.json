@@ -92,7 +92,7 @@
     "(\n-nmsc-\nhome\n\n\n\n\n\n\nL",
     {
       "x": 1,
-      "t": "#00f\n#ff0000\n#009900"
+      "t": "#00f\n\n#009900"
     },
     "\n\nend\n\n\n\n\n\n\nY"
   ],
@@ -176,7 +176,7 @@
       "w": 2,
       "h": 1.25
     },
-    "tab-q = esc\n\n\n\ncombos\n\nf-p = law"
+    "tab-q = esc\ng-j = leader\n\n\ncombos\n\nd-h = capsword"
   ],
   [
     {
@@ -236,7 +236,8 @@
     },
     "\n-nmca-\n<i class='fa fa-arrow-left'></i>\n\n\n\n\n\n\nN",
     {
-      "x": 1
+      "x": 1,
+      "t": "#00f\n\n#009900"
     },
     "\n\n<i class='fa fa-arrow-right'></i>\n\n\n\n\n\n\nI"
   ],
@@ -453,7 +454,7 @@
         4
       ]
     },
-    "Lead",
+    "§",
     {
       "x": 6,
       "t": "#800080\n\n#009900\n\n\n\n\n\n\n#000000",
