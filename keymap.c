@@ -538,6 +538,8 @@ void leader_end_user(void) {
         SEND_STRING("(citation omitted)");
     } else if (leader_sequence_two_keys(KC_P, KC_R)) {
         SEND_STRING("Personal Representative");
+    } else if (leader_sequence_two_keys(KC_S, KC_A)) {
+        SEND_STRING("Supervised Administrator");
     } else if (leader_sequence_three_keys(KC_R, KC_O, KC_G)) {
         SEND_STRING("Interrogatory");
     } else if (leader_sequence_four_keys(KC_B, KC_E, KC_R, KC_N)) {
