@@ -176,7 +176,7 @@
       "w": 2,
       "h": 1.25
     },
-    "tab-q = esc\ng-j = leader\n\n\ncombos\n\nd-h = capsword"
+    "tab-q = esc\np-l = leader\n\n\ncombos\n\nd-h = capsword"
   ],
   [
     {
@@ -480,7 +480,7 @@
       "rx": 4.5,
       "ry": 4.1,
       "y": -0.9999999999999996,
-      "t": "#0000ff\n\n\n\n\n\n\n\n\n#000000",
+      "t": "#0000ff\n\n\n\n\n\n\n\n\n#009900",
       "fa": [
         2,
         0,

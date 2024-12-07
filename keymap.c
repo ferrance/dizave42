@@ -86,7 +86,7 @@ const key_override_t *key_overrides[] = {
 const uint16_t PROGMEM esc_combo[] = { KC_TAB, KC_Q, COMBO_END};
 const uint16_t PROGMEM law_combo[] = { KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM caps_combo[] = { KC_D, KC_H, COMBO_END};
-const uint16_t PROGMEM lead_combo[] = { KC_G, KC_J, COMBO_END};
+const uint16_t PROGMEM lead_combo[] = { KC_P, KC_L, COMBO_END};
 
 combo_t key_combos[] = {
   COMBO(esc_combo, KC_ESC),

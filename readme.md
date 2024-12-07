@@ -8,8 +8,7 @@ both the lily and the corne and quickly found [miryoku](https://github.com/manna
 
 While miryoku is amazing and very well thought out, it leaves six keys unused on the 
 six-column corne. That's 14% of the keys!!! And I just couldn't adjust to its nav layer.
-After a good deal of thought and 
-experimentation I decided to work on a pair of layouts for these two keyboards that were
+I decided to work on a pair of layouts for these two keyboards that were
 inspired by miryoku but that made use of the extra keys.
 
 In some ways this is inferior to simply using miryoku everywhere, an approach which 
@@ -31,12 +30,9 @@ And, for my use case, the layout needs to accommodate both legal writing and pro
 
 ## The Layouts
 
-Currently dizave42 uses five layers. I'm at the point where I don't expect 
-much to change. I am still playing with different ways to switch between them,
-however.
+Currently dizave42 uses five layers: colemak (qwerty is also an option but I rarely use it), nav, numbers, law, and functions. I'm at the point where I don't expect much to change. 
 
 ### Colemak
-
 
 ![Default Layer](https://raw.githubusercontent.com/ferrance/dizave42/main/images/crkbd-dizave42.jpg)
 
@@ -63,18 +59,18 @@ I did have some problems with the home row keys, at least on the pinky and ring 
 I've used [achordion](https://github.com/getreuer/qmk-keymap) to try to eliminate
 the issues I was having with home row mod rolls. For my purposes, it is basically
 a way to get bilateral combos but with userspace code. This made home row mods 
-useable for me. But I have still not been able to tune this so that it is 
-reliable. Currently, I've added back shift keys and am trying to stop using
-the shift on the index fingers.
+mostly useable for me. But I have still not been able to tune this so that it is 
+reliable. I've ended up changing to lower row mods instead, and adding pinky shift 
+keys. The shift keys are my main remaining problem to work out with the mods.
 
 CAPS_WORD is enabled and configured to activate on by hitting both shift keys at once. 
+However I have also put it on a d-h combo, which I find preferable to hitting both
+shift keys. Either works.
 
 I find the outermost thumb keys hard to use on a corne. I have put a paragraph
 key on the right hand one, which shifts to a section key, because I use these
 all the time in legal writing and they can't be on the same finger as the space 
 key. I put the delete key on the left hand one for lack of any better ideas.
-
-Space key has tab on it (shift-space) and dash/underscore (num-space).
 
 ### Nav Layer
 ![Nav Layer](images/layers/layer-nav.png)
@@ -119,7 +115,7 @@ qwerty and colemak. Board boot in the upper outer keys of both sides.
 
 RGB controls are on the right half of this layer.
 
-The lower left (DZ_WIN) switches between windows and mac mode. 
+The lower right (DZ_WIN) switches between windows and mac mode. 
 
 ### Legal Layer
 ![Number Layer](images/layers/layer-law.png)
@@ -128,7 +124,7 @@ OK, so, admittedly this layer is only useful to people who are
 appellate lawyers in New Mexico and rock a corne. So,
 just me. But it's a main focus of this keyboard.
 
-I sort of generaaly put federal on the left and New Mexico on the right. 
+I sort of generally put federal on the left and New Mexico on the right. 
 There's a lot of stuff on here, it's easiest just to consult the graphic.
 
 The quote gives you a close quote single quote, the kind you use at
@@ -170,7 +166,7 @@ There are per-key lighting changes to help show what layer is active:
 - Numbers: the number pad turns gold
 - Law: many of the keys turn red
 - Func: many of the keys turn blue
-- Shift: the thumb clusters turn pink. This includes caps lock and the one shot shifts.
+- Shift: the thumb clusters turn whitish-blue. This includes caps lock and the one shot shifts.
 
 ## Windows and Mac Mode
 
