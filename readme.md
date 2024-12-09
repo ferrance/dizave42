@@ -190,10 +190,13 @@ Here's what is in there so far:
 | code  | expands to 
 | ----- | ---
 | A     | Albuquerque
+| CA    | Court of Appeals
 | CO    | (citation omitted)
 | EA    | (emphasis added)
 | NM    | New Mexico
 | PR    | Personal Representative
+| SA    | Supervised Administrator
+| SC    | Supreme Court
 | ROG   | Interrogatory
 | BERN  | Bernalillo
 | NMSC  | New Mexico Supreme Court

@@ -71,6 +71,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* much of this comes from the bermeo layout */
 
 #ifdef RGB_MATRIX_ENABLE
+#undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
 #    define RGB_MATRIX_KEYPRESSES // reacts to keypresses 
 #    define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects
 #    define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
