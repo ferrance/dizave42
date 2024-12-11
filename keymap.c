@@ -530,20 +530,22 @@ void leader_start_user(void) {
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_A)) {
         SEND_STRING("Albuquerque");
-    } else if (leader_sequence_two_keys(KC_N, KC_M)) {
-        SEND_STRING("New Mexico");
-    } else if (leader_sequence_two_keys(KC_E, KC_A)) {
-        SEND_STRING("(emphasis added)");        
+    } else if (leader_sequence_two_keys(KC_C, KC_A)) {
+        SEND_STRING("Court of Appeals");
     } else if (leader_sequence_two_keys(KC_C, KC_O)) {
         SEND_STRING("(citation omitted)");
+    } else if (leader_sequence_two_keys(KC_D, KC_C)) {
+        SEND_STRING("district court");
+    } else if (leader_sequence_two_keys(KC_E, KC_A)) {
+        SEND_STRING("(emphasis added)");        
+    } else if (leader_sequence_two_keys(KC_N, KC_M)) {
+        SEND_STRING("New Mexico");
     } else if (leader_sequence_two_keys(KC_P, KC_R)) {
         SEND_STRING("Personal Representative");
     } else if (leader_sequence_two_keys(KC_S, KC_A)) {
-        SEND_STRING("Supervised Administrator");
+        SEND_STRING("Special Administrator");
     } else if (leader_sequence_two_keys(KC_S, KC_C)) {
         SEND_STRING("Supreme Court");
-    } else if (leader_sequence_two_keys(KC_C, KC_A)) {
-        SEND_STRING("Court of Appeals");
     } else if (leader_sequence_three_keys(KC_R, KC_O, KC_G)) {
         SEND_STRING("Interrogatory");
     } else if (leader_sequence_four_keys(KC_B, KC_E, KC_R, KC_N)) {
