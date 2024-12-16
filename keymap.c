@@ -34,7 +34,18 @@ extern const unsigned char dz_oled_num[];
 extern const unsigned char dz_oled_func[];
 extern const unsigned char dz_oled_qwerty[];
 
+#define DZNAV MO(_NAV)
+//#define DZNAV LT(_NAV, KC_TAB)
+#define DZNUM MO(_NUM)
+//#define DZNUM LT(_NUM, KC_BSPC)
+//#define DZLAW LT(_LAW, KC_DEL)
+#define DZLAW OSL(_LAW)
+
+
+//
 // Layers
+//
+
 enum layer_number {
   _COLEMAK = 0,
   _QWERTY,
@@ -44,13 +55,6 @@ enum layer_number {
   _FUNC,
   _UNKNOWN
 };
-
-#define DZNAV MO(_NAV)
-//#define DZNAV LT(_NAV, KC_TAB)
-#define DZNUM MO(_NUM)
-//#define DZNUM LT(_NUM, KC_BSPC)
-//#define DZLAW LT(_LAW, KC_DEL)
-#define DZLAW OSL(_LAW)
 
 // not sure these are used anymore, replaced with graphics
 // still used for big oled, not small one
@@ -80,20 +84,23 @@ const key_override_t *key_overrides[] = {
     &para_key_override
 };
 
-// try some combos
-// tab + q = esc
-// F + P = law layer (not using and will probably remove?)
-const uint16_t PROGMEM esc_combo[] = { KC_TAB, KC_Q, COMBO_END};
-const uint16_t PROGMEM law_combo[] = { KC_F, KC_P, COMBO_END};
-const uint16_t PROGMEM caps_combo[] = { KC_D, KC_H, COMBO_END};
-const uint16_t PROGMEM lead_combo[] = { KC_P, KC_L, COMBO_END};
+//
+// key combos
+//
+
+const uint16_t PROGMEM esc_combo[] = { KC_TAB, KC_Q, COMBO_END};  // tab+q = esc
+const uint16_t PROGMEM caps_combo[] = { KC_V, KC_M, COMBO_END};   // v+m = caps word
+const uint16_t PROGMEM lead_combo[] = { KC_D, KC_H, COMBO_END};   // d+h = leader key
 
 combo_t key_combos[] = {
   COMBO(esc_combo, KC_ESC),
-  COMBO(law_combo, DZLAW),
   COMBO(caps_combo, CW_TOGG),
   COMBO(lead_combo, QK_LEAD)
 };
+
+//
+// unicode characters
+//
 
 enum unicode_names {
   U_PARA_LOWER,
