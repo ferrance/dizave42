@@ -94,7 +94,7 @@ const uint16_t PROGMEM lead_combo[] = { KC_D, KC_H, COMBO_END};   // d+h = leade
 
 combo_t key_combos[] = {
   COMBO(esc_combo, KC_ESC),
-  COMBO(caps_combo, CW_TOGG),
+//  COMBO(caps_combo, CW_TOGG),
   COMBO(lead_combo, QK_LEAD)
 };
 
