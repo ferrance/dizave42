@@ -208,7 +208,8 @@ bool dizave_process_record_user(uint16_t keycode, keyrecord_t *record)
             dizave_set_mac_mode();
         }
         // save mode into eeprom
-        eeconfig_update_keymap(keymap_config.raw);
+        //eeconfig_update_keymap(keymap_config.raw);
+        eeconfig_update_keymap(&keymap_config);
       }
       return false;
       
