@@ -547,6 +547,8 @@ void leader_end_user(void) {
         SEND_STRING("(emphasis added)");        
     } else if (leader_sequence_two_keys(KC_N, KC_M)) {
         SEND_STRING("New Mexico");
+    } else if (leader_sequence_two_keys(KC_P, KC_O)) {
+        SEND_STRING("P.O. Box");
     } else if (leader_sequence_two_keys(KC_P, KC_R)) {
         SEND_STRING("Personal Representative");
     } else if (leader_sequence_two_keys(KC_S, KC_A)) {
