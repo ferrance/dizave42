@@ -23,7 +23,7 @@ UNICODEMAP_ENABLE = yes     # req'd for some law characters
 CAPS_WORD_ENABLE = yes      # can't live without
 KEY_OVERRIDE_ENABLE = yes   # for shift backspace = delete
 COMBO_ENABLE = yes          # for the escape key
-TAP_DANCE_ENABLE = no       # for double tapping brackets
+TAP_DANCE_ENABLE = yes       # for double tapping brackets
 LEADER_ENABLE = yes          # tried to make this work
 
 # i've given up on promicro, it's just too small
@@ -38,5 +38,5 @@ ifneq ($(strip $(BIG_OLED)),)
 endif
 
 SRC += ./dizave.c
-SRC += features/achordion.c
+#SRC += features/achordion.c
 #SRC += features/select_word.c

@@ -1,7 +1,7 @@
 /*
 Copyright 2019 @foostan
 Copyright 2020 Drashna Jaelre <@drashna>
-Copyright 2024 @ferrance
+Copyright 2025 @ferrance
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include "dizave.h"                 // the dizave library
-#include "features/achordion.h"     // https://getreuer.info/posts/keyboards/achordion/index.html
+//#include "features/achordion.h"     // https://getreuer.info/posts/keyboards/achordion/index.html
 //#include "features/select_word.h"   // https://getreuer.info/posts/keyboards/select-word/index.html
 #include "os_detection.h"
 
@@ -35,12 +35,8 @@ extern const unsigned char dz_oled_func[];
 extern const unsigned char dz_oled_qwerty[];
 
 #define DZNAV MO(_NAV)
-//#define DZNAV LT(_NAV, KC_TAB)
 #define DZNUM MO(_NUM)
-//#define DZNUM LT(_NUM, KC_BSPC)
-//#define DZLAW LT(_LAW, KC_DEL)
 #define DZLAW OSL(_LAW)
-
 
 //
 // Layers
@@ -71,7 +67,7 @@ const char* layer_names[][2] = {
 // key override
 //   - make shift backspace send a delete
 //   - make shift space send a tab
-//   - make shift para a section sumbol
+//   - make shift para a section symbol
 //
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
 const key_override_t shift_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, KC_TAB);
@@ -91,10 +87,11 @@ const key_override_t *key_overrides[] = {
 const uint16_t PROGMEM esc_combo[] = { KC_TAB, KC_Q, COMBO_END};  // tab+q = esc
 const uint16_t PROGMEM caps_combo[] = { KC_V, KC_M, COMBO_END};   // v+m = caps word
 const uint16_t PROGMEM lead_combo[] = { KC_D, KC_H, COMBO_END};   // d+h = leader key
+const uint16_t PROGMEM q_combo[] = { DZ_V, DZ_SLSH, COMBO_END};   // v+/ = question mark
 
 combo_t key_combos[] = {
   COMBO(esc_combo, KC_ESC),
-//  COMBO(caps_combo, CW_TOGG),
+  COMBO(q_combo, S(KC_SLSH)),
   COMBO(lead_combo, QK_LEAD)
 };
 
@@ -107,7 +104,13 @@ enum unicode_names {
   U_PARA_UPPER,
   U_RQOT,
   U_MDASH,
-  U_NBSP
+  U_NBSP,
+  U_ACC_A,
+  U_ACC_E,
+  U_ACC_I,
+  U_ACC_N,
+  U_ACC_O,
+  U_ACC_U
 };
 
 const uint32_t unicode_map[] PROGMEM = {
@@ -115,14 +118,39 @@ const uint32_t unicode_map[] PROGMEM = {
   [U_PARA_UPPER]   = 0x00a7, // §
   [U_RQOT] = 0x2019, 
   [U_MDASH] = 0x2014, 
-  [U_NBSP] = 0x202F
+  [U_NBSP] = 0x202F,
+  [U_ACC_A] = 0x0e1F,
+  [U_ACC_E] = 0x0e9F,
+  [U_ACC_I] = 0x0e9F,
+  [U_ACC_N] = 0x0f1F,
+  [U_ACC_O] = 0x0e9F,
+  [U_ACC_U] = 0x0e9F
+
 };
 
+// now define some keycodes for the unicode chars
 #define PARASEC UP(U_PARA_LOWER, U_PARA_UPPER)
 #define DZ_SEC  UM(U_PARA_UPPER)
 #define DZ_PARA UM(U_PARA_LOWER)
 #define DZ_RQOT UM(U_RQOT) 
-#define DZ_EMDS UM(U_MDASH)  
+#define DZ_EMDS UM(U_MDASH)
+#define ACC_N UM(U_ACC_N)  
+
+// bringing back tap dance for accents
+// Tap Dance declarations
+enum {
+    TD_ACC_A,
+    TD_Q
+};
+
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Escape, twice for Caps Lock
+    [TD_ACC_A] = ACTION_TAP_DANCE_DOUBLE(KC_A, ACC_N),
+    [TD_Q] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_SLSH)
+};
+
+//#define DZ_SLSH TD(TD_Q)
 
 // experimenting with different shift options
 #define SF_Z LSFT_T(KC_Z)
@@ -211,48 +239,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-
-//
-// achordian functions
-//
-
-void matrix_scan_user(void) {
-  achordion_task();
-}
-
-bool achordion_chord(uint16_t tap_hold_keycode,
-                     keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode,
-                     keyrecord_t* other_record) 
-{
-  if (tap_hold_keycode==DZNAV)
-  {
-    return true; // consider it held, not tapped
-  }
-
-  return achordion_opposite_hands(tap_hold_record, other_record);
-}
-
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  switch (tap_hold_keycode) {
-    case DZNAV:
-    case DZLAW:
-      return 200;  // Bypass Achordion for these keys.
-  }
-
-  return 800;  // Otherwise use a timeout of 800 ms.
-}
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+    LAYOUT_split_3x6_3(
+        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R', 
+        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R', 
+        'L', 'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R', 'R', 
+                       'L', 'L', 'L',  'R', 'R', 'R'
+    );
 
 
+    
 // I'm playing with a shorter tapping term for the shift keys
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 
-        case DZ_T:  // make it a little faster for the shift home row mods
-        case DZ_N:
+        case DZ_V:  // make it a little faster for the shift home row shift keys
+        case DZ_M:
         case DZQ_F:
         case DZQ_J:
-          return 160;
+          return TAPPING_TERM;
 
         default:
             return TAPPING_TERM;
@@ -260,9 +265,25 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 }
 
 
+bool is_flow_tap_key(uint16_t keycode) {
+    if ((get_mods() & (MOD_MASK_CG | MOD_BIT_LALT)) != 0) {
+        return false; // Disable Flow Tap on hotkeys.
+    }
+    switch (get_tap_keycode(keycode)) {
+        case KC_SPC:
+        case KC_A ... KC_Z:
+        case KC_DOT:
+        case KC_COMM:
+        case KC_SCLN:
+ //       case KC_SLSH:
+            return true;
+    }
+    return false;
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-  if (!process_achordion(keycode, record)) { return false; }
+//  if (!process_achordion(keycode, record)) { return false; }
 //  if (!process_sentence_case(keycode, record)) { return false; }
 //  if (!process_select_word(keycode, record, SELWORD, is_mac())) { return false; }
 //  if (!process_record_num_word(keycode, record)) { return false; }

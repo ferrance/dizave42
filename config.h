@@ -2,7 +2,7 @@
 
 Copyright 2012 Jun Wako <wakojun@gmail.com>
 Copyright 2015 Jack Humbert
-Copyright 2023 D. Ferrance (@ferrance)
+Copyright 2025 D. Ferrance (@ferrance)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -42,17 +42,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LEADER_NO_TIMEOUT
 
 // home row mods
-#define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 180
+//#define FLOW_TAP_TERM 150
 #define TAPPING_TERM_PER_KEY
-//#define HOLD_ON_OTHER_KEY_PRESS
-//#define PERMISSIVE_HOLD
-//#define IGNORE_MOD_TAP_INTERRUPT // remove for qmk 21.0
+#define CHORDAL_HOLD                // replaces achordian
+//#define PERMISSIVE_HOLD           // doesn't apply to rolls, so what good is it
 
-// dizave supports mac and windows
+
+// dizave42 supports mac and windows
 #define UNICODE_SELECTED_MODES UNICODE_MODE_MACOS, UNICODE_MODE_WINCOMPOSE
 
-// caps_word enabled by double tapping left shift
+// caps_word enabled by tapping both shifts at once
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD   
 
 // for rgb matrix support
@@ -67,8 +67,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #undef LOCKING_RESYNC_ENABLE
 #define NO_MUSIC_MODE
 #define LAYER_STATE_8BIT
-
-/* much of this comes from the bermeo layout */
 
 #ifdef RGB_MATRIX_ENABLE
 #undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
