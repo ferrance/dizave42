@@ -16,14 +16,14 @@ GRAVE_ESC_ENABLE= no
 SPACE_CADET_ENABLE = no
 MUSIC_ENABLE = no
 AVR_USE_MINIMAL_PRINTF = yes
-OS_DETECTION_ENABLE = YES
+OS_DETECTION_ENABLE = yes
 
 # features this keymap uses
 UNICODEMAP_ENABLE = yes     # req'd for some law characters
 CAPS_WORD_ENABLE = yes      # can't live without
 KEY_OVERRIDE_ENABLE = yes   # for shift backspace = delete
 COMBO_ENABLE = yes          # for the escape key
-TAP_DANCE_ENABLE = yes       # for double tapping brackets
+TAP_DANCE_ENABLE = no       # for double tapping brackets
 LEADER_ENABLE = yes          # tried to make this work
 
 # i've given up on promicro, it's just too small

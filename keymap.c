@@ -21,8 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include "dizave.h"                 // the dizave library
-//#include "features/achordion.h"     // https://getreuer.info/posts/keyboards/achordion/index.html
-//#include "features/select_word.h"   // https://getreuer.info/posts/keyboards/select-word/index.html
 #include "os_detection.h"
 
 // graphics for the small oled layer names
@@ -49,6 +47,7 @@ enum layer_number {
   _NUM,
   _LAW,
   _FUNC,
+  _ACC,
   _UNKNOWN
 };
 
@@ -101,7 +100,7 @@ combo_t key_combos[] = {
 
 enum unicode_names {
   U_PARA_LOWER,
-  U_PARA_UPPER,
+  U_SEC,
   U_RQOT,
   U_MDASH,
   U_NBSP,
@@ -109,48 +108,39 @@ enum unicode_names {
   U_ACC_E,
   U_ACC_I,
   U_ACC_N,
+  U_ACC_NN,
   U_ACC_O,
   U_ACC_U
 };
 
 const uint32_t unicode_map[] PROGMEM = {
   [U_PARA_LOWER]   = 0x00B6, // ¶
-  [U_PARA_UPPER]   = 0x00a7, // §
-  [U_RQOT] = 0x2019, 
+  [U_SEC]   = 0x00a7, // §
+  [U_RQOT]  = 0x2019, 
   [U_MDASH] = 0x2014, 
-  [U_NBSP] = 0x202F,
-  [U_ACC_A] = 0x0e1F,
-  [U_ACC_E] = 0x0e9F,
-  [U_ACC_I] = 0x0e9F,
-  [U_ACC_N] = 0x0f1F,
-  [U_ACC_O] = 0x0e9F,
-  [U_ACC_U] = 0x0e9F
+  [U_NBSP]  = 0x202F,
+
+  // i'm working on unicode accents but on the mac you just need to long press a letter to get accent options
+  [U_ACC_A] = 0x00e1,
+  [U_ACC_E] = 0x00e9,
+  [U_ACC_I] = 0x00ed,
+  [U_ACC_N] = 0x00f1,
+  [U_ACC_NN] = 0x00d1,
+  [U_ACC_O] = 0x00e9,
+  [U_ACC_U] = 0x00e9
 
 };
 
 // now define some keycodes for the unicode chars
-#define PARASEC UP(U_PARA_LOWER, U_PARA_UPPER)
-#define DZ_SEC  UM(U_PARA_UPPER)
+#define PARASEC UP(U_PARA_LOWER, U_SEC)
+#define DZ_SEC  UM(U_SEC)
 #define DZ_PARA UM(U_PARA_LOWER)
 #define DZ_RQOT UM(U_RQOT) 
 #define DZ_EMDS UM(U_MDASH)
-#define ACC_N UM(U_ACC_N)  
 
-// bringing back tap dance for accents
-// Tap Dance declarations
-enum {
-    TD_ACC_A,
-    TD_Q
-};
+#define ACC_A   UP(UM(U_ACC_A),UM(U_ACC_NN))  
+#define ACC_N   UP(UM(U_ACC_N),UM(U_ACC_NN))  
 
-// Tap Dance definitions
-tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for Escape, twice for Caps Lock
-    [TD_ACC_A] = ACTION_TAP_DANCE_DOUBLE(KC_A, ACC_N),
-    [TD_Q] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_SLSH)
-};
-
-//#define DZ_SLSH TD(TD_Q)
 
 // experimenting with different shift options
 #define SF_Z LSFT_T(KC_Z)
@@ -167,7 +157,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        DZ_OSS,    DZ_Z,    DZ_X,    DZ_C,    DZ_V,    KC_B,                         KC_K,    DZ_M, DZ_COMM,  DZ_DOT, DZ_SLSH, DZ_OSSR,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          DZ_SEC,   DZNAV,  KC_SPC,     KC_ENT,   DZNUM, PARASEC
+                                        OSL(_ACC),   DZNAV,  KC_SPC,     KC_ENT,   DZNUM, PARASEC
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -231,6 +221,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           _______, _______, _______,    _______, _______, XXXXXXX
                                       //`--------------------------'  `--------------------------'
  
+  ),
+
+
+  [_ACC] = LAYOUT_split_3x6_3(
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+      XXXXXXX, XXXXXXX,  DZ_CFR,   DZ_F4,  DZ_US,   DZ_SEE,                        DZ_RP, DZ_NMSC, DZ_NMRA, XXXXXXX,  DZ_ROG, XXXXXXX,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      XXXXXXX,   ACC_A, _______, _______, _______, _______,                      _______,   ACC_N, DZ_NMSA, XXXXXXX, XXXXXXX, DZ_RQOT,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______,  DZ_NM2, XXXXXXX,  DZ_F2D,  DZ_P2D, DZ_BERN,                       DZ_AB,   DZ_NM, XXXXXXX, XXXXXXX, XXXXXXX, DZ_EMDS,
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                           DZ_SEC, DZ_PARA, _______,    _______, _______,_______
+                                      //`--------------------------'  `--------------------------'
   )
 
 
