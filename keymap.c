@@ -579,6 +579,8 @@ void leader_end_user(void) {
         SEND_STRING("Court of Appeals");
     } else if (leader_sequence_two_keys(KC_C, KC_O)) {
         SEND_STRING("(citation omitted)");
+    } else if (leader_sequence_two_keys(KC_C, KC_Y)) {
+        SEND_STRING("County");
     } else if (leader_sequence_two_keys(KC_D, KC_C)) {
         SEND_STRING("district court");
     } else if (leader_sequence_two_keys(KC_E, KC_A)) {

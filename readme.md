@@ -56,21 +56,20 @@ For a thorough overview of home row mods, check out
 [precondition's page](https://precondition.github.io/home-row-mods).
 
 I did have some problems with the home row keys, at least on the pinky and ring fingers. 
-I've used [achordion](https://github.com/getreuer/qmk-keymap) to try to eliminate
-the issues I was having with home row mod rolls. For my purposes, it is basically
-a way to get bilateral combos but with userspace code. This made home row mods 
+Many of these were previously addressed with [achordion](https://github.com/getreuer/qmk-keymap), 
+and are now addressed with QMK's achordal. This made home row mods 
 mostly useable for me. But I have still not been able to tune this so that it is 
 reliable. I've ended up changing to lower row mods instead, and adding pinky shift 
 keys. The shift keys are my main remaining problem to work out with the mods.
+In particular I have problems typing ?, which I roll and which I just can't find
+a way to tune so it doesn't come out as v/ reliably.
 
 CAPS_WORD is enabled and configured to activate on by hitting both shift keys at once. 
-However I have also put it on a d-h combo, which I find preferable to hitting both
-shift keys. Either works.
 
 I find the outermost thumb keys hard to use on a corne. I have put a paragraph
 key on the right hand one, which shifts to a section key, because I use these
 all the time in legal writing and they can't be on the same finger as the space 
-key. I put the delete key on the left hand one for lack of any better ideas.
+key. Currently the left hand one activates an accent key layer (meant for Spanish).
 
 ### Nav Layer
 ![Nav Layer](images/layers/layer-nav.png)
@@ -190,20 +189,19 @@ Here's what is in there so far:
 | code  | expands to 
 | ----- | ---
 | A     | Albuquerque
+| BERN  | Bernalillo
 | CA    | Court of Appeals
 | CO    | (citation omitted)
+| CY    | County
 | EA    | (emphasis added)
 | NM    | New Mexico
+| NMCA  | New Mexico Court of Appeals
+| NMSC  | New Mexico Supreme Court
 | PO    | P.O. Box
 | PR    | Personal Representative
+| ROG   | Interrogatory
 | SA    | Supervised Administrator
 | SC    | Supreme Court
-| ROG   | Interrogatory
-| BERN  | Bernalillo
-| NMSC  | New Mexico Supreme Court
-| NMCA  | New Mexico Court of Appeals
-
-Still considering adding: court of appeals, supreme court.
 
 # Builds
 
