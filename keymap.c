@@ -105,12 +105,17 @@ enum unicode_names {
   U_MDASH,
   U_NBSP,
   U_ACC_A,
+  U_ACC_AA,
   U_ACC_E,
+  U_ACC_EE,
   U_ACC_I,
+  U_ACC_II,
   U_ACC_N,
   U_ACC_NN,
   U_ACC_O,
-  U_ACC_U
+  U_ACC_OO,
+  U_ACC_U,
+  U_ACC_UU
 };
 
 const uint32_t unicode_map[] PROGMEM = {
@@ -122,12 +127,17 @@ const uint32_t unicode_map[] PROGMEM = {
 
   // i'm working on unicode accents but on the mac you just need to long press a letter to get accent options
   [U_ACC_A] = 0x00e1,
+  [U_ACC_AA] = 0x00c1,
   [U_ACC_E] = 0x00e9,
+  [U_ACC_EE] = 0x00c9,
   [U_ACC_I] = 0x00ed,
+  [U_ACC_II] = 0x00cd,
   [U_ACC_N] = 0x00f1,
   [U_ACC_NN] = 0x00d1,
-  [U_ACC_O] = 0x00e9,
-  [U_ACC_U] = 0x00e9
+  [U_ACC_O] = 0x00f3,
+  [U_ACC_OO] = 0x00d3,
+  [U_ACC_U] = 0x00fa,
+  [U_ACC_UU] = 0x00da
 
 };
 
@@ -138,8 +148,12 @@ const uint32_t unicode_map[] PROGMEM = {
 #define DZ_RQOT UM(U_RQOT) 
 #define DZ_EMDS UM(U_MDASH)
 
-#define ACC_A   UP(UM(U_ACC_A),UM(U_ACC_NN))  
+#define ACC_A   UP(UM(U_ACC_A),UM(U_ACC_AA))  
+#define ACC_E   UP(UM(U_ACC_E),UM(U_ACC_EE))  
+#define ACC_I   UP(UM(U_ACC_I),UM(U_ACC_II))  
 #define ACC_N   UP(UM(U_ACC_N),UM(U_ACC_NN))  
+#define ACC_O   UP(UM(U_ACC_O),UM(U_ACC_OO))  
+#define ACC_U   UP(UM(U_ACC_U),UM(U_ACC_UU))  
 
 
 // experimenting with different shift options
@@ -226,11 +240,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ACC] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX,  DZ_CFR,   DZ_F4,  DZ_US,   DZ_SEE,                        DZ_RP, DZ_NMSC, DZ_NMRA, XXXXXXX,  DZ_ROG, XXXXXXX,
+      _______, _______, _______, _______, _______, _______,                      _______, _______,   ACC_U, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,   ACC_A, _______, _______, _______, _______,                      _______,   ACC_N, DZ_NMSA, XXXXXXX, XXXXXXX, DZ_RQOT,
+      _______,   ACC_A, _______, _______, _______, _______,                      _______,   ACC_N,   ACC_E,   ACC_I,   ACC_O, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______,  DZ_NM2, XXXXXXX,  DZ_F2D,  DZ_P2D, DZ_BERN,                       DZ_AB,   DZ_NM, XXXXXXX, XXXXXXX, XXXXXXX, DZ_EMDS,
+      _______, _______, _______,  _______,  _______, _______,                    _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                            DZ_SEC, DZ_PARA, _______,    _______, _______,_______
                                       //`--------------------------'  `--------------------------'
