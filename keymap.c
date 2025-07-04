@@ -31,6 +31,7 @@ extern const unsigned char dz_oled_nav[];
 extern const unsigned char dz_oled_num[];
 extern const unsigned char dz_oled_func[];
 extern const unsigned char dz_oled_qwerty[];
+extern const unsigned char dz_oled_accent[];
 
 #define DZNAV MO(_NAV)
 #define DZNUM MO(_NUM)
@@ -448,6 +449,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             data = dz_oled_func;
           else if (layer==_QWERTY)
             data = dz_oled_qwerty;
+          else if (layer==_ACC)
+            data = dz_oled_accent;
 
           // display the bitmap
           for (int i=0;i<128*4;i++)
