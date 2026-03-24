@@ -7,7 +7,7 @@ qmk compile -c
 mv ~/qmk_firmware/crkbd_rev1_dizave42.uf2 ~/qmk_firmware/crkbd_dizave42_rp2040.uf2
 cp ~/qmk_firmware/crkbd_dizave42_rp2040.uf2 ./firmware
 
-# this is for the other pinout that is like $2 on 
+# this is for the other pinout that is like $2 on ali express
 qmk compile -c -e CONVERT_TO=elite_pi
 mv ~/qmk_firmware/crkbd_rev1_dizave42_promicro_rp2040.uf2 ~/qmk_firmware/crkbd_dizave42_elitepi.uf2
 cp ~/qmk_firmware/crkbd_dizave42_elitepi.uf2 ./firmware
